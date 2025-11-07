@@ -1,0 +1,904 @@
+\documentclass{report}
+
+\input{preamble_no}
+\input{macros_no}
+\input{letterfonts}
+
+\title{\Huge{Matematikk R2}\\Innlevering kap 2\\Integrasjon}
+\author{\huge{Marcus Denslow}}
+\date{29.10.25}
+
+\begin{document}
+
+\maketitle
+\pagebreak
+
+\chapter{Innlevering kap 2 - Integrasjon}
+
+
+\section{Oppgave 1}
+
+\thm{Delvis integrasjon}{
+La $u$ og $v$ være deriverbare funksjoner av $x$. Da gjelder
+$$\int u \, dv = uv - \int v \, du$$
+eller ekvivalent
+$$\int u(x)v'(x) \, dx = u(x)v(x) - \int u'(x)v(x) \, dx$$
+}
+
+\ex{Delvis integrasjon}{
+Vi skal beregne $\int x e^x \, dx$.
+
+La $u = x$ og $dv = e^x \, dx$. Da får vi $du = dx$ og $v = e^x$.
+
+Ved delvis integrasjon:
+\begin{align*}
+\int x e^x \, dx &= x e^x - \int e^x \, dx \\
+&= x e^x - e^x + C \\
+&= e^x(x-1) + C
+\end{align*}
+}
+
+\qs{1a}{Finn et integral som man kan løse ved metoden delvis integrasjon, men som ikke kan løses ved variabelskifte eller delbrøksoppspalting. Forklar hvorfor bare den ene metoden fungerer og løs integralet.}
+
+\sol
+
+Integralet som skal løses er
+$$\int x \sin(x) \, dx$$
+
+\textbf{Hvorfor virker bare delvis integrasjon?}
+
+\begin{itemize}
+\item \textbf{Variabelskifte fungerer ikke:} Det finnes ingen naturlig substitusjon som forenkler integralet. Med $u = x$ forsvinner ikke $\sin(x)$, og med $u = \sin(x)$ får man $du = \cos(x) \, dx$, men integranden inneholder $x$, ikke $\cos(x)$.
+
+\item \textbf{Delbrøksoppspalting fungerer ikke:} Metoden brukes bare for rasjonale funksjoner (brøker av polynomer). Siden integralet inneholder $\sin(x)$, som ikke er en rasjonell funksjon, kan ikke metoden brukes her.
+
+\item \textbf{Delvis integrasjon fungerer:} Integralet er et produkt av to ulike funksjonstyper ($x$ og $\sin(x)$), noe som passer perfekt for delvis integrasjon.
+\end{itemize}
+
+\textbf{Løsning med delvis integrasjon:}
+
+Med formelen $\int u \, dv = uv - \int v \, du$ setter man $u = x$ og $dv = \sin(x) \, dx$.
+
+Dette gir:
+\begin{align*}
+du &= dx \\
+v &= -\cos(x)
+\end{align*}
+
+Ved delvis integrasjon:
+\begin{align*}
+\int x \sin(x) \, dx &= x \cdot (-\cos(x)) - \int (-\cos(x)) \, dx \\
+&= -x \cos(x) + \int \cos(x) \, dx \\
+&= -x \cos(x) + \sin(x) + C
+\end{align*}
+
+\textbf{Svar:} $\displaystyle \int x \sin(x) \, dx = -x \cos(x) + \sin(x) + C$
+
+\vspace{2cm}
+
+\nt{
+\textbf{Delbrøksoppspalting} brukes når vi har en rasjonell funksjon (brøk av polynomer) som kan deles opp i enklere brøker. For eksempel kan $\frac{1}{(x-1)(x+2)}$ skrives som summen av to enklere brøker: $\frac{A}{x-1} + \frac{B}{x+2}$.
+}
+
+\qs{1b}{Finn et integral som man kan løse ved metoden delbrøksoppspalting, men som ikke kan løses ved variabelskifte eller delvis integrasjon. Forklar hvorfor bare den ene metoden fungerer og løs integralet.}
+
+\sol
+$$\int \frac{1}{x^2-1} \, dx$$
+
+\textbf{Hvorfor virker bare delbrøksoppspalting?}
+
+\begin{itemize}
+	\item \textbf{Variabelskifte fungerer ikke:} Det finnes ingen naturlig substitusjon som forenkler integralet. Nevneren $x^2-1$ er et polynom som ikke blir enklere ved substitusjon.
+
+	\item \textbf{Delvis integrasjon fungerer ikke:} Delvis integrasjon krever et produkt av to funksjoner der man kan derivere den ene og integrere den andre. Her har man en rasjonell funksjon (brøk), ikke et produkt.
+
+	\item \textbf{Delbrøksoppspalting fungerer:} Dette er en ekte rasjonell funksjon der tellerens grad er mindre enn nevnerens grad, og nevneren kan faktoriseres. Perfekt for delbrøksoppspalting.
+\end{itemize}
+
+\textbf{Løsning med delbrøksoppspalting:}
+
+Nevneren faktoriseres:
+$$x^2 - 1 = (x-1)(x+1)$$
+
+Brøken spaltes opp:
+$$\frac{1}{(x-1)(x+1)} = \frac{A}{x-1} + \frac{B}{x+1}$$
+
+Multipliserer begge sider med $(x-1)(x+1)$:
+$$1 = A(x+1) + B(x-1)$$
+
+For å finne $A$ og $B$ settes det inn strategiske verdier av $x$:
+
+For $x = 1$:
+$$1 = A(2) + B(0) \quad \Rightarrow \quad A = \frac{1}{2}$$
+
+For $x = -1$:
+$$1 = A(0) + B(-2) \quad \Rightarrow \quad B = -\frac{1}{2}$$
+
+Altså:
+$$\frac{1}{x^2-1} = \frac{1/2}{x-1} - \frac{1/2}{x+1}$$
+
+Integralet blir da:
+\begin{align*}
+	\int \frac{1}{x^2-1} \, dx &= \int \left( \frac{1/2}{x-1} - \frac{1/2}{x+1} \right) dx \\
+	&= \frac{1}{2} \int \frac{1}{x-1} \, dx - \frac{1}{2} \int \frac{1}{x+1} \, dx \\
+	&= \frac{1}{2} \ln|x-1| - \frac{1}{2} \ln|x+1| + C \\
+	&= \frac{1}{2} \ln\left|\frac{x-1}{x+1}\right| + C
+\end{align*}
+
+\textbf{Svar:} $\displaystyle \int \frac{1}{x^2-1} \, dx = \frac{1}{2} \ln\left|\frac{x-1}{x+1}\right| + C$
+
+\nt{
+Integranden er ikke definert for $x = \pm 1$, så resultatet gjelder på hvert sammenhengende intervall der $x \neq \pm 1$, det vil si for $x \in (-\infty, -1)$, $x \in (-1, 1)$ eller $x \in (1, \infty)$.
+}
+
+\pagebreak
+
+\section{Oppgave 2}
+
+\thm{Variabelskiftesetningen}{
+La $g$ være en deriverbar funksjon og $f$ være kontinuerlig. Da gjelder
+$$\int f(g(x)) \cdot g'(x) \, dx = \int f(u) \, du$$
+der $u = g(x)$ og $du = g'(x) \, dx$.
+
+For bestemte integraler:
+$$\int_a^b f(g(x)) \cdot g'(x) \, dx = \int_{g(a)}^{g(b)} f(u) \, du$$
+}
+
+\ex{Variabelskifte}{
+Vi skal beregne $\int 2x(x^2+1)^3 \, dx$.
+
+La $u = x^2 + 1$. Da er $du = 2x \, dx$.
+
+Ved variabelskifte:
+\begin{align*}
+\int 2x(x^2+1)^3 \, dx &= \int u^3 \, du \\
+&= \frac{u^4}{4} + C \\
+&= \frac{(x^2+1)^4}{4} + C
+\end{align*}
+}
+
+\qs{2a}{Bruk derivasjon til å vise at $\displaystyle \int\frac{1}{(1-x)^2} dx  = \frac{x}{1-x} + C_1$}
+
+\sol
+For å vise at $\displaystyle \int \frac{1}{(1-x)^2} \, dx = \frac{x}{1-x} + C_1$ deriveres høyre side. Hvis resultatet blir integranden, stemmer likningen.
+
+Deriverer $\displaystyle \frac{x}{1-x}$ med kvotientregelen: $\displaystyle \left( \frac{u}{v} \right)' = \frac{u'v - uv'}{v^2}$
+
+Med $u = x$ og $v = 1-x$ får man $u' = 1$ og $v' = -1$.
+
+\begin{align*}
+	\frac{d}{dx} \left( \frac{x}{1-x} \right) &= \frac{1 \cdot (1-x) - x \cdot (-1)}{(1-x)^2}\\
+	&= \frac{1-x + x}{(1-x)^2} \\
+	&= \frac{1}{(1-x)^2}
+\end{align*}
+
+Dette er akkurat integranden.
+
+Siden derivasjon og integrasjon er motsatte operasjoner, følger det at:
+$$\int \frac{1}{(1-x)^2} \, dx = \frac{x}{1-x} + C_1$$
+
+$\square$
+
+
+\vspace{2cm}
+
+\qs{2b}{Bruk variabelskiftet $u = 1-x$ til å vise at $\displaystyle\int\frac{1}{(1-x)^2}dx  = \frac{1}{1-x} + C_2$}
+
+\sol
+
+Med variabelskiftet $u = 1-x$ får man:
+\begin{align*}
+\frac{du}{dx} &= -1 \\
+du &= -dx \\
+dx &= -du
+\end{align*}
+
+Substituerer inn i integralet:
+\begin{align*}
+\int\frac{1}{(1-x)^2}dx &= \int\frac{1}{u^2} \cdot (-du) \\
+&= -\int u^{-2} \, du
+\end{align*}
+
+Integrerer:
+\begin{align*}
+-\int u^{-2} \, du &= -\left( \frac{u^{-1}}{-1} \right) + C_2 \\
+&= -\left( -\frac{1}{u} \right) + C_2 \\
+&= \frac{1}{u} + C_2
+\end{align*}
+
+Tilbakesubstitusjon med $u = 1-x$ gir:
+$$\int\frac{1}{(1-x)^2}dx = \frac{1}{1-x} + C_2$$
+
+$\square$
+
+\vspace{2cm}
+
+\qs{2c}{Forklar hvordan begge disse formlene kan være samme samtidig.}
+
+\sol
+
+To forskjellige uttrykk for det samme integralet:
+
+\begin{align*}
+\text{Fra 2a:} \quad &\int\frac{1}{(1-x)^2} dx = \frac{x}{1-x} + C_1 \\
+\text{Fra 2b:} \quad &\int\frac{1}{(1-x)^2} dx = \frac{1}{1-x} + C_2
+\end{align*}
+
+Disse ser forskjellige ut, men de representerer faktisk samme familie av funksjoner. For å se sammenhengen, omskrives $\displaystyle\frac{x}{1-x}$.
+
+Siden $x = (x-1) + 1$ kan man skrive:
+
+\begin{align*}
+\frac{x}{1-x} &= \frac{(x-1) + 1}{1-x} \\
+&= \frac{x-1}{1-x} + \frac{1}{1-x} \\
+&= \frac{-(1-x)}{1-x} + \frac{1}{1-x} \\
+&= -1 + \frac{1}{1-x} \\
+&= \frac{1}{1-x} - 1
+\end{align*}
+
+Dermed:
+$$\frac{x}{1-x} + C_1 = \frac{1}{1-x} - 1 + C_1 = \frac{1}{1-x} + (C_1 - 1)$$
+
+Med $C_2 = C_1 - 1$ får man:
+$$\frac{x}{1-x} + C_1 = \frac{1}{1-x} + C_2$$
+
+Begge formlene er altså riktige og representerer samme familie av antideriverte. Forskjellen ligger bare i integrasjonskonstanten, der $C_2 = C_1 - 1$. Dette viser at integralet til en funksjon ikke er unikt bestemt, men representerer en hel familie av funksjoner som kun skiller seg med en konstant.
+
+\nt{
+Integranden er ikke definert for $x = 1$, så uttrykkene gjelder for intervaller der $x \neq 1$.
+}
+
+
+\pagebreak
+
+\section{Oppgave 3}
+
+\dfn{Bestemt integral (Riemann-sum)}{
+Det bestemte integralet $\int_a^b f(x) \, dx$ kan tilnærmes ved å dele intervallet $[a,b]$ inn i $n$ like store delintervaller av bredde $\Delta x = \frac{b-a}{n}$.
+
+Riemann-summen er da:
+$$\int_a^b f(x) \, dx \approx \sum_{i=1}^{n} f(x_i) \cdot \Delta x$$
+der $x_i$ er et punkt i det $i$-te delintervallet. Når $n \to \infty$ konvergerer summen mot det eksakte integralverdien.
+}
+
+Gitt funksjonen $f(x) = \sqrt{1-x^2}$.
+
+\qs{3a}{Lag et program som finner en tilnærming på arealet som er avgrenset av $x$-aksen og $f(x)$.}
+
+\sol
+
+For å finne arealet under $f(x) = \sqrt{1-x^2}$ på intervallet $[-1, 1]$ brukes Riemann-summer. Intervallet deles inn i $n$ like store delintervaller, og arealene av rektanglene summeres.
+
+\textbf{Python-program:}
+
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, keywordstyle=\color{blue}, commentstyle=\color{green!60!black}, stringstyle=\color{red}, numbers=left, numberstyle=\tiny, frame=single]
+import numpy as np
+
+def f(x):
+    """Funksjonen f(x) = sqrt(1 - x^2)"""
+    return np.sqrt(1 - x**2)
+
+def riemann_sum(a, b, n):
+    """
+    Beregner Riemann-sum for f(x) pa intervallet [a, b]
+    med n rektangler. Bruker hoyre endepunkt.
+    """
+    delta_x = (b - a) / n
+    total = 0
+
+    for i in range(1, n + 1):
+        x_i = a + i * delta_x
+        total += f(x_i) * delta_x
+
+    return total
+
+# Beregn tilnaerming med ulike verdier av n
+a, b = -1, 1
+n_values = [10, 100, 1000, 10000]
+
+print("Tilnaerming av arealet under f(x) = sqrt(1-x^2):")
+for n in n_values:
+    areal = riemann_sum(a, b, n)
+    print(f"n = {n:5d}: Areal ~ {areal:.8f}")
+\end{lstlisting}
+
+\textbf{Resultat:}
+
+\begin{verbatim}
+Tilnærming av arealet under f(x) = sqrt(1-x^2):
+n =    10: Areal ~ 1.51852441
+n =   100: Areal ~ 1.56913426
+n =  1000: Areal ~ 1.57074374
+n = 10000: Areal ~ 1.57079466
+\end{verbatim}
+
+Når antall rektangler øker, konvergerer tilnærmingen mot en verdi rundt 1.5708. Dette gir mening siden $f(x) = \sqrt{1-x^2}$ representerer øvre halvdel av en sirkel med radius 1, og arealet av en halvsirkel er $\frac{\pi}{2} \approx 1.5708$.
+
+\vspace{2cm}
+
+\qs{3b}{Hvor stort er det eksakte arealet $\displaystyle\int_{-1}^{1} f(x)dx$? Finn ut hvor mange rektangler man må dele flatestykket opp i for at tilnærmingsverdien fra oppgave a) skal få 8 riktige siffer fra eksakteverdien}
+
+\sol
+
+\textbf{Del 1: Eksakt areal}
+
+Funksjonen $f(x) = \sqrt{1-x^2}$ representerer øvre halvdel av sirkelen $x^2 + y^2 = 1$ med radius 1.
+
+Arealet av en halvsirkel med radius $r$ er $\frac{\pi r^2}{2}$. Med $r = 1$:
+
+$$\int_{-1}^{1} \sqrt{1-x^2} \, dx = \frac{\pi \cdot 1^2}{2} = \frac{\pi}{2} \approx 1.57079633$$
+
+\textbf{Del 2: Antall rektangler for 8 riktige siffer}
+
+For å få 8 riktige siffer må feilen være mindre enn $0.5 \times 10^{-8}$. Binær søk brukes for å finne det minste $n$ som gir tilstrekkelig nøyaktighet.
+
+\textbf{Python-program:}
+
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, keywordstyle=\color{blue}, commentstyle=\color{green!60!black}, numbers=left, numberstyle=\tiny, frame=single]
+import numpy as np
+
+def f(x):
+    return np.sqrt(1 - x**2)
+
+def riemann_sum(a, b, n):
+    delta_x = (b - a) / n
+    total = 0
+    for i in range(1, n + 1):
+        x_i = a + i * delta_x
+        total += f(x_i) * delta_x
+    return total
+
+eksakt_areal = np.pi / 2
+target_accuracy = 0.5e-8
+
+# Binaer sok mellom n = 100000 og n = 1000000
+left, right = 100000, 1000000
+
+while right - left > 1000:
+    mid = (left + right) // 2
+    approx = riemann_sum(-1, 1, mid)
+    error = abs(eksakt_areal - approx)
+
+    if error < target_accuracy:
+        right = mid  # Funker, prov lavere n
+    else:
+        left = mid   # For stor feil, treng hoyere n
+
+# Rund opp til naermeste 1000
+n_final = ((right + 999) // 1000) * 1000
+approx_final = riemann_sum(-1, 1, n_final)
+error_final = abs(eksakt_areal - approx_final)
+
+print(f"Minste n: {n_final}")
+print(f"Feil: {error_final:.2e}")
+\end{lstlisting}
+
+\textbf{Resultat:}
+
+\begin{verbatim}
+Eksakt areal: 1.5707963268
+
+Bruker binær sok:
+Tester n =  550000: Feil = 4.08e-09 -> Funker!
+Tester n =  325000: Feil = 8.98e-09 -> For stor feil
+Tester n =  437500: Feil = 5.75e-09 -> For stor feil
+Tester n =  493750: Feil = 4.79e-09 -> Funker!
+...
+Tester n =  480565: Feil = 4.99e-09 -> Funker!
+
+Minste n (rundet til nærmeste 1000): 481000
+Feil: 4.99e-09
+
+Dette gir 8 riktige siffer!
+\end{verbatim}
+
+Det minste antallet rektangler som trengs er \textbf{481 000}.
+
+\vspace{2cm}
+
+\qs{3c}{Finn ved programmering øvre grense, $b$, slik at $\displaystyle\int_{-1}^{b} f(x)dx = 1$}
+
+\sol
+
+For å finne $b$ brukes binær søk (intervallhalveringsmetoden). Integralet er 0 når $b = -1$ og $\frac{\pi}{2} \approx 1.571$ når $b = 1$. Siden vi søker etter integral = 1, må $b$ ligge mellom $-1$ og $1$.
+
+\textbf{Python-program:}
+
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, keywordstyle=\color{blue}, commentstyle=\color{green!60!black}, numbers=left, numberstyle=\tiny, frame=single]
+import numpy as np
+
+def f(x):
+    return np.sqrt(1 - x**2)
+
+def riemann_sum(a, b, n):
+    delta_x = (b - a) / n
+    total = 0
+    for i in range(1, n + 1):
+        x_i = a + i * delta_x
+        total += f(x_i) * delta_x
+    return total
+
+# Finn b slik at integral fra -1 til b er 1
+target_value = 1.0
+n = 10000  # Bruk mange rektangler for god presisjon
+
+# Binaer sok
+left, right = -1, 1
+tolerance = 1e-6
+
+iterations = 0
+while right - left > tolerance:
+    iterations += 1
+    b_mid = (left + right) / 2
+    integral = riemann_sum(-1, b_mid, n)
+
+    if integral < target_value:
+        left = b_mid
+    else:
+        right = b_mid
+
+b_final = (left + right) / 2
+integral_final = riemann_sum(-1, b_final, n)
+
+print(f"Resultat: b ~ {b_final:.8f}")
+print(f"Integral fra -1 til {b_final:.8f} = {integral_final:.8f}")
+\end{lstlisting}
+
+\textbf{Resultat:}
+
+\begin{verbatim}
+Resultat: b ~ 0.21624041
+Integral fra -1 til 0.21624041 = 1.00000030
+\end{verbatim}
+
+Den øvre grensen er $b \approx 0.216$.
+
+Dette kan verifiseres geometrisk: Med $b \approx 0.216$ får man et areal på 1, som er litt under $\frac{2}{3}$ av det totale arealet $\frac{\pi}{2} \approx 1.571$. Dette gir mening siden det søkes etter omtrent $\frac{1}{1.571} \approx 0.637$ av halvsirkelen.
+
+\pagebreak
+
+\section{Oppgave 4}
+
+\thm{Volum ved rotasjon (Skivemetoden)}{
+Når et område mellom kurven $y = f(x)$ og $x$-aksen fra $x = a$ til $x = b$ roteres $360^\circ$ om $x$-aksen, får vi et rotasjonslegeme med volum
+$$V = \pi \int_a^b [f(x)]^2 \, dx$$
+
+Hvis vi roterer området mellom to kurver $y = f(x)$ og $y = g(x)$ (der $f(x) \geq g(x)$) om $x$-aksen, blir volumet
+$$V = \pi \int_a^b \left([f(x)]^2 - [g(x)]^2\right) \, dx$$
+}
+
+\nt{
+Ved rotasjon om $x$-aksen tenker vi oss at vi lager tynne skiver vinkelrett på $x$-aksen. Hver skive har tykkelse $dx$ og radius $r = f(x)$, så arealet av tverrsnitt er $\pi r^2 = \pi [f(x)]^2$. Volumet blir da summen (integralet) av alle disse skivene.
+}
+
+Funksjonene $f$ og $g$ er gitt ved
+\begin{align*}
+f(x) &= x \\
+g(x) &= -\frac{1}{4}x^2 + 2x
+\end{align*}
+
+Et flatestykke $F$ er avgrenset av de to grafene.
+
+\qs{4a}{Finn arealet av flatestykket $F$.}
+
+\sol
+
+For å finne arealet av flatestykket $F$ må skjæringspunktene mellom de to grafene finnes først, deretter integreres differansen mellom funksjonene.
+
+\textbf{Skjæringspunktene:}
+
+Setter $f(x) = g(x)$:
+\begin{align*}
+	 x &= - \frac{1}{4}x^2 + 2x \\
+	 \frac{1}{4}x^2 + x -2x &= 0 \\
+	 \frac{1}{4}x^2 - x &= 0 \\
+	 x \left( \frac{1}{4}x - 1 \right) &= 0
+\end{align*}
+
+Dette gir $x = 0$ eller $\displaystyle \frac{1}{4}x = 1 \quad \Rightarrow \quad x = 4$
+
+Skjæringspunktene er $x = 0$ og $x = 4$.
+
+\textbf{Hvilken funksjon er øverst:}
+
+Tester med et punkt mellom skjæringspunktene, f.eks. $x = 2$:
+\begin{align*}
+	 f(2) &= 2 \\
+	 g(2) &= - \frac{1}{4}(2)^2 + 2(2) = -1 + 4 = 3
+\end{align*}
+
+Siden $g(2) > f(2)$ ligger $g(x)$ over $f(x)$ på intervallet $[0, 4]$.
+
+\textbf{Arealet:}
+
+\begin{align*}
+	A &= \int_{0}^{4} \left[ g(x) - f(x) \right]  \, dx \\
+	  &= \int_{0}^{4} \left[ - \frac{1}{4}x^2 + 2x - x \right]  \, dx  \\
+	  &= \int_{0}^{4} \left[ - \frac{1}{4}x^2 + x \right]  \, dx  \\
+	  &= \left[ - \frac{1}{12}x^3 + \frac{1}{2}x^2 \right]_{0}^{4} \\
+	  &= \left( - \frac{1}{12}\cdot 64 + \frac{1}{2} \cdot 16 \right) - 0 \\
+	  &= -\frac{64}{12} + 8 \\
+	  &= - \frac{16}{3} + \frac{24}{3} \\
+	  &= \frac{8}{3}
+\end{align*}
+
+\textbf{Svar:} Arealet av flatestykket $F$ er  $\displaystyle \frac{8}{3}$ kvadratenheter.
+
+\vspace{2cm}
+
+\qs{4b}{Finn volumet av den gjenstående kroppen vi får når vi dreier flatestykket $360^\circ$ om $x$-aksen}
+
+\sol
+
+For å finne volumet når flatestykket $F$ roteres om $x$-aksen brukes formelen for rotasjonsvolum mellom to kurver.
+
+Når området mellom to kurver $y = g(x)$ og $y = f(x)$ (der $g(x) \geq f(x)$) roteres om $x$-aksen, blir volumet:
+\[
+	V = \pi \int_{a}^{b} \left( [g(x)]^2 - [f(x)]^2 \right)  \, dx
+\]
+
+Fra oppgave 4a er $g(x) \geq f(x)$ på intervallet $[0, 4]$.
+
+\begin{align*}
+	 V &= \pi \int_{0}^{4} \left( [g(x)]^2 - [f(x)]^2 \right)  \, dx \\
+	   &= \pi \int_{0}^{4} \left[ \left( - \frac{1}{4}x^2 + 2x \right)^2 - (x)^2  \right]  \, dx
+\end{align*}
+
+Utvider $\left( - \frac{1}{4}x^2 + 2x \right)^2 $:
+
+\begin{align*}
+	\left( - \frac{1}{4}x^2 + 2x \right)^2 &= \left( - \frac{1}{4}x^2 \right)^2 + 2 \cdot \left( - \frac{1}{4}x^2 \right) \cdot (2x) + (2x)^2 \\
+	&= \frac{1}{16}x^{4} - x^3 + 4x^2
+\end{align*}
+
+Setter inn:
+\begin{align*}
+	V &= \pi \int_{0}^{4} \left[ \frac{1}{16}x^{4} - x^3 + 4x^2 - x^2 \right]  \, dx \\
+	  &=  \pi \int_{0}^{4} \left[ \frac{1}{16}x^{4} - x^3 + 3x^2 \right] \, dx  \\
+	  &= \pi \left[ \frac{1}{80}x^{5} - \frac{1}{4}x^{4} + x^3 \right]_{0}^{4} \\
+	  &= \pi \left[ \frac{1}{80} \cdot 1024 - \frac{1}{4} \cdot 256 + 64 \right] - 0 \\
+	  &= \pi \left[ \frac{1024}{80}-64+64 \right]  \\
+	  &= \pi \cdot \frac{1024}{80} \\
+	  &= \pi \cdot \frac{64}{5} \\
+	  &= \frac{64\pi}{5}
+\end{align*}
+
+\textbf{Svar:} Volumet av rotasjonslegemet er $\displaystyle \frac{64\pi}{5}$ kubikkenheter.
+
+\vspace{2cm}
+
+\qs{4c}{Et flatestykke $G$ er avgrenset av de to grafene, linja $x = a$ og linja $x = b$, der $a$ og $b$ er to tall mellom 0 og 4, og der $a < b$.}
+
+Bruk CAS til å bestemme tallene $a$ og $b$ slik at $G$ får arealet $\displaystyle\frac{11}{6}$, og at volumet blir $\displaystyle\frac{361\pi}{40}$ når vi dreier $G$ $360^\circ$ om $x$-aksen.
+
+\sol
+
+Flatestykket $G$ er avgrenset av grafene til $f(x) = x$ og $g(x) = -\frac{1}{4}x^2 + 2x$, samt linjene $x = a$ og $x = b$.
+
+$a$ og $b$ må finnes slik at:
+\begin{itemize}
+    \item Arealet: $\displaystyle \int_a^b \left[-\frac{1}{4}x^2 + x\right] dx = \frac{11}{6}$
+    \item Volumet: $\displaystyle \pi \int_a^b \left[\frac{1}{16}x^4 - x^3 + 3x^2\right] dx = \frac{361\pi}{40}$
+\end{itemize}
+
+\textbf{Løsning med GeoGebra CAS:}
+
+Volumlikningen deles med $\pi$ på begge sider for å forenkle:
+$$\int_a^b \left[\frac{1}{16}x^4 - x^3 + 3x^2\right] dx = \frac{361}{40}$$
+
+I GeoGebra CAS skriver vi følgende kommandoer:
+
+\begin{verbatim}
+f(x) := x
+g(x) := -1/4 * x^2 + 2*x
+areal := Integral(g(x) - f(x), x, a, b) = 11/6
+volum := Integral((g(x))^2 - (f(x))^2, x, a, b) = 361/40
+Solve({areal, volum}, {a, b})
+\end{verbatim}
+
+\textbf{Resultat fra CAS:}
+
+GeoGebra gir flere løsninger:
+\begin{verbatim}
+{{a = 1, b = 3}, {a = 6.12, b = -1.53}, {a = -0.67, b = 2.79},
+ {a = 1.12, b = 4.76}, ...}
+\end{verbatim}
+
+Løsningen må oppfylle betingelsene:
+\begin{itemize}
+    \item $0 < a < b < 4$ (begge tall skal være mellom 0 og 4)
+    \item $a < b$
+\end{itemize}
+
+Den eneste løsningen som oppfyller dette er: $\boxed{a = 1 \text{ og } b = 3}$
+
+\textbf{Verifisering:}
+
+Areal:
+\begin{align*}
+A &= \int_1^3 \left[-\frac{1}{4}x^2 + x\right] dx = \left[-\frac{1}{12}x^3 + \frac{1}{2}x^2\right]_1^3 \\
+&= \left(-\frac{27}{12} + \frac{9}{2}\right) - \left(-\frac{1}{12} + \frac{1}{2}\right) = \frac{11}{6} \quad \checkmark
+\end{align*}
+
+Volum (kan verifiseres tilsvarende):
+$$V = \pi \int_1^3 \left[\frac{1}{16}x^4 - x^3 + 3x^2\right] dx = \frac{361\pi}{40} \quad \checkmark$$
+
+\textbf{Svar:} $a = 1$ og $b = 3$
+
+\pagebreak
+
+\section{Oppgave 5}
+
+\thm{Geometrisk rekke}{
+En uendelig geometrisk rekke på formen
+$$a + ar + ar^2 + ar^3 + \ldots = \sum_{n=0}^{\infty} ar^n$$
+konvergerer hvis og bare hvis $|r| < 1$, og har da summen
+$$S = \frac{a}{1-r}$$
+der $a$ er første ledd og $r$ er kvotienten mellom påfølgende ledd.
+}
+
+\dfn{Konvergensområde for en potensrekke}{
+For en potensrekke $\sum_{n=0}^{\infty} a_n x^n$ er konvergensområdet mengden av alle $x$-verdier der rekka konvergerer.
+
+For en geometrisk rekke $\sum_{n=0}^{\infty} r^n$ er konvergensområdet $|r| < 1$, altså intervallet $(-1, 1)$.
+}
+
+\thm{Leddvis integrasjon av potensrekker}{
+La $f(x) = \sum_{n=0}^{\infty} a_n x^n$ være en potensrekke med konvergensområde $|x| < R$.
+
+Da kan vi integrere ledd for ledd:
+$$\int f(x) \, dx = \sum_{n=0}^{\infty} \int a_n x^n \, dx = \sum_{n=0}^{\infty} \frac{a_n}{n+1} x^{n+1} + C$$
+
+Den integrerte rekka har samme konvergensområde $|x| < R$.
+}
+
+\nt{
+Når vi integrerer en potensrekke ledd for ledd, beholder den nye rekka samme konvergensområde som den opprinnelige. Dette gir oss en kraftig metode for å finne potensrekkeutviklinger av funksjoner.
+}
+
+Vi ser på den uendelige rekka
+$$1 - x + x^2 - x^3 + \ldots$$
+
+\qs{5a}{Finn konvergensområdet til rekka.}
+
+\sol
+
+Rekka er:
+\[
+1-x + x^2 - x^3 + \dots
+\]
+
+Dette er en geometrisk rekke på formen:
+\[
+ \sum_{n=0}^{\infty} ar^{n}
+\]
+
+der $a$ er første ledd og $r$ er kvotienten.
+
+Første ledd: $a = 1$
+
+For å finne kvotienten $r$ ser man på forholdet mellom påfølgende ledd:
+
+\begin{align*}
+	 \frac{\text{andre ledd}}{\text{første ledd}} &= \frac{-x}{1} = -x \\
+	 \frac{\text{tredje ledd}}{\text{andre ledd}} &= \frac{x^2}{-x} = -x \\
+	 \frac{\text{fjerde ledd}}{\text{tredje ledd}} &= \frac{-x^3}{x^2} = -x
+\end{align*}
+
+Altså er kvotienten $r = -x$.
+
+Rekka kan også skrives som:
+\[
+\sum_{n=0}^{\infty} (-x)^{n} = \sum_{n=0}^{\infty} (-1)^{n} x^{n}
+\]
+
+En geometrisk rekke $\displaystyle \sum_{n=0}^{\infty} ar^{n}$ konvergerer hvis og bare hvis $|r| < 1$.
+
+Her er $r = -x$, så konvergensbetingelsen blir:
+\begin{align*}
+	 |r| &< 1\\
+	 |-x| &< 1 \\
+	 |x| &< 1
+\end{align*}
+
+Dette gir:
+\[
+-1 < x < 1
+\]
+
+\textbf{Svar:} Konvergensområdet til rekka er $x \in (-1, 1)$ eller $|x| < 1$.
+
+\vspace{2cm}
+
+\qs{5b}{Finn summen $s(x)$ av rekka.}
+
+\sol
+
+Fra oppgave 5a er rekka en geometrisk rekke med:
+\begin{itemize}
+    \item Første ledd: $a = 1$
+	\item Kvotient:  $r = -x$
+	\item Konvergensområde:  $|x| < 1$
+\end{itemize}
+
+En geometrisk rekke $\displaystyle \sum_{n=0}^{\infty} ar^{n}$ har summen:
+\[
+	S = \frac{a}{1-r}
+\]
+når $|r| < 1$.
+
+Setter inn $a = 1$ og $r = -x$:
+\begin{align*}
+s(x) &= \frac{a}{1-r} \\
+&= \frac{1}{1-(-x)} \\
+&= \frac{1}{1+x}
+\end{align*}
+
+\textbf{Verifisering:}
+
+For eksempel med $x = \frac{1}{2}$ (som ligger i konvergensområdet):
+
+\begin{align*}
+	\text{Rekka: } &1 - \frac{1}{2} + \frac{1}{4} - \frac{1}{8} + \dots \\
+	\text{Formel: } &s \left( \frac{1}{2} \right)  = \frac{1}{1 + \frac{1}{2}} = \frac{1}{\frac{3}{2}} = \frac{2}{3}
+\end{align*}
+
+Dette stemmer med at rekka konvergerer mot $\frac{2}{3}$.
+
+\textbf{Svar:} Summen av rekka er $\displaystyle s(x) = \frac{1}{1+x}$ for $|x| < 1$.
+
+\vspace{2cm}
+
+\qs{5c}{Løs likningene.
+\begin{enumerate}
+\item $s(x) = 2$
+\item $s(x) = \dfrac{1}{3}$
+\end{enumerate}
+}
+
+\sol
+
+Fra oppgave 5b er $s(x) = \frac{1}{1+x}$ for $|x| < 1$.
+
+\textbf{1) Løs $s(x) = 2$:}
+
+Setter inn $s(x) = \frac{1}{1+x}$:
+
+\begin{align*}
+	\frac{1}{1+x} &= 2\\
+	1 &= 2(1+x) \\
+	1 &= 2 + 2x \\
+	-1 &= 2x \\
+	x &= - \frac{1}{2}
+\end{align*}
+
+\textbf{Sjekk konvergensområdet:}
+
+Løsningen må ligge i konvergensområdet $|x| < 1$:
+\[
+ \left| - \frac{1}{2} \right|  = \frac{1}{2} < 1 \quad \checkmark
+\]
+
+Løsningen er gyldig.
+
+\textbf{Svar:} $x = -\frac{1}{2}$
+
+\textbf{2) Løs $s(x) = \frac{1}{3}$:}
+
+Setter inn $s(x) = \frac{1}{1+x}$:
+\begin{align*}
+	\frac{1}{1+x} &= \frac{1}{3} \\
+	3 &= 1+x \\
+	x &= 2
+\end{align*}
+
+\textbf{Sjekk konvergensområdet:}
+
+Løsningen må ligge i konvergensområdet $|x| < 1$:
+\[
+|2| = 2 > 1 \quad \times
+\]
+
+Løsningen $x = 2$ ligger utenfor konvergensområdet til rekka. Dette betyr at rekka ikke konvergerer for $x = 2$, og derfor er $s(2) = \frac{1}{3}$ ikke definert i konteksten av denne rekka.
+
+\textbf{Svar:} Ingen løsning (løsningen $x = 2$ ligger utenfor konvergensområdet)
+
+\vspace{2cm}
+
+Vi kan vise at når vi integrerer ledd for ledd en rekke med summen $s(x)$, får vi ei ny rekke med samme konvergensområde og der summen er en antiderivert til $s(x)$.
+
+\qs{5d}{Bruk dette til å finne en rekke som har summen $f(x) = \ln(1+x)$.}
+
+\sol
+
+Fra oppgave 5b:
+\[
+s(x) = \frac{1}{1+x} = 1 - x + x^2 - x^3 + x^{4} - \ldots = \sum_{n=0}^{\infty} (-1)^{n} x^{n}
+\]
+
+for $|x| < 1$.
+
+Deriverer $f(x) = \ln(1+x)$:
+\[
+f'(x) = \frac{1}{1 + x} = s(x)
+\]
+
+Dette betyr at $\ln(1+x)$ er en antiderivert til $s(x)$.
+
+Siden summen av den integrerte rekka skal være en antiderivert til $s(x)$, integreres rekka ledd for ledd:
+
+\begin{align*}
+	 \int s(x) \, dx &= \int \sum_{n=0}^{\infty} (-1)^{n} x^{n} \, dx \\
+	 &= \sum_{n=0}^{\infty} \int (-1)^{n} x^{n} \, dx \\
+	 &= \sum_{n=0}^{\infty} (-1)^{n} \frac{x^{n+1}}{n+1} + C
+\end{align*}
+
+Dette gir:
+\[
+\sum_{n=0}^{\infty} (-1)^{n} \frac{x^{n+1}}{n+1} = \frac{x^{1}}{1} - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^{4}}{4} + \ldots
+\]
+
+Ved å sette $m = n+1$ (så starter summen fra $m=1$):
+\[
+\sum_{n=0}^{\infty} (-1)^{n} \frac{x^{n + 1}}{n+1} = \sum_{m=1}^{\infty} (-1)^{m-1} \frac{x^{m}}{m}
+\]
+
+\textbf{Bestemme integrasjonskonstanten:}
+
+Når $x = 0$:
+\begin{align*}
+	 \ln(1+0) &= \sum_{m=1}^{\infty} (-1)^{m-1} \frac{0^{m}}{m} + C \\
+	 0 &= 0 + C \\
+	 C &= 0
+\end{align*}
+
+Rekka som har summen $f(x) = \ln(1+x)$ er:
+\[
+\ln(1+x) = \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^{n}}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^{4}}{4} + \ldots
+\]
+
+for $|x| < 1$.
+
+\textbf{Svar:}  $\displaystyle \ln(1+x) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n} x^{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^{4}}{4} + \ldots$ for $|x| < 1$.
+
+\vspace{2cm}
+
+\qs{5e}{La $s_k(x)$ være summen av de fem første leddene i den rekka du fant i oppgave d). Tegn grafen til $f$ og grafen til $s_k$ i et koordinatsystem. Hva ser du?}
+
+\sol
+
+Fra oppgave 5d:
+$$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} - \ldots$$
+
+\textbf{De fem første leddene:}
+
+Summen av de fem første leddene er:
+$$s_5(x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5}$$
+
+\textbf{Tegning av grafene:}
+
+Grafene til:
+\begin{itemize}
+    \item $f(x) = \ln(1+x)$
+    \item $s_5(x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5}$
+\end{itemize}
+
+tegnes i samme koordinatsystem for intervallet $[-0.8, 0.8]$ (som ligger innenfor konvergensområdet $|x| < 1$).
+
+\textbf{Observasjoner:}
+
+Ved å se på grafene:
+
+\begin{enumerate}
+    \item \textbf{Nær $x = 0$:} Grafene til $f(x) = \ln(1+x)$ og $s_5(x)$ ligger svært nært hverandre. Dette viser at Taylor-polynomet gir god tilnærming nær utviklingspunktet $x = 0$.
+
+    \item \textbf{Lenger fra $x = 0$:} Jo lenger man beveger seg fra $x = 0$, desto større blir forskjellen mellom $f(x)$ og $s_5(x)$. Tilnærmingen blir dårligere.
+
+    \item \textbf{Ved kantene av konvergensområdet:} Når $x$ nærmer seg $-1$ eller $1$ (kantene av konvergensområdet), avviker $s_5(x)$ mer og mer fra $f(x)$.
+
+    \item Dette viser at en Taylor-rekke (potensrekke) konvergerer mot funksjonen innenfor konvergensområdet, men at flere ledd trengs for å få god tilnærming lenger fra utviklingspunktet. Med bare fem ledd får man god tilnærming nær $x = 0$, men tilnærmingen blir dårligere når man beveger seg vekk fra dette punktet.
+\end{enumerate}
+
+\textbf{Svar:} Grafene viser at $s_5(x)$ tilnærmer $\ln(1+x)$ godt nær $x = 0$, men avviker mer jo lenger man kommer fra origo. Dette demonstrerer hvordan Taylor-polynomet gir bedre tilnærming nær utviklingspunktet.
+
+\end{document}

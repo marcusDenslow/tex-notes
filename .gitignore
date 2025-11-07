@@ -1,0 +1,26 @@
+# LaTeX auxiliary files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+*.out
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.lof
+*.lot
+
+# PDFs (comment out if you want to track PDFs)
+# *.pdf
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Temporary files
+*~
+.*.swp
+.*.swo

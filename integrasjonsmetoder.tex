@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{:widthe}
+\author{marcus Denslow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+
+
+	delvis integrasjon
+
+
+	husk $()u \times v' = u'v + uv'$ \\
+	$\int{(u\times v) dx} = \int{u'v + uv' dx}$ \\
+	$uv+C = \int{u'v dx} + \int{}uv' dx$ \\
+	$\int{u'v dx}= u \times v - \int{uv' dx}t$ \\
+	$\int{u'v = u \times v - \int{uv'}}$ \\
+	brukes når det er enklere å regne ut $\int{uv'}$ enn $\int{u'v}$
+
+
+\section{eksempler}
+F.eks: \\
+$\int{2x \ln x dx}$
+\begin{align*}
+	&= la u' = 2x \text{ og } v= \ln x \\
+	&= u=x^2 \quad v' = \frac{1}{x} \\
+	&= x^2 \ln x - \int{x^2 \frac{1}{x}dx} = x^2 \ln x - \int{x dx} \\
+	&= x^2 \ln x - \frac{1}{x}x^2 + C \\
+.\end{align*}
+
+
+eksempel 2
+
+\begin{align*}
+    &= \int_{0}^{1} e^{(2x)}(2x-1) \, dx  \\
+	&= \text{ regner først det ubestemte itegralet } \\
+	&= \int{e^{(2x)}(2x-1)}dx \\
+	&= \text{la } u'=e^{(2x)} \quad v=2x-1 \\
+	&= u=\frac{1}{2} e^{(2x)}, \quad v=2x-1 \\
+	&= \frac{1}{2}e^{(2x)} (2x-1) - \frac{\int_1}{2}e^{(2x)}2  \, dx  \\
+	&= \frac{1}{2}e^{(2x)}(2x-1) - \int e^{(2x)}  \, dx  \\
+	&= \frac{1}{2}e^{(2x)}(2x-1)-\frac{1}{2}e^{(2x)}+C \\
+	&= e^{(2x)}(x-1) +C \\
+.\end{align*}
+
+fullfører:
+\begin{align*}
+	&= \int_{0}^{1} e^{(2x)}(2x-1) \, dx = [e^{(2x)}(x-1)]_{0}^{1}=0-(-1)=1  \\
+.\end{align*}
+
+
+
+enda et eksempel:
+\begin{align*}
+	&= \int \ln x \, dx \\
+	&= \int 1 \times \ln x \, dx \\
+	&= x \ln x - \int x \frac{1}{x} \, dx \\
+	&= x \ln x - x + C \\
+	&  \\
+	&= u' =1 \quad v= \ln x \\
+	&= u=x \quad v'=\frac{1}{x} \\
+\end{align*}
+    
+\end{document}

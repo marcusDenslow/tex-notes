@@ -1,0 +1,242 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\usepackage{graphicx}
+
+\title{\Huge{matte}\\integrasjon av omdreiningslegeme}
+\author{\huge{Marcus Denslow}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+
+\chapter{}
+\section{volum av omdreningslegemer}
+
+\dfn{}{Hvis du deler opp et hardlokt egg med en eggdeler, får du skiver. Volumet av egger er lik summen av vilumene av de enkelte skivene\\ \\ Tilsvarende kan vi tenke oss at vi deler opp et omdreiningslegeme i skiver, og finner volumet av elegemet ved å summere volumet av skivene}
+\sol{vi fil finne volumet $V$ av romfiguren ovenfor mellom  $\displaystyle x = a \text{ og } x = b$. \\ \\
+	vi tenker oss da at den er delt opp i $n$ skiver, hver med tykkelse  $\displaystyle \Delta x = \frac{b-a}{n}$. \\ \\ 
+	alle snittflatene står vinkelrett på x-aksen. \\ \\
+avstandene fra origo til snittflatene er $\displaystyle x_0, x_1, x_2, x_3, \dots x_{n}, \text{ der } x_0 = a \text{ og } x_{n}=b$. \\ \\
+	i hvert intervall velger vi en verdi for $x$, som vi kaller $\displaystyle x^{*}_{i}$. \\ 
+	arealet av snittflaten ved $\displaystyle x^{*}_{i}$ kaller vi $\displaystyle A(x^{*}_{i})$. \\ 
+	samlet volum av skivene er tilnærmet lik summen av volumet av hver skive \\ 
+
+	\begin{align*}
+		& A(x^{*}_{1}) \times \Delta x + A (x^{*}_{2}) \times \Delta x + A(x^{*}_{3})\times \Delta x + \dots + A(x^{*}_{n}) \times \Delta x = \sum_{i=1}^{n} A(x^{*}_{i})\times \Delta x  \\
+	\end{align*}
+
+	dette kjenner vi igjen som en riemannsum. Jo flere skiver vi deler volumet i, desto mindre blir forskjellen på denne summen og volumet $V$. Etter definisjonen av det bestemte integralet får vi da
+\[
+V = \lim_{n \to \infty} \sum_{i=1}^{n} A(x^{*}_{i}) \times \Delta x = \int_{a}^{b} A(x) \, dx
+.\]
+
+arealet av snittflaten er en sirkel med radius $r=f(x)$. da er $\displaystyle A(x) = \pi r^2 = \pi \times (f(x))^2$ \\ \\
+derfor er volumet 
+
+\[
+	\int_{a}^{b} A(x) \, dx  = \int_{a}^{b} \pi \times (f(x))^2 \, dx  = \pi \int_{a}^{b} (f(x))^2 \, dx 
+.\] 
+
+
+}
+
+
+
+\section{}
+\nt{
+vi kan også finne volumet av et annet omdreiningslegeme ved å dreie grafen om y-aksen. dette gjøres ved å integrere med hensyn på y (dy).
+\[
+V=\pi \int_{a}^{b} (g(y))^2 \, dy 
+.\] 
+der $g$  den omvendte funksjonen til $f$, $\displaystyle c= f(a) \text{ og } d=f(b)$
+}
+
+
+
+\section{EKSEMPEL 21}
+\qs{eksempel 21}{på figuren har vi tegnet grafen til en funksjon $f$ gitt ved $\displaystyle f(x)=-x+4$ \\ \\
+	Grafen til f, x-aksen og linjene $x = 1$ og $ x=3$ avgrenser et flatestykke. det er vist med lyseblått i figuren. \\ \\ når dette flatestykket dreies 360 grader om x-aksen, framkommer en romfigur som kalles es avkortet kjegle. tversnittet i den avkortede kjegla er vist med lyseblått og mørkeblått i figuren. \\ \\ finn den eksakte verdien av volumet av denne romfiguren. }
+
+	\sol{vi får det samme volumet når vi dreier flatestykket om x-aksen som ved å dreie grafen til $f$ i intervallet $\displaystyle [1, 3]$ om x-aksen. \\ volumet er derfor gitt ved uttrykket $\displaystyle \pi \times \int_{1}^{3} -x+4 \, dx $ \\ \\ \includegraphics[width=7cm]{/home/marcus/Desktop/swappy-20251017_141435.png}
+	}
+
+
+\section{oppgaver}
+\qs{2.106}{et omdreiningsobjekt framkommer ved at grafen til funksjonen $f$ blir dreid 360 grader om førsteaksen. Finn volumet av omdreiningslegemet når 
+\begin{align*}
+	& \text{a) } f(x)=3x \text{ og } D_{f} = [1,2], \quad \quad \text{b) } f(x) = \sqrt{2x+3} \text{ og } D_{f}=[1,4] \\
+	& \text{c) } f(x) = \frac{1}{\sqrt{\pi} \text{ og }} D_{f}=[3,7], \quad \quad \text{d) } e^{x} \text{og } D_{f}=[0, \ln 3] \\
+.\end{align*}
+}
+\sol{vi må bare bruke formlen $\displaystyle \pi \times \int_{a}^{b} (f(x))^2 \, dx $ \\ \\ 
+	a) 
+	\begin{align*}
+		& 	    \pi \times \int_{1}^{2} f^2 \, dx  \\
+		&= \pi \times \int_{1}^{2} (3x)^2 \, dx  \\
+		&= \pi \times \int_{1}^{2} 9x^2 \, dx  \\
+		&= 9 \pi \times \int_{1}^{2} x^2 \, dx  \\
+		&= 9 \pi \times \left[ \frac{x^3}{3} \right]_{1}^{2} \\
+		&= 9 \pi \times \left( \frac{8}{3} - \frac{1}{3} \right) \\
+		&= 9 \pi \times \frac{7}{3} \\
+		&= \pi \times \frac{63}{3} \\
+		&= \boxed{21\pi} \\
+	.\end{align*}
+	\\
+	b)
+	\begin{align*}
+		& \pi \times \int_{1}^{4} f^2 \, dx  \\
+		&= \pi \times \int_{1}^{4} \left(\sqrt{2x+3} \right)^2  \, dx  \\
+		&= \pi \times \int_{1}^{4} 2x+3 \, dx  \\
+		&= \pi \times \left( \int_{1}^{4} 2x \, dx + \int_{1}^{4} 3 \, dx  \right)  \\
+		&= \pi \times \left( \left[ \frac{2x^2}{2} \right]_{1}^{4} + \left[ \frac{3x}{1} \right]_{1}^{4}   \right) \\
+		&= \pi \times \left( \left( \frac{32}{2} - \frac{2}{2} \right)+ \left( \frac{12}{1} - \frac{3}{1} \right) \right) \\
+		&= \pi \times \left( \left( \frac{30}{2} \right) + \left( \frac{9}{1}  \right) \right) \\
+		&= \pi \times (15 + 9) \\
+		&= \boxed{24\pi} \\
+	.\end{align*}
+	\\
+	c)
+	\begin{align*}
+		&= \pi \times \int_{3}^{7} (\frac{1}{\sqrt{\pi} })^2 \, dx  \\
+		&= \pi \times \int_{3}^{7} \frac{1}{\pi} \, dx  \\
+		&= \pi \times \frac{1}{\pi} \times \int_{3}^{7} 1 \, dx  \\
+		&= \left[x  \right]_{3}^{7}   \\
+		&= 7-3 \\
+		&= 4 \\
+	.\end{align*}
+	\\
+
+	d)
+	\begin{align*}
+		& \pi \int_{0}^{\ln 3} \left(e^{x}  \right)^2  \ dx  \\
+		&= \pi \times \int_{0}^{\ln 3} e^{2x} \, dx  \\
+		&= \pi \times \left[\frac{1}{2}e^{2x}  \right]_{0}^{\ln 3} \\
+		&= \pi \times (\frac{1}{2}) \times \left[e^{2 \times \ln 3} - e^{0}  \right] \\
+		&= \pi \times (\frac{1}{2}) \times \left[e^{\ln 3^2} -1  \right] \\
+		&= \pi \times \frac{1}{2} \times [3^2 - 1] \\
+		&= \pi \times \frac{1}{2} \times 8 \\
+		&= 4\pi \\
+	.\end{align*}
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\\
+	\qs{2.107}{finn omdreinings volumet til $\displaystyle f(x) = 2x $}
+	\sol{
+	\begin{align*}
+	    & V = \pi \times \int_{-5}^{5} \left(2x \right)^2  \, dx  \\
+		&= \pi \times \int_{-5}^{5} 4x^2 \, dx  \\
+		&= 4 \times \pi \times \left[\frac{x^3}{3} \right]_{-5}^{5} \\
+		&= 4\pi \times \left( \frac{125}{3}- \frac{-125}{3} \right)  \\
+		&= \pi \times \left( \frac{500}{3}- \frac{-500}{3} \right)  \\
+		&= \frac{1000\pi}{3} \\
+	.\end{align*}
+}
+	\\
+	\\
+	\qs{2.108}{finn omdreiningsvolumet til $\displaystyle \sqrt{25 - x} $}
+	\thm{vi bruker $V = \pi \int_{a}^{b} (f(x))^2 \, dx $}
+	\sol{
+	\begin{align*}
+		&V= \pi \times \int_{-5}^{5} \left( \sqrt{25- x^2}  \right)^2  \, dx  \\
+		&= \pi \times \int_{-5}^{5} 25-x^2 \, dx  \\
+		&= \pi \times \left( \int_{-5}^{5} 25 \, dx - \int_{-5}^{5} x^2 \, dx  \right)  \\
+		&= \pi \times \left( \left[ 25x \right]_{-5}^{5} - \left[ \frac{x^3}{3} \right]_{-5}^{5}  \right)  \\
+		&= \pi \times \left( \left[ 125-(-125) \right] - \left[ \frac{125}{3} - \frac{-125}{3} \right]  \right)  \\
+		&= \pi \times \left( 250 - \frac{250}{3} \right)  \\
+		&= \pi \times \left( \frac{750}{3}-\frac{250}{3} \right)  \\
+		&=  \pi \times \left( \frac{500}{3} \right)  \\
+		&= \frac{500\pi}{3} \\
+	.\end{align*}
+}
+\\
+\\
+
+\qs{2.109}{et omdreiningsobjekt framkommer ved at grafen til funksjonen $f$ blir dreid 360 grader om førsteaksen. Finn volumet av omdreiningslegemet når 
+\begin{align*}
+	& a) g(y) = 2y \text{og} d_{g} = \left[ 2, 5 \right]  \\
+	& b) g(y) = \sqrt{y + 1} \text{og} D_{g} = \left[ -1, 2 \right]  \\
+	& c) f(x) = \ln x \text{og} D_{f} = \left[ 1, e \right]  \\
+	& d) f(x) = e^{x} \text{og} D_{f} = \left[ 0, \ln 3 \right]   \\
+.\end{align*}
+}
+\sol{
+	a)
+	\begin{align*}
+		& V = \pi \int_{a}^{b} (g(y))^2 \, dy  \\
+		&= \pi \int_{2}^{5} (2y)^2 \, dy  \\
+		&=  \pi \int_{2}^{5} 4y^2 \, dy  \\
+		&= \pi \times \left[ \frac{4y^3}{3} \right]_{2}^{5}  \\
+		&=  \pi \times \left( \frac{500}{3}-\frac{32}{3} \right)  \\
+		&= \pi \times \left( \frac{468}{3} \right)  \\
+		&= \pi \times 156 \\
+		&= 156\pi \\
+	.\end{align*}
+	\\
+	\\
+	b)
+	\begin{align*}
+		&V = \pi \int_{a}^{b} (g(y))^2 \, dy  \\
+		&= \pi \int_{-1}^{2} (\sqrt{y + 1} )^2 \, dy  \\
+		&=  \pi \int_{-1}^{2} y + 1 \, dy  \\
+		&= \pi \times \left( \int_{-1}^{2} y \, dy + \int_{-1}^{2} 1 \, dy   \right)  \\
+		&= \pi \times \left( \left[ \frac{y^2}{2} \right]_{-1}^{2} + \left[ \frac{1x}{1} \right]_{-1}^{2}   \right)  \\
+		&=  \pi \times \left( \left( \frac{4}{2} - \frac{1}{2} \right) + \left( \frac{2}{1} - \frac{-1}{1} \right)   \right)  \\
+		&= \pi \times \left( \frac{3}{2} + \frac{3}{1} \right) \\
+		&=  \pi \times \left( \frac{3}{2} + \frac{6}{2} \right)  \\
+		&= \pi \times \left( \frac{9}{2} \right)  \\
+		&= \frac{9\pi}{2} \\
+	.\end{align*}
+	\\
+	\\
+	c)
+	\begin{align*}
+	    &V = \pi \int_{1}^{e} (\ln x)^2 \, dx  \\
+		&y = \ln x, \quad x = e^{y}, \quad D_{y} = \left[ \ln 1, \ln e \right]  = \left[ 0, 1 \right]  \\
+		&V = \pi \int_{0}^{1} (e^{y})^2 \, dy  \\
+		&= \pi \int_{0}^{1} e^{2y} \, dy  \\
+		&=  \pi \times \left[ \frac{e^{2y}}{2} \right]_{0}^{1}  \\
+		&= \pi \times \left[ \frac{e^2}{2} - \frac{e^{0}}{2} \right]  \\
+		&=  \pi \times \left[ \frac{e^2}{2} - \frac{1}{2} \right]  \\
+		&=  \pi \times \frac{1}{2} \left[ e^2 - 1 \right]  \\
+		&= \frac{\pi}{2} \times \left[ e^2 - e^{0} \right]  \\
+		&= \frac{\pi}{2} \times \left[ e^2 - 1 \right]  \\
+	.\end{align*}
+	\\
+	\\
+	d)
+	\begin{align*}
+		&V = \pi \int_{0}^{\ln 3} (e^{x})^2 \, dx  \\
+		&y = e^{x}, \quad x = \ln y, \quad D_{y} = \left[ e^{0}, e^{\ln 3} \right] = \left[ 1, 3 \right]  \\
+	.\end{align*}
+}
+
+
+\end{document}
+
