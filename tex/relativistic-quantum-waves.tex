@@ -238,5 +238,42 @@ This is the \textbf{Feynman-Stueckelberg interpretation}:
 \end{itemize}
 When an electron and positron annihilate, you can picture the positron as an electron that reversed its direction in time!
 
+\section{Dirac's Critique: Second-Order in Time Problem}
+The Klein-Gordon equation has another fundamental issue that bothered Dirac: it is \textbf{second-order in time}.\\
+\\
+Compare the time derivatives:
+\begin{align*}
+    \text{Schrödinger:} &\quad i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi \quad \text{(first-order in time)} \\
+    \text{Klein-Gordon:} &\quad \frac{1}{c^2}\frac{\partial^2 \psi}{\partial t^2} - \nabla^2\psi + \left(\frac{mc}{\hbar}\right)^2\psi = 0 \quad \text{(second-order in time)}
+\end{align*}
+
+\subsection{What Does Second-Order Unlock?}
+Being second-order in time is what allows the Klein-Gordon equation to have both positive and negative energy solutions. It treats space and time on equal footing (both second derivatives), making it manifestly relativistic.\\
+\\
+However, this creates a serious conceptual problem.
+
+\subsection{Too Much Freedom?}
+In classical mechanics, a second-order differential equation requires \textit{two} initial conditions:
+\begin{itemize}
+    \item Position: $x(0)$
+    \item Velocity: $\frac{dx}{dt}\bigg|_{t=0}$
+\end{itemize}
+Similarly, the Klein-Gordon equation (being second-order in time) requires \textit{two} initial conditions:
+\begin{itemize}
+    \item The wavefunction: $\psi(x, 0)$
+    \item The time derivative: $\frac{\partial \psi}{\partial t}\bigg|_{t=0}$
+\end{itemize}
+\textbf{This is too much freedom!} In quantum mechanics, we want to specify the \textit{state} of the system at one instant in time. The state should be completely determined by the wavefunction $\psi(x,0)$ alone, not by its time derivative.\\
+\\
+The first derivative in time $\partial\psi/\partial t$ becomes an independent initial condition — we can choose it freely. This means the Klein-Gordon equation doesn't have a unique time evolution from a given initial wavefunction, which violates a fundamental principle of quantum mechanics.
+
+\subsection{Dirac's Solution}
+This was one of Dirac's fundamental critiques of the Klein-Gordon equation. He wanted:
+\begin{enumerate}
+    \item \textbf{First-order in time} (like Schrödinger) — more restrictive, needs only $\psi(x,0)$
+    \item \textbf{Relativistically correct} (treating space and time properly)
+\end{enumerate}
+This seemingly impossible requirement led Dirac to discover the \textbf{Dirac equation}, which is first-order in \textit{both} time and space. The price? The wavefunction becomes a multi-component spinor, introducing the concept of quantum mechanical spin!
+
 
 \end{document}
