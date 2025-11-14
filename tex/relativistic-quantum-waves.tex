@@ -199,29 +199,60 @@ This $\pm$ sign gives us two branches:
     \item \textbf{Negative energy:} $E = -\sqrt{p^2c^2 + m^2c^4}$ (antimatter!)
 \end{itemize}
 
-\subsection{The Negative Energy Problem}
-The Klein-Gordon equation has a serious problem compared to the Schrödinger equation.\\
+\section{Dirac's Critique: The Fatal Flaws of Klein-Gordon}
+Dirac identified two deeply connected problems with the Klein-Gordon equation that made it unsuitable as a single-particle quantum theory.
+
+\subsection{Problem 1: Second-Order in Time}
+The Klein-Gordon equation is \textbf{second-order in time}.\\
 \\
-For Schrödinger, the probability density is: $\rho = |\psi|^2 = \psi^* \psi \geq 0$ \quad (always positive!)\\
+Compare the time derivatives:
+\begin{align*}
+    \text{Schrödinger:} &\quad i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi \quad \text{(first-order in time)} \\
+    \text{Klein-Gordon:} &\quad \frac{1}{c^2}\frac{\partial^2 \psi}{\partial t^2} - \nabla^2\psi + \left(\frac{mc}{\hbar}\right)^2\psi = 0 \quad \text{(second-order in time)}
+\end{align*}
+Being second-order in time allows both positive and negative energy solutions and treats space and time on equal footing (manifestly relativistic). However, it creates a serious problem.\\
 \\
-But for Klein-Gordon, the probability density is:
+\textbf{Too much freedom!} Just like classical mechanics needs position AND velocity for second-order equations, Klein-Gordon requires \textit{two} initial conditions:
+\begin{itemize}
+    \item The wavefunction: $\psi(x, 0)$
+    \item The time derivative: $\frac{\partial \psi}{\partial t}\bigg|_{t=0}$
+\end{itemize}
+In quantum mechanics, the state should be completely determined by $\psi(x,0)$ alone. Having $\partial\psi/\partial t$ as an independent initial condition violates this fundamental principle.
+
+\subsection{Problem 2: Negative Probability Density}
+This "too much freedom" problem directly causes the negative probability issue.\\
+\\
+For Schrödinger, the probability density is simple:
+\begin{equation}
+    \rho = |\psi|^2 = \psi^* \psi \geq 0 \quad \text{(always positive!)}
+\end{equation}
+For Klein-Gordon, deriving the probability density from the continuity equation gives:
 \begin{equation}
     \rho = \frac{i\hbar}{2mc^2}\left(\psi^* \frac{\partial \psi}{\partial t} - \psi \frac{\partial \psi^*}{\partial t}\right)
 \end{equation}
-This can be \textbf{negative}! This is a major problem because probability cannot be negative.\\
+\textbf{This depends on both} $\psi$ \textbf{and} $\partial\psi/\partial t$! Since $\partial\psi/\partial t$ is an independent degree of freedom (Problem 1), we can choose it to make $\rho$ negative. Negative probabilities are physically nonsensical.\\
 \\
-\textbf{The Resolution:} The negative energy solutions are not unphysical errors — they represent \textit{antimatter}. When you include both halves of the mass shell, you're accounting for both particles and their antiparticles. This is why Klein-Gordon is fundamentally a quantum field theory equation, not a single-particle quantum mechanics equation.
+\textbf{The connection:} The negative probability problem exists \textit{because} the equation is second-order in time. These aren't separate issues — they're two sides of the same coin.
 
-\subsection{Feynman-Stueckelberg Interpretation: Time Reversal}
-There's a beautiful way to reinterpret negative energy solutions that doesn't require "negative energy" at all.\\
+\subsection{Dirac's Solution}
+Dirac wanted the impossible:
+\begin{enumerate}
+    \item \textbf{First-order in time} (like Schrödinger) — needs only $\psi(x,0)$, no extra freedom
+    \item \textbf{Relativistically correct} — treats energy and momentum on equal footing
+    \item \textbf{Positive definite probability} — $\rho \geq 0$ always
+\end{enumerate}
+This seemingly impossible requirement led Dirac to discover the \textbf{Dirac equation}, which is first-order in \textit{both} time and space. The price? The wavefunction becomes a multi-component spinor, and quantum mechanical spin emerges naturally!
+
+\section{Reinterpreting Negative Energy: Feynman-Stueckelberg}
+While Dirac's equation solved the problems above, the negative energy solutions still appear. But there's a beautiful reinterpretation that doesn't require "negative energy" at all.\\
 \\
 Recall the energy operator:
 \begin{equation}
     \hat{E} = i\hbar \frac{\partial}{\partial t}
 \end{equation}
-\textbf{Shift your perspective:} Instead of thinking about negative energy, we can reinterpret what $-\hat{E}$ means:
+\textbf{Shift your perspective:} Instead of thinking about negative energy, reinterpret what $-\hat{E}$ means:
 \begin{equation}
-    -\hat{E} = -i\hbar \frac{\partial}{\partial t} \quad \longrightarrow \quad -\hat{E} = -i\hbar \frac{\partial}{\partial t}
+    -\hat{E} = -i\hbar \frac{\partial}{\partial t}
 \end{equation}
 \begin{center}
 \begin{tabular}{c c c}
@@ -236,44 +267,9 @@ This is the \textbf{Feynman-Stueckelberg interpretation}:
     \item Particles: positive energy, moving forward in time
     \item Antiparticles: positive energy, moving backward in time (which \textit{looks like} negative energy forward in time)
 \end{itemize}
-When an electron and positron annihilate, you can picture the positron as an electron that reversed its direction in time!
-
-\section{Dirac's Critique: Second-Order in Time Problem}
-The Klein-Gordon equation has another fundamental issue that bothered Dirac: it is \textbf{second-order in time}.\\
+When an electron and positron annihilate, you can picture the positron as an electron that reversed its direction in time!\\
 \\
-Compare the time derivatives:
-\begin{align*}
-    \text{Schrödinger:} &\quad i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi \quad \text{(first-order in time)} \\
-    \text{Klein-Gordon:} &\quad \frac{1}{c^2}\frac{\partial^2 \psi}{\partial t^2} - \nabla^2\psi + \left(\frac{mc}{\hbar}\right)^2\psi = 0 \quad \text{(second-order in time)}
-\end{align*}
-
-\subsection{What Does Second-Order Unlock?}
-Being second-order in time is what allows the Klein-Gordon equation to have both positive and negative energy solutions. It treats space and time on equal footing (both second derivatives), making it manifestly relativistic.\\
-\\
-However, this creates a serious conceptual problem.
-
-\subsection{Too Much Freedom?}
-In classical mechanics, a second-order differential equation requires \textit{two} initial conditions:
-\begin{itemize}
-    \item Position: $x(0)$
-    \item Velocity: $\frac{dx}{dt}\bigg|_{t=0}$
-\end{itemize}
-Similarly, the Klein-Gordon equation (being second-order in time) requires \textit{two} initial conditions:
-\begin{itemize}
-    \item The wavefunction: $\psi(x, 0)$
-    \item The time derivative: $\frac{\partial \psi}{\partial t}\bigg|_{t=0}$
-\end{itemize}
-\textbf{This is too much freedom!} In quantum mechanics, we want to specify the \textit{state} of the system at one instant in time. The state should be completely determined by the wavefunction $\psi(x,0)$ alone, not by its time derivative.\\
-\\
-The first derivative in time $\partial\psi/\partial t$ becomes an independent initial condition — we can choose it freely. This means the Klein-Gordon equation doesn't have a unique time evolution from a given initial wavefunction, which violates a fundamental principle of quantum mechanics.
-
-\subsection{Dirac's Solution}
-This was one of Dirac's fundamental critiques of the Klein-Gordon equation. He wanted:
-\begin{enumerate}
-    \item \textbf{First-order in time} (like Schrödinger) — more restrictive, needs only $\psi(x,0)$
-    \item \textbf{Relativistically correct} (treating space and time properly)
-\end{enumerate}
-This seemingly impossible requirement led Dirac to discover the \textbf{Dirac equation}, which is first-order in \textit{both} time and space. The price? The wavefunction becomes a multi-component spinor, introducing the concept of quantum mechanical spin!
+\textbf{The Resolution:} The negative energy solutions represent \textit{antimatter}. When you include both halves of the mass shell, you're accounting for both particles and antiparticles. Klein-Gordon isn't a single-particle theory — it's fundamentally a quantum field theory equation.
 
 
 \end{document}
