@@ -184,6 +184,33 @@ Massless particle: always travels at $c$, regardless of momentum. -- Light alway
 	\item \textcolor{purple}{$p$-eigenstate}
 \end{itemize}
 
+\section{The Two Halves of the Mass Shell}
+There is a one-to-one connection between all possible wavefunctions that satisfy the Klein-Gordon equation in spacetime and all possible ways of decorating the mass shell with complex numbers.\\
+\\
+\textbf{The critical insight:} You need \textit{both halves} of the mass shell to have a complete basis set for Fourier transforms from momentum space to position space.\\
+\\
+Recall from the plane wave solution that:
+\begin{equation}
+    p^{0} = \frac{E}{c} = \pm \sqrt{\left|\vec{p}\right|^2 + m^2c^2}
+\end{equation}
+This $\pm$ sign gives us two branches:
+\begin{itemize}
+    \item \textbf{Positive energy:} $E = +\sqrt{p^2c^2 + m^2c^4}$ (normal particles)
+    \item \textbf{Negative energy:} $E = -\sqrt{p^2c^2 + m^2c^4}$ (antimatter!)
+\end{itemize}
+
+\subsection{The Negative Energy Problem}
+The Klein-Gordon equation has a serious problem compared to the Schrödinger equation.\\
+\\
+For Schrödinger, the probability density is: $\rho = |\psi|^2 = \psi^* \psi \geq 0$ \quad (always positive!)\\
+\\
+But for Klein-Gordon, the probability density is:
+\begin{equation}
+    \rho = \frac{i\hbar}{2mc^2}\left(\psi^* \frac{\partial \psi}{\partial t} - \psi \frac{\partial \psi^*}{\partial t}\right)
+\end{equation}
+This can be \textbf{negative}! This is a major problem because probability cannot be negative.\\
+\\
+\textbf{The Resolution:} The negative energy solutions are not unphysical errors — they represent \textit{antimatter}. When you include both halves of the mass shell, you're accounting for both particles and their antiparticles. This is why Klein-Gordon is fundamentally a quantum field theory equation, not a single-particle quantum mechanics equation.
 
 
 \end{document}
