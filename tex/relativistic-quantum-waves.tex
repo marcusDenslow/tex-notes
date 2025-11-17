@@ -1,0 +1,401 @@
+\documentclass{report}
+
+\input{../templates/preamble}
+\input{../templates/macros}
+\input{../templates/letterfonts}
+
+\title{\Huge{Relativistic Quantum Waves (Klein-Gordon Equation}\ }
+\author{\Huge{Marcus Allen Denslow}}
+\date{2025-11-14}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Deriving the KG Equation}
+\section{The Strategy: Combining Relativity and Quantum Mechanics}
+The goal is to derive a relativistic wave equation that respects both special relativity and quantum mechanics. The strategy is to:
+\begin{enumerate}
+    \item Start with Einstein's relativistic energy-momentum relation
+    \item Replace classical quantities (energy, momentum) with quantum operators
+    \item Apply these operators to a wavefunction $\psi$
+\end{enumerate}
+This "double derivative" approach (squaring the energy) will give us a second-order differential equation.
+
+\dfn{Relativity: the mass shell (Einstein's energy-momentum relation)}{
+	Einstein showed that energy and momentum are related by:\\
+	$\displaystyle E^2 = (pc)^2 + (mc^2)^2$\\
+	Rearranging in four-vector notation:
+	$\displaystyle p \cdot p = (mc)^2 \to (mc)^2 = \left( \frac{E}{c} \right)^2 - p^2_{x} - p^2_{y} - p^2_{z}$\\
+	This is called the \textbf{mass shell} — it's a constraint that relates energy and momentum for a particle with mass $m$.
+}
+
+\dfn{Quantum: energy and momentum operators}{
+In quantum mechanics, we promote classical observables to operators that act on wavefunctions. From the Schrödinger equation and de Broglie relations:
+\begin{itemize}
+    \item Energy operator: $\hat{E} = i\hbar \frac{\partial}{\partial t}$
+    \item Momentum operator: $\hat{p} = -i\hbar \nabla$
+\end{itemize}
+To use these in Einstein's energy-momentum relation, we need to square them. When we square an operator, we apply it twice:\\
+\\
+\textbf{Energy term:}
+\[
+\left(\frac{E}{c}\right)^2 \to \left(\frac{\hat{E}}{c}\right)^2 = \left(\frac{i\hbar}{c}\frac{\partial}{\partial t}\right)^2 = -\frac{\hbar^2}{c^2}\frac{\partial^2}{\partial t^2}
+.\]
+\textbf{Momentum terms:}
+\[
+\hat{p}_x = -i\hbar\frac{\partial}{\partial x} \to -p^2_x \to \hbar^2\frac{\partial^2}{\partial x^2}
+.\]
+\[
+\text{Likewise: } -p^2_y \to \hbar^2\frac{\partial^2}{\partial y^2} \text{ and } -p^2_z \to \hbar^2\frac{\partial^2}{\partial z^2}
+.\]
+}
+
+
+\section{Substituting Operators into Einstein's Relation}
+Now we substitute the quantum operators into the relativistic mass shell equation. Remember, these operators will act on a wavefunction $\psi$:
+\begin{align*}
+	(mc)^2 &= \left( \frac{E}{c} \right)^2 - p^2_{x} - p^2_{y} - p^2_{z} \\
+	(mc)^2 &= -\frac{\hbar^2}{c^2}\frac{\partial^2}{\partial t^2} + \hbar^2\frac{\partial^2}{\partial x^2} + \hbar^2\frac{\partial^2}{\partial y^2} + \hbar^2\frac{\partial^2}{\partial z^2}
+.\end{align*}
+Dividing through by $\hbar^2$ and rearranging:
+\begin{equation}
+	\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \frac{\partial^2}{\partial x^2} - \frac{\partial^2}{\partial y^2} - \frac{\partial^2}{\partial z^2} + \left(\frac{mc}{\hbar}\right)^2 = 0
+\end{equation}
+
+\section{The Klein-Gordon Equation!}
+We've done it! This is the \textbf{Klein-Gordon equation} — the first successful attempt at a relativistic quantum wave equation.\\
+\\
+Operating on a wavefunction $\psi$:
+\begin{equation}
+	\left[\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \frac{\partial^2}{\partial x^2} - \frac{\partial^2}{\partial y^2} - \frac{\partial^2}{\partial z^2} + \left(\frac{mc}{\hbar}\right)^2\right] \psi = 0
+\end{equation}
+\textbf{Key features:}
+\begin{itemize}
+    \item Second-order in both time and space (treats them equally — relativistic!)
+    \item Reduces to Schrödinger equation in the non-relativistic limit
+    \item Contains the mass $m$ explicitly
+\end{itemize}
+
+
+\section{Compact Notation: Laplacian}
+We can write the spatial derivatives more compactly using the Laplacian operator:
+\[
+\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}
+\]
+Note the sign: in our equation we have $-\nabla^2$ because of the minus signs in the original expression.\\
+\\
+Substituting this into our equation:
+\begin{equation}
+	\left[\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2 + \left(\frac{mc}{\hbar}\right)^2\right]\psi = 0
+\end{equation}
+This is cleaner and makes the equation look more symmetric.
+
+\section{Even More Compact: d'Alembertian Notation}
+We can make this even more compact by defining two convenient symbols:\\
+\\
+\textbf{The d'Alembertian operator} (wave operator):
+\[
+\Box \equiv \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2
+\]
+This is the relativistic generalization of the Laplacian. It's the natural wave operator in spacetime.\\
+\\
+\textbf{The mass parameter:}
+\[
+\mu \equiv \frac{mc}{\hbar}
+\]
+This has units of inverse length (like a wavenumber). It represents the "Compton wavenumber" of the particle.
+\nt{In natural units where $c = \hbar = 1$, we'd just write $\mu = m$. But we keep factors explicit for clarity.}
+
+With these definitions, the Klein-Gordon equation becomes beautifully simple:
+\begin{equation}
+	\left[\Box + \mu^2\right]\psi = 0
+\end{equation}
+This compact form makes it easy to see: it's a wave equation (the $\Box$) with a mass term ($\mu^2$).
+\\
+\chapter{Four-momentum Eigenstates}
+Now that we have the Klein-Gordon equation, what are its solutions? The simplest solutions are plane waves — states with definite energy and momentum.
+
+\section{Klein-Gordon Plane Wave Solutions}
+Just like in non-relativistic quantum mechanics, we look for plane wave solutions. These represent particles with definite four-momentum.
+
+\dfn{Klein-Gordon Plane Wave function}{
+	The general form using four-vector notation:
+	\[
+	\psi = A \exp\left(-\frac{i}{\hbar}p \cdot x\right)
+	\]
+	where:
+	\begin{alignat*}{2}
+		p = \left[E/c, \vec{p}\right] &\quad \text{(four-momentum)} \\
+		x = \left[ct, \vec{x}\right] &\quad \text{(four-position)} \\
+		A \in \mathbb{C} &\quad \text{(complex amplitude)} \\
+		p^{0} = \frac{E}{c} = \pm\sqrt{|\vec{p}|^2 + m^2c^2} &\quad \text{(energy, with } \pm \text{ solutions!)}
+	\end{alignat*}
+	Expanding the four-vector dot product $p \cdot x = Et - \vec{p} \cdot \vec{x}$:
+	\begin{align*}
+		\psi &= A \exp\left[\frac{i}{\hbar}\left(\vec{p} \cdot \vec{x} - Et\right)\right] \\
+		\psi &= A \exp\left[\frac{i}{\hbar}\left(\vec{p} \cdot \vec{x} \pm c\sqrt{|\vec{p}|^2 + m^2c^2}t\right)\right]
+	\end{align*}
+	This looks like $e^{i(\vec{k} \cdot \vec{x} - \omega t)}$ — a traveling wave!
+}
+\vspace{2em}
+
+\section{Proof that plane waves satisfy Klein-Gordon}
+Let's verify that $\psi = A \exp[-ip \cdot x/\hbar]$ is indeed a solution.\\
+\\
+Rewrite Klein-Gordon as:
+\[
+\left[\Box + \mu^2\right]\psi = 0 \quad \Rightarrow \quad \Box\psi = -\mu^2\psi
+\]
+The question is: does the d'Alembertian acting on our plane wave give us $-\mu^2\psi$?\\
+\\
+Apply the d'Alembertian to the plane wave:
+\begin{equation}
+	\Box\left[\exp\left[\frac{i}{\hbar}\left(\vec{p} \cdot \vec{x} - Et\right)\right]\right]
+\end{equation}
+Remember: $\Box = \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2$\\
+\\
+Taking derivatives:
+\begin{itemize}
+	\item Time derivative: $\frac{\partial}{\partial t}\exp[i(\vec{p} \cdot \vec{x} - Et)/\hbar] = -\frac{iE}{\hbar}\psi \Rightarrow \frac{\partial^2}{\partial t^2} = -\frac{E^2}{\hbar^2}\psi$
+	\item Spatial derivatives: $\nabla^2\exp[i(\vec{p} \cdot \vec{x} - Et)/\hbar] = -\frac{|\vec{p}|^2}{\hbar^2}\psi$
+\end{itemize}
+Therefore:
+\begin{equation}
+	\Box\psi = \left[-\frac{E^2}{c^2\hbar^2} + \frac{|\vec{p}|^2}{\hbar^2}\right]\psi = -\frac{1}{\hbar^2}\left[\frac{E^2}{c^2} - |\vec{p}|^2\right]\psi
+\end{equation}
+Using the mass shell relation $E^2/c^2 - |\vec{p}|^2 = m^2c^2$:
+\begin{equation}
+	\Box\psi = -\frac{m^2c^2}{\hbar^2}\psi = -\mu^2\psi \quad \checkmark
+\end{equation}
+The plane wave satisfies Klein-Gordon! \textbf{And notice}: the mass shell relation is exactly what makes this work.
+
+\chapter{Superposition}
+\section{Linearity: Building Complex Solutions from Simple Ones}
+\vspace{1em}
+The Klein-Gordon equation is \textbf{linear} — this is a crucial property! It means if $\psi_1$ and $\psi_2$ are solutions, then any linear combination $c_1\psi_1 + c_2\psi_2$ is also a solution.\\
+\\
+\textbf{Why is this important?} It lets us build arbitrarily complex wavefunctions from simple plane wave building blocks. This is how we describe localized particles, wave packets, and realistic physical situations.\\
+\\ 
+Let's say that you have two functions that satisfy the Klein-Gordon Equation, call them $\displaystyle \psi_1$ and $\displaystyle \psi_2$
+\begin{equation}
+    \left[ \Box + \mu^2 \right]\psi_1 = 0
+\end{equation}
+\begin{equation}
+    \left[ \Box + \mu^2 \right]\psi_2 = 0
+\end{equation}
+Let's call their sum $\displaystyle \psi_3$ so \[
+\psi_3 = \psi_1 + \psi_2
+.\] 
+The question then arises: does $\displaystyle \psi_3$ satisfy the Klein-Gordon Equation?\\
+Well, yes it does. We can show this with:
+\begin{align*}
+	\left[ \Box + \mu^2 \right]\psi_3 &= \left[ \Box + \mu^2 \right]\left( \psi_1 + \psi_3 \right) \\
+	&= \left[ \Box + \mu^2 \right] \psi_1 + \left[ \Box + \mu^2 \right]\psi_2 = 0 + 0 = 0 \text{ ... also satisfies K.G.}
+.\end{align*}
+\\
+The following reasoning does not just apply to the sum of two wave functions, but also scaling up a wave function or taking the arbitrary sum over many wave functions. Or even more usefully if you have a basis set of functions that satisfy the Klein-Gordon Equation, then you can make wave functions of that basis set by summing over them with some series of coefficients
+\\
+\\
+Say we write a wavefunction $\psi$ as a linear combination of $\displaystyle \left\{ \psi_{n} \right\} $
+\begin{equation}
+    \psi = \sum_{n} C_{n}\psi_{n}, \qquad C_{n} \in \mathbb{C}
+\end{equation}
+\\
+Since each basis function in $\displaystyle \psi_{n} \in \left\{ \psi_{n} \right\}$ satisfies K.G....
+\begin{equation}
+    \left[ \Box + \mu^2 \right] \psi_{n} = 0 \to \left[ \Box + \mu^2 \right]\sum_{n} C_{n} \psi_{n} = 0
+\end{equation}
+And that's how we actually use energy and momentum in Eigen-states most of the time.
+
+\chapter{Group Velocity and the Speed of Light Limit}
+\section{What is Group Velocity?}
+A single plane wave $e^{i(kx - \omega t)}$ extends infinitely in space — not very physical! Real particles are localized wave packets made by superposing many plane waves with different $k$ values.\\
+\\
+For a wave packet:
+\begin{itemize}
+	\item \textbf{Phase velocity:} $v_p = \omega/k$ — speed of individual wave crests
+	\item \textbf{Group velocity:} $v_g = d\omega/dk$ — speed of the packet envelope (the actual particle!)
+\end{itemize}
+The group velocity is what we actually measure — it's the speed of information/energy transport. Let's calculate it for Klein-Gordon.
+
+\section{Step 1: Finding the Dispersion Relation}
+The \textbf{dispersion relation} $\omega(k)$ tells us how frequency depends on wavenumber. It encodes the physics of the wave.\\
+\\
+General form of any plane wave:
+\begin{equation}
+    \psi = A \exp\left(i\left(\vec{k} \cdot \vec{x} - \omega t\right)\right)
+\end{equation}
+Our Klein-Gordon plane wave:
+\begin{equation}
+    \psi = A \exp\left(\frac{i}{\hbar}\left(\vec{p} \cdot \vec{x} - Et\right)\right)
+\end{equation}
+Comparing these, we identify:
+\begin{alignat*}{2}
+	\vec{k} &= \frac{\vec{p}}{\hbar} \quad &\text{(de Broglie relation)} \\
+	\omega &= \frac{E}{\hbar} \quad &\text{(Planck relation)}
+\end{alignat*}
+Using $E = c\sqrt{|\vec{p}|^2 + m^2c^2}$ and $|\vec{p}| = \hbar k$:
+\begin{equation}
+	\omega(k) = \sqrt{(kc)^2 + \left(\frac{mc^2}{\hbar}\right)^2}
+\end{equation}
+This is the dispersion relation! Notice:
+\begin{itemize}
+	\item Massless $(m=0)$: $\omega = kc$ (linear — no dispersion)
+	\item Massive $(m \neq 0)$: $\omega \neq kc$ (nonlinear — dispersive!)
+\end{itemize}
+
+\section{Step 2: Calculating the Group Velocity}
+Now we differentiate the dispersion relation to get the group velocity:
+\[
+v_g = \frac{d\omega}{dk}
+\]
+\begin{equation}
+    v_{g} = \frac{d}{dk}\left[\sqrt{(kc)^2 + (mc^2/\hbar)^2}\right]
+\end{equation}
+Using the chain rule:
+\begin{equation}
+    v_{g} = \frac{kc^2}{\sqrt{(kc)^2 + (mc^2/\hbar)^2}} = \frac{kc^2}{\omega}
+\end{equation}
+Substituting $k = |\vec{p}|/\hbar$:
+\begin{equation}
+    v_{g} = \frac{c|\vec{p}|}{\sqrt{|\vec{p}|^2 + (mc)^2}}
+\end{equation}
+
+\section{The Speed Limit: Why $v_g < c$}
+Look at what we just derived! The group velocity depends on momentum in a very special way.\\
+\\
+\textbf{For massive particles} $(m \neq 0)$:
+\begin{itemize}
+	\item Low momentum $(|\vec{p}| \ll mc)$: $v_g \approx |\vec{p}|/m$ (non-relativistic)
+	\item High momentum $(|\vec{p}| \gg mc)$: $v_g \approx c(|\vec{p}|/|\vec{p}|) = c$... but never quite reaches it!
+	\item The denominator $\sqrt{|\vec{p}|^2 + (mc)^2}$ is always larger than $|\vec{p}|$, so $v_g < c$ always
+\end{itemize}
+\textbf{For massless particles} $(m = 0)$:
+\begin{equation}
+	v_g = \frac{c|\vec{p}|}{|\vec{p}|} = c
+\end{equation}
+Massless particles always travel at exactly the speed of light, regardless of momentum!\\
+\\
+\textbf{The Klein-Gordon equation naturally enforces special relativity's speed limit.} This is a beautiful consistency check — we started with relativistic energy-momentum, and we get relativistic velocities.
+\chapter{Fourier Transforms and Antimatter}
+\section{From Momentum Space to Position Space}
+We've been working with plane waves — states with definite momentum $p$. But real particles are localized in space! How do we describe them?\\
+\\
+\textbf{Answer:} Fourier transform! We build a position-space wavefunction $\psi(x)$ by superposing plane waves with different momenta, weighted by a momentum-space wavefunction $\phi(p)$.
+
+\section{The Fourier Transform}
+\begin{equation}
+	\textcolor{blue}{\psi(x)} = \textcolor{orange}{\frac{1}{\sqrt{2\pi \hbar}}} \textcolor{brown}{\int_{-\infty}^{\infty}} \textcolor{green}{\phi(p)} \textcolor{purple}{\text{exp}\left[-\frac{i}{\hbar}p \cdot x\right]} \, \textcolor{brown}{dp}
+\end{equation}
+
+\begin{itemize}
+	\item \textcolor{blue}{wavefunction in spacetime}
+	\item \textcolor{orange}{Normalization constant}
+	\item \textcolor{brown}{Add up eigenstate for each $p$, weighted $\phi(p)$}
+	\item \textcolor{green}{Momentum-space wavefunction (complex numbers assigned to each momentum)}
+	\item \textcolor{purple}{$p$-eigenstate (plane wave with momentum $p$)}
+\end{itemize}
+\vspace{1em}
+\textbf{The key insight:} $\phi(p)$ assigns a complex number (amplitude and phase) to each allowed momentum $p$. But what are the "allowed" values of $p$? They must satisfy the mass shell relation!
+
+\section{The Two Halves of the Mass Shell}
+There is a one-to-one connection between all possible wavefunctions that satisfy the Klein-Gordon equation in spacetime and all possible ways of decorating the mass shell with complex numbers.\\
+\\
+\textbf{The critical insight:} You need \textit{both halves} of the mass shell to have a complete basis set for Fourier transforms from momentum space to position space.\\
+\\
+Recall from the plane wave solution that:
+\begin{equation}
+    p^{0} = \frac{E}{c} = \pm \sqrt{\left|\vec{p}\right|^2 + m^2c^2}
+\end{equation}
+This $\pm$ sign gives us two branches:
+\begin{itemize}
+    \item \textbf{Positive energy:} $E = +\sqrt{p^2c^2 + m^2c^4}$ (normal particles)
+    \item \textbf{Negative energy:} $E = -\sqrt{p^2c^2 + m^2c^4}$ (antimatter!)
+\end{itemize}
+
+\subsection{Reinterpreting Negative Energy: Feynman-Stueckelberg}
+Negative energy sounds strange. But there's a beautiful way to reinterpret this that doesn't require "negative energy" at all.\\
+\\
+Recall the energy operator:
+\begin{equation}
+    \hat{E} = i\hbar \frac{\partial}{\partial t}
+\end{equation}
+\textbf{Shift your perspective:} Instead of thinking about negative energy, reinterpret what $-\hat{E}$ means:
+\begin{equation}
+    -\hat{E} = -i\hbar \frac{\partial}{\partial t}
+\end{equation}
+\begin{center}
+\begin{tabular}{c c c}
+    Negative energy?? & $\longrightarrow$ & Time reversal! \\
+\end{tabular}
+\end{center}
+\vspace{1em}
+A \textit{negative energy} particle moving \textit{forward in time} is mathematically equivalent to a \textit{positive energy} antiparticle moving \textit{backward in time}.\\
+\\
+This is the \textbf{Feynman-Stueckelberg interpretation}:
+\begin{itemize}
+    \item Particles: positive energy, moving forward in time
+    \item Antiparticles: positive energy, moving backward in time (which \textit{looks like} negative energy forward in time)
+\end{itemize}
+When an electron and positron annihilate, you can picture the positron as an electron that reversed its direction in time!\\
+\\
+\textbf{The bottom line:} The negative energy solutions represent \textit{antimatter}. When you include both halves of the mass shell, you're accounting for both particles and antiparticles.
+
+\section{Dirac's Critique: The Fatal Flaws of Klein-Gordon}
+Dirac identified two deeply connected problems with the Klein-Gordon equation that made it unsuitable as a single-particle quantum theory.
+
+\subsection{Problem 1: Second-Order in Time}
+The Klein-Gordon equation is \textbf{second-order in time}.\\
+\\
+Compare the time derivatives:
+\begin{align*}
+    \text{Schrödinger:} &\quad i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi \quad \text{(first-order in time)} \\
+    \text{Klein-Gordon:} &\quad \frac{1}{c^2}\frac{\partial^2 \psi}{\partial t^2} - \nabla^2\psi + \left(\frac{mc}{\hbar}\right)^2\psi = 0 \quad \text{(second-order in time)}
+\end{align*}
+Being second-order in time allows both positive and negative energy solutions and treats space and time on equal footing (manifestly relativistic). However, it creates a serious problem.\\
+\\
+\textbf{Too much freedom!} Just like classical mechanics needs position AND velocity for second-order equations, Klein-Gordon requires \textit{two} initial conditions:
+\begin{itemize}
+    \item The wavefunction: $\psi(x, 0)$
+    \item The time derivative: $\frac{\partial \psi}{\partial t}\bigg|_{t=0}$
+\end{itemize}
+In quantum mechanics, the state should be completely determined by $\psi(x,0)$ alone. Having $\partial\psi/\partial t$ as an independent initial condition violates this fundamental principle.
+
+\subsection{Problem 2: Negative Probability Density}
+This "too much freedom" problem directly causes the negative probability issue.\\
+\\
+For Schrödinger, the probability density is simple:
+\begin{equation}
+    \rho = |\psi|^2 = \psi^* \psi \geq 0 \quad \text{(always positive!)}
+\end{equation}
+For Klein-Gordon, deriving the probability density from the continuity equation gives:
+\begin{equation}
+    \rho = \frac{i\hbar}{2mc^2}\left(\psi^* \frac{\partial \psi}{\partial t} - \psi \frac{\partial \psi^*}{\partial t}\right)
+\end{equation}
+\textbf{This depends on both} $\psi$ \textbf{and} $\partial\psi/\partial t$! Since $\partial\psi/\partial t$ is an independent degree of freedom (Problem 1), we can choose it to make $\rho$ negative. Negative probabilities are physically nonsensical.\\
+\\
+\textbf{The connection:} The negative probability problem exists \textit{because} the equation is second-order in time. These aren't separate issues — they're two sides of the same coin.
+
+\subsection{Dirac's Solution}
+Dirac wanted the impossible:
+\begin{enumerate}
+    \item \textbf{First-order in time} (like Schrödinger) — needs only $\psi(x,0)$, no extra freedom
+    \item \textbf{Relativistically correct} — treats energy and momentum on equal footing
+    \item \textbf{Positive definite probability} — $\rho \geq 0$ always
+\end{enumerate}
+This seemingly impossible requirement led Dirac to discover the \textbf{Dirac equation}, which is first-order in \textit{both} time and space. The price? The wavefunction becomes a multi-component spinor, and quantum mechanical spin emerges naturally!\\
+\\
+However, even Dirac's equation still has negative energy solutions. The Feynman-Stueckelberg interpretation (discussed earlier) applies here too — those solutions represent antimatter. Klein-Gordon and Dirac equations aren't single-particle theories — they're fundamentally quantum field theory equations.
+\\
+\\
+\\
+We're gonna derive the dirac equations here
+
+
+\end{document}
