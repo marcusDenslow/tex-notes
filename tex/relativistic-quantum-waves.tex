@@ -423,9 +423,15 @@ Instead of an equation which is second order in time derivative, we can make a f
 Now rewriting in terms of $\displaystyle \psi A = \phi^{(R)} + \phi^{(L)}$ and $\displaystyle \psi B = \phi^{(R)} - \phi^{(L)}$ and ordering it as a matrix equation, we get an equation that can be written as a dot product between 4-vectors. \\ \\
 
 \begin{align*}
-\begin{pmatrix} -i \hbar \frac{ \partial  }{ \partial x_0 } & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\
-	-i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \frac{ \partial  }{ \partial x_0 }
-\end{pmatrix} 
+\begin{pmatrix}
+  -i \hbar \frac{ \partial  }{ \partial x_0 } & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\
+  i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \frac{ \partial  }{ \partial x_0 }
+\end{pmatrix}
+&= \hbar \left[ \begin{pmatrix}
+  0 & -i \vec{\sigma} \cdot \vec{\nabla} \\
+  i \vec{\sigma} & 0
+\end{pmatrix} \right] \\
+&= \left[ \begin{pmatrix} 0 & -i  \end{pmatrix}  \right] ]
 .\end{align*}
 
 \end{document}
