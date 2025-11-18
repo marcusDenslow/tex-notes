@@ -4,7 +4,7 @@
 \input{../templates/macros}
 \input{../templates/letterfonts}
 
-\title{\Huge{Relativistic Quantum Waves (Klein-Gordon Equation}\ }
+\title{\Huge{Relativistic Quantum Waves (Klein-Gordon Equation}\\ And expanding to the Dirac equation }
 \author{\Huge{Marcus Allen Denslow}}
 \date{2025-11-14}
 
@@ -395,7 +395,132 @@ However, even Dirac's equation still has negative energy solutions. The Feynman-
 \\
 \\
 \\
-We're gonna derive the dirac equations here
 
+\chapter{Dirac Equation}
+\section{The Dirac Equation}
+Our goal is to find the analog of the Schrodinger equation of relativistic spin one-half particles, however, we should note that even in the Schrodinger equation, the interaction of the field with spin was rather ad hoc. There was no explanation of gyromagnetic ration of 2. One can incorporate spin into the non-relativistic equation by using the Schrodinger-Pauli Hamiltonian which contains the dot product of the Pauli matrices with the momentum operator.
+
+\begin{equation}
+	H = \frac{1}{2m}\left( \vec{\sigma} \cdot \left[ \vec{p} + \frac{e}{c} \vec{A} \left( \vec{r}, t \right)  \right]  \right)^2 - e \phi \left( \vec{r}, t \right) 
+\end{equation}
+A little computation shows that this gives the correct interaction with spin.
+\begin{equation}
+	H = \frac{1}{2m} \left[ \vec{p} + \frac{e}{c} \vec{A} \left( \vec{r}, t \right)  \right]^2 - e \psi \left( \vec{r},t \right) + \frac{e \hbar}{2mc} \vec{\sigma} \cdot \vec{B} \left( \vec{r},t \right) 
+\end{equation}\\ \\
+This Hamiltonian acts on a two component spinor.\\ \\
+We can extend this concept to use the relativistic energy equation. The idea is to replace $\vec{p}$ with $\displaystyle \vec{sigma} \cdot \vec{p}$ \\ \\
+relativistic energy equation.
+\begin{align*}
+	\left( \frac{E}{c}^2 \right) -p^2&=\left( mc \right) ^2\\
+	\left( \frac{E}{c}-\vec{\sigma}\cdot \vec{p} \right) \left( \frac{E}{c} + \vec{\sigma} \cdot \vec{p} \right) &= \left( mc \right) ^2 \\ 
+	\left( i \hbar \frac{ \partial }{ \partial x_0 } + i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \left( i \hbar \frac{ \partial }{ \partial x_0 } - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi &= \left( mc \right) ^2 \phi
+.\end{align*} \\ \\
+Instead of an equation which is second order in time derivative, we can make a first order equation, like the Schrodinger equation, by extending this equation to four components.
+\begin{align*}
+	\phi^{(L)} &= \phi \\
+	\phi^{(R)} &= \frac{1}{mc}\left( i \hbar \frac{ \partial }{ \partial x_0 } - i \hbar \vec{\sigma} \cdot \vec{\nabla} \right) \phi^{(L)}
+.\end{align*}\\ \\
+Now rewriting in terms of $\displaystyle \psi A = \phi^{(R)} + \phi^{(L)}$ and $\displaystyle \psi B = \phi^{(R)} - \phi^{(L)}$ and ordering it as a matrix equation, we get an equation that can be written as a dot product between 4-vectors. \\ \\
+
+\begin{align*}
+\begin{pmatrix}
+  -i \hbar \frac{ \partial  }{ \partial x_0 } & - i \hbar \vec{\sigma} \cdot \vec{\nabla} \\
+  i \hbar \vec{\sigma} \cdot \vec{\nabla} & i \hbar \frac{ \partial  }{ \partial x_0 }
+\end{pmatrix}
+&= \hbar \left[ \begin{pmatrix}
+  0 & -i \vec{\sigma} \cdot \vec{\nabla} \\
+  i \vec{\sigma} & 0
+\end{pmatrix} + \begin{pmatrix} \frac{ \partial }{ \partial x_4 } & 0 \\ 0 & - \frac{ \partial }{ \partial x_4 }   \end{pmatrix}  \right] \\
+																  &= \hbar \left[ \begin{pmatrix} 0 & -i \sigma_{i} \\ i \sigma_{i} & 0 \end{pmatrix} \frac{ \partial }{ \partial x_{i} } + \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \frac{ \partial  }{ \partial x_4 }     \right] \\
+																  &= \hbar \left[ \gamma_{\mu} \frac{ \partial }{ \partial x_4 }  \right]
+.\end{align*}\\ \\
+Define the 4 by 4 matrices $\displaystyle \gamma \mu$ are by.
+\begin{align*}
+	\gamma_{i} &= \begin{pmatrix} + & i \sigma_{i} \\ i \sigma_{i} & 0 \end{pmatrix} \\
+	\gamma_4 &= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} 
+.\end{align*} \\ \\
+With this definition, the relativistic equation can be simplified a great deal
+\begin{equation}
+    \left( \gamma_{\mu} \frac{ \partial  }{ \partial x_{\mu} } + \frac{mc}{\hbar}  \right) \psi = 0
+\end{equation}\\ \\
+where the gamma matrices are given by
+\begin{align*}
+	\gamma_{1} &= \begin{pmatrix} 0 & 0 & 0 & -i \\ 0 & 0 & -i & 0 \\ 0 & i & 0 & 0 \\ i & 0 & 0 & 0 \end{pmatrix} \\
+	\gamma_{2} &= \begin{pmatrix} 0 & 0 & 0 & -1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ -1 & 0 & 0 & 0 \end{pmatrix} \\
+	\gamma_{3} &= \begin{pmatrix} 0 & 0 & -i & 0 \\ 0 & 0 & 0 & i \\ i & 0 & 0 & 0 \\ 0 & -i & 0 & 0 \end{pmatrix} 
+.\end{align*}
+and they satisfy anti-commutation relations.
+\begin{equation}
+	\left\{ \gamma_{\mu}, \gamma_{v} \right\}  = 2 \partial_{\mu v}
+\end{equation}\\ \\
+In fact any set of matrices satisfy the anti-commutation relations would yield equivalent physics results, however, we will work in the above explicit representation of the gamma matrices.\\ \\
+defining $\displaystyle \overline{\psi} = \psi^{^{\dagger}}\gamma_4$.
+\begin{equation}
+    j_{\mu} = i c \overline{\psi}\gamma_{\mu}\psi
+\end{equation}
+satisfies the equation of a conserved 4-vector current
+\begin{equation}
+	\frac{ \partial }{ \partial x_{\mu} } j_{\mu} = 0
+\end{equation}
+and also transforms like a 4-vector. The fourth component of the vector shows that the probability density is $\displaystyle \psi^{^{\dagger}}\psi$. This indicates that the normalization of the state includes all four components of the Dirac spinors \\ \\
+For non-relativistic electrons, the first two components of the Dirac spinor are large while the last two are small.
+\begin{align*}
+	\psi &= \begin{pmatrix} \psi_{a} \\ \psi_{B} \end{pmatrix} \\
+	\psi_{B} \approx \frac{c}{2mc^2}\vec{\sigma} \cdot \left( \vec{p} + \frac{e}{c}\vec{A} \right) \psi_{A} &\approx \frac{pc}{2mc^2}\psi_{A}
+.\end{align*}\\ \\
+We use this fact to write an approximate two-component equation derived from the Dirac equation in the non-relativistic limit.
+\begin{equation}
+	\left( \frac{p^2}{2m} - \frac{Ze^2}{4\pi r} - \frac{p^{4}}{8\pi m^2 c^2 r^3} + \frac{Z e^2 \vec{L} \cdot \vec{S}}{8m^2 c^2} \partial^3 (\vec{r}) \right) \psi = E^{\begin{pmatrix} N & R \end{pmatrix} } \psi
+\end{equation}\\ \\
+This "Schrodinger equation", derived from the Dirac equation, agrees well with the one we used to understand the fine structure of Hydrogen. The first two terms are the kinetic and potential energy terms for the unperturbed Hydrogen Hamitonian. The third term is the relativistic correction to the kinetic energy. The fourth term is the correct spin-orbit interaction, including the Thomas Precession effect that we did not take time to understand when we did the NR fine structure. The fifth term is the so called Darwin term which we said would come from the Dirac equation; and now it has. \\ \\
+For a free particle, each component of the Dirac spinor satisfies the Klein-Gordon equation.
+\begin{equation}
+    \psi_{\vec{p}} = u_{\vec{p}}e^{i \left( \vec{p} \cdot \vec{x} - Et \right) / \hbar }
+\end{equation} \\ \\
+This is consistent with the relativistic energy relation. \\ \\
+The four normalized solutions for a Dirac particle at rest are.
+\begin{align*}
+	\psi^{(1)} = \psi_{E} = +mc^2, + \hbar / 2 \qquad  &= \qquad \frac{1}{\sqrt{V} } \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} e^{-i mc^2 t / \hbar}\\
+	\psi^{(1)} = \psi_{E} = +mc^2, + \hbar / 2 \qquad  &= \qquad \frac{1}{\sqrt{V} } \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} e^{-i mc^2 t / \hbar}\\
+	psi^{(1)} = \psi_{E} = +mc^2, + \hbar / 2 \qquad  &= \qquad \frac{1}{\sqrt{V} } \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix} e^{-i mc^2 t / \hbar}\\
+	psi^{(1)} = \psi_{E} = +mc^2, + \hbar / 2 \qquad  &= \qquad \frac{1}{\sqrt{V} } \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix} e^{-i mc^2 t / \hbar}\\
+.\end{align*} \\ \\
+The first and third have spin up while the second and fourth have spin down. The first and second are positive energy solutions while the third and fourth are "negative energy solutions", which we still need to understand. \\ \\
+The next step is to find the solutions with definite momentum. The four plane wave solutions to the Dirac equation are:
+\begin{equation}
+    \psi^{(r)}_{\vec{p}} = \sqrt{\frac{mc^2}{\left| E \right|V }}u^{(r)} _{\vec{p}}e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar }
+\end{equation}\\ \\
+where he four spinors are given by:
+\[
+  \begin{array}{c@{\qquad}c}
+  u_{\vec{p}}^{(1)} = \sqrt{\frac{E + mc^2}{2mc^2}} \begin{pmatrix}
+  1 \\
+  0 \\
+  \frac{p_z c}{E+mc^2} \\
+  \frac{(p_x+ip_y)c}{E+mc^2}
+  \end{pmatrix}
+  &
+  u_{\vec{p}}^{(2)} = \sqrt{\frac{E + mc^2}{2mc^2}} \begin{pmatrix}
+  0 \\
+  1 \\
+  \frac{(p_x-ip_y)c}{E+mc^2} \\
+  \frac{-p_z c}{E+mc^2}
+  \end{pmatrix}
+  \\[3ex]
+  u_{\vec{p}}^{(3)} = \sqrt{\frac{-E + mc^2}{2mc^2}} \begin{pmatrix}
+  \frac{-p_z c}{-E+mc^2} \\
+  \frac{-(p_x+ip_y)c}{-E+mc^2} \\
+  1 \\
+  0
+  \end{pmatrix}
+  &
+  u_{\vec{p}}^{(4)} = \sqrt{\frac{-E + mc^2}{2mc^2}} \begin{pmatrix}
+  \frac{-(p_x-ip_y)c}{-E+mc^2} \\
+  \frac{p_z c}{-E+mc^2} \\
+  0 \\
+  1
+  \end{pmatrix}
+  \end{array}
+  \]
 
 \end{document}
