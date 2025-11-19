@@ -1,0 +1,28 @@
+\documentclass{report}
+
+\input{../templates/preamble}
+\input{../templates/macros}
+\input{../templates/letterfonts}
+
+\title{\Huge{Title}\ undertext}
+\author{\Huge{Marcus Allen Denslow}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{definisjoner}
+\section{sum og differanse av vinkler. Husk skalarpodukt}
+\begin{align*}
+	\vec{u} \vec{v} = |\vec{u}| \cdot |\vec{v}| \cdot \cos c(\vec{u}, \vec{v})
+	\vec{u} = [x_1, y_1], \vec{v} = [x_2, y_2] \qquad \vec{u} \cdot \vec{v} = x_1  \cdot x_2 + y_1 \cdot y_2
+.\end{align*}
+
+
+\end{document}
