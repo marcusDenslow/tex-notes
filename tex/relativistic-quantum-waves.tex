@@ -946,11 +946,27 @@ The effect of vacuum polarization on Hydrogen would be to lower the energy of $\
 We can get some qualitative understanding of the origin of Zitterbewegung from the idea of virtual pair production in the field of the nucleus. The diagram below shows a photon from the Coulomb field of the nucleus producing an electron positron pair. The original real electron from the atom then anihillates with the positron, coupling to another field photon. The electron from the pair is left over and becomes the new atomic electron, however, it need not be in the same place as the original electron.
 
 \begin{center}
-  \begin{tikzpicture}
-      \draw (0,0) -- (2,4);  % horizontal line 5cm long
-	  \draw (2,4) -- (5,3);
-	  \draw (5,3) -- (7,7);
-  \end{tikzpicture}
+\begin{tikzpicture}[scale=1.5]
+    % Incoming electron from bottom-left
+    \draw[->, thick] (-2,-2) -- (-0.3,-0.3);
+
+    % Incoming electron/positron from top
+    \draw[->, thick] (0,2) -- (-0.3,0.3);
+
+    % Vertex point
+    \fill (0,0) circle (2pt);
+
+    % Outgoing photon 1 (upper squiggly line)
+    \draw[decorate, decoration={snake, amplitude=1.5mm, segment length=3mm}]
+        (0,0) -- (2,1);
+
+    % Outgoing photon 2 (lower squiggly line)
+    \draw[decorate, decoration={snake, amplitude=1.5mm, segment length=3mm}]
+        (0,0) -- (2,-1);
+
+    % Plus sign for nucleus
+    \node[font=\Large] at (1.5,-1.8) {$+$};
+\end{tikzpicture}
 \end{center}
 
 
