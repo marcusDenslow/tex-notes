@@ -23,38 +23,6 @@ At this pint we must take the unpleasant position (constant) infinate energy sho
 \\
 We can calculate the lowest order self energy corrections represented by the two Feynman diagrams below.
 
-\begin{figure}[h!]
-    \centering
-    % First diagram (a)
-    \begin{tikzpicture}[scale=1]
-        % Left diagram
-        % Lines
-        \draw[thick] (-1,-1) -- (0,0);
-        \draw[thick] (0,0) -- (1,1);
-        % Wavy loop
-        \draw[decorate, decoration={coil, aspect=0, segment length=2mm, amplitude=2mm}] (-1,0.2) .. controls (-0.5,0.5) and (-0.5,-0.5) .. (-1,-0.2) -- cycle;
-        % Labels
-        \node at (-0.8,-0.8) {$n$};
-        \node at (0.8,0.8) {$n$};
-    \end{tikzpicture}
-    \hspace{2cm}
-    % Second diagram (b)
-    \begin{tikzpicture}[scale=1]
-        % Lines
-        \draw[thick] (-1,-1) -- (0,0);
-        \draw[thick] (0,0) -- (1,1.2);
-        % Wavy loop connected to slanted line
-        \draw[decorate, decoration={coil, aspect=0, segment length=2mm, amplitude=2mm}] (-0.2,0.2) .. controls (0.3,0.5) and (0.3,-0.5) .. (-0.2,-0.2) -- cycle;
-        % Labels
-        \node at (-0.8,-0.8) {$n$};
-        \node at (0.9,1.0) {$n'$};
-        \node at (0.3,0) {$l$};
-    \end{tikzpicture}
-
-    \vspace{1em}
-
-    \noindent (a) \hspace{5cm} (b)
-\end{figure}
 
 
 
