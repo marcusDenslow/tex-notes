@@ -33,5 +33,9 @@ In these, a photon is emitted then reabsorbed. As we now know, both of these amp
 	H_{\text{int}} &= -\frac{e}{mc} \vec{A} \cdot \vec{p} \\
 	\vec{A} &= \frac{1}{\sqrt{V} } \sum_{\vec{k}, \alpha} \sqrt{\frac{\hbar c^2}{2\omega}}\hat{\epsilon}^{(\alpha)} \left( a_{\vec{k}, \alpha} e^{i\left( \vec{k} \cdot \vec{x} - \omega t \right) + a^{\dagger}_{\vec{k}, \alpha}} e^{-i \left( \vec{k} \cdot \vec{x} - \omega t \right) } \right) 
 .\end{align*}
+This contains a term causing absorption of a photon and another term causing emission. We separate the terms for absorption and emission and pull out the time dependence.
+\begin{align*}
+    H_{\text{int}} = \sum_{\vec{k}, \alpha} \left( H^{\text{abs}}_{\vec{k}, \alpha} e^{-i \omega t} + H^{\text{emit}}_{\vec{k}, \alpha} e^{ i \omega t} \right) 
+.\end{align*}
 
 \end{document}
