@@ -130,7 +130,8 @@ It is the difference between the bound electron's self energy and that for a fre
 \begin{align*}
 	\Delta E_{\text{free}} &= \frac{2 \alpha \hbar}{3 \pi m^2 c^2 V^2} \sum_{\vec{p}'} \int \frac{\omega}{\left( \omega_{nj} - \omega \right) } \left| \int e^{-i \vec{p} \cdot \vec{x} / \hbar} \vec{p} e^{i \vec{p}' \cdot \vec{x} / \hbar} d^3  \right|^2 d\omega \\
 	&= \frac{2 \alpha \hbar}{3\pi m^2 c^2 V^2} \left| \vec{p} \right|^2 \sum_{\vec{p}} \int  \frac{\omega}{\left( \omega_{nj} - \omega \right) } \left| \int e^{i \left( \vec{p}' / \hbar - \vec{p} \cdot \vec{x} / \hbar \right) } d^3 x \right|^2 d\omega \\
-	&= \frac{2 \alpha \hbar}{3\pi m^2 c^2 V^2} \left| \vec{p} \right|^2 \sum_{\vec{p}'} \int \frac{\omega}{\left( \omega_{nj} - \omega \right) } \left| V \delta_{\vec{p}', \vec{p}} \right|^2 d\omega
+	&= \frac{2 \alpha \hbar}{3\pi m^2 c^2 V^2} \left| \vec{p} \right|^2 \sum_{\vec{p}'} \int \frac{\omega}{\left( \omega_{nj} - \omega \right) } \left| V \delta_{\vec{p}', \vec{p}} \right|^2 d\omega \\
+	&= \frac{2 \alpha \hbar}{3\pi m^2 c^2} \left| \vec{p} \right|^2 \int_{0}^{\infty} \frac{\omega}{\left( \omega_{nj} - \omega \right) } \, d\omega
 .\end{align*}
 
 \end{document}
