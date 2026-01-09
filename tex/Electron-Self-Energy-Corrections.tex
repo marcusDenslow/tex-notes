@@ -52,5 +52,12 @@ The differential equations for the amplitudes are then.
 	i\hbar \frac{dc_{j}}{dt} &= \sum_{\vec{k}, \alpha} \mathbf{H}_{jn} e^{i\omega t}c_{n}e^{i \omega_{nj} t} \\
 	i\hbar \frac{dc_{n}}{dt} &= \sum_{\vec{k}, \alpha} \sum_{j} \mathbf{H}_{nj}e^{i \omega t} c_{j} e^{i \omega t}
 .\end{align*}
+In the equations for $\displaystyle c_{n}$, we explicitly account for the fact that an intermediate state can make a transition back to the initial state. Transitions through another intermediate state would be higher order and thus should be neglected. Note that the matrix elements for the transitions to and from the initial state are closely related. We also include the effect that the initial state can become depleted as intermediate states are populated by using $\displaystyle c_{n}$ (instead of 1) in the equation for $\displaystyle c_{j}$. Note also that all the photon states will make nonzero contributions to the sum.
+\\
+\\
+Our task is to solve these coupled equations. Previously, we did this by integration, but needed the assumption that the amplitude to be in the initial state was 1. Since we are attempting to calculate an energy shift, let us make that assumption and plug it into the equations to verify the solution.
+\begin{equation}
+	c_{n} = e^{\frac{-i \Delta E_{n} t}{\hbar}}
+\end{equation}
 
 \end{document}
