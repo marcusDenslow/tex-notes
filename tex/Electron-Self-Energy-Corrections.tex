@@ -177,7 +177,16 @@ Because we are correcting for the mass used to calculate the base enrgy of the s
 
 
 \chapter{The Lamb Shift}
-In 1947, Willis E. Lamb and R. C Re
+In 1947, Willis E. Lamb and R. C Retherford used microwave techniques to determine the splitting between the $\displaystyle 2S_{\frac{1}{2}}$ and $\displaystyle 2P_{\frac{1}{2}}$ states in Hydrogen to have a frequency of 1.06 GHz, (a wavelenght of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is abour the same size as the hyperfine splitting of the ground state.
+\\
+\\
+The technique used was quite interesting. They made a beam of Hydrogen atoms in the $\displaystyle 2S_{\frac{1}{2}}$ state, which has a very long lifetime because of selection rules. Microwave radiation with a (fixed) frequency of 2395 MHz was used to cause transitions to the $\displaystyle 2P_{\frac{3}{2}}$ state and a magnetic field was adjusted to shift the enrgy of the states until the rate was largest. The decay of the $\displaystyle 2P_{\frac{3}{2}}$ state to the ground state was observed to determine the transition rate. From this, they were able to deduce the shift between the $\displaystyle 2S_{\frac{1}{2}}$ and $\displaystyle 2P_{\frac{1}{2}}$ states. Hans Bethe used non-relativistic quantum mechanics to calculate the self-energy correction to account for this observation.
+\\
+\\
+We now can compute the correction the same way he did.
+\begin{align*}
+	\Delta E^{(obs)}_{n} &= \Delta E_{n} + C \left<n \left| p^2 \right|n  \right> = \Delta E_{n} + \frac{2 \alpha}{3\pi m^2 c^2}E_{cut-off} \left<n \left| p^2 \right|n  \right>
+.\end{align*}
 
 
 
