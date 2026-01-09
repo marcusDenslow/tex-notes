@@ -90,6 +90,10 @@ If we think of $\displaystyle x$ as a complex number, our integral goes along th
 \begin{equation}
 	\lim_{t \to \infty} \frac{1 - e^{ixt}}{x} = \lim_{\epsilon \to 0+} i \int_{0}^{\infty} e^{ixt'} \, dt' = \lim_{\epsilon \to 0+} \frac{1}{x + i \epsilon} = \lim_{\epsilon \to 0+} \left[ \frac{x}{x^2 + \epsilon^2} - \frac{i \epsilon}{x^2 + \epsilon^2} \right]
 \end{equation}
+This is well behaved everywhere expect at $\displaystyle x = 0$. The second term goes to $\displaystyle -\infty$ there. A little further analasys could show that the second term is a delta function.
+\begin{equation}
+    \lim_{t \to \infty} \frac{1 - e^{ixt}}{x} = \frac{1}{x} - i\pi \rho \left( x \right) 
+\end{equation}
 
 
  
