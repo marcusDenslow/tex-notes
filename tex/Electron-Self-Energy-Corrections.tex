@@ -76,6 +76,10 @@ Substitute this back into the differential equation for $\displaystyle c_{n}$ to
 	\Delta E_{n} &= \sum_{\vec{k}, \alpha} \sum_{j} \left| \mathbf{H}_{nj} \right|^2 e^{i \left( \omega_{nj} + \Delta \omega_{n} - \omega \right) t } \frac{e^{i \left( - \omega_{nj} - \Delta \omega_{n} + \omega \right)t }-1}{\hbar \left( \omega_{nj} + \Delta \omega_{n} - \omega \right) } \\
 	\Delta E_{n} &= \sum_{\vec{k}, \alpha} \sum_{j} \left| \mathbf{H}_{nj} \right|^2 \frac{1 - e^{i \left( \omega_{nj} + \Delta \omega_{n} - \omega \right)t }}{\hbar \left( \omega_{nj} + \Delta \omega_{n} - \omega \right) }
 .\end{align*}
+Dince this is a calculation to order $\displaystyle e^{2}$ and the interaction Hamiltonian squared contains a factor of $\displaystyle e^2$ we should drop the $\displaystyle \Delta \omega_{n} = \Delta E_{n} / \hbar$ s from the right hand side of this equation.
+\begin{equation}
+    \Delta E_{n} = \sum_{\vec{k}, \alpha} \sum_{j} \left| \mathbf{H}_{nj} \right|^2 \frac{1 - e^{i \left( \omega_{nj} - \omega \right) t }}{\hbar \left( \omega_{nj} - \omega \right) }
+\end{equation}
 
  
 
