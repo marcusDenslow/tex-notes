@@ -195,7 +195,8 @@ It is now necessary to discuss approximate needed to complete this calculation. 
 \begin{align*}
 	\Delta E^{(obs)}_{n} &= \frac{2 \alpha \hbar}{3\pi m^2 c^2} \int_{0}^{\omega_{cut-off}} \sum_{j} \left( \frac{\omega}{\left( \omega_{nj} - \omega \right) } \left| \left<n \left| \vec{p} \right|j  \right> \right|^2 + \left| \left<n \left| \vec{p} \right|j  \right> \right|^2   \right)    \, d\omega \\
 	&= \frac{2 \alpha \hbar}{3\pi m^2 c^2} \int_{0}^{\omega_{cut-off}} \sum_{j} \frac{\omega + \left( \omega_{nj} - \omega \right) }{\left( \omega_{nj} - \omega \right) } \left| \left<n \left| \vec{p} \right|j  \right> \right|^2   \, d\omega \\
-	&= - \frac{2 \alpha \hbar}{3\pi m^2 c^2} \sum_{j} \int_{0}^{\omega_{cut-off}} \frac{\omega_{nj}}{\omega - \omega_{nj}} \left| \left<n \left| \vec{p} \right|j   \right> \right|^2   \, d\omega
+	&= - \frac{2 \alpha \hbar}{3\pi m^2 c^2} \sum_{j} \int_{0}^{\omega_{cut-off}} \frac{\omega_{nj}}{\omega - \omega_{nj}} \left| \left<n \left| \vec{p} \right|j   \right> \right|^2   \, d\omega \\
+	&= - \frac{2 \alpha \hbar}{3\pi m^2 c^2} \sum_{j} \omega_{nj} \left[ \log \left( \left| \omega_{nj} \right|  \right) - \log \left( \omega_{cut-off} \right)   \right] ]
 .\end{align*}
 
 
