@@ -59,5 +59,11 @@ Our task is to solve these coupled equations. Previously, we did this by integra
 \begin{equation}
 	c_{n} = e^{\frac{-i \Delta E_{n} t}{\hbar}}
 \end{equation}
+$\displaystyle \Delta E_{n}$ will be a complex number, the real part of which represents an energy shift, and the imaginary part of which represents the lifetime (and energy width) of the state.
+\begin{align*}
+	i\hbar \frac{dc_{j}}{dt} &= \sum_{\vec{k}, \alpha} \mathbf{H}_{jn} e^{ i \omega t} c_{n} e^{-i \omega_{nj} t} \\
+	c_{n} &= e^{\frac{-i \Delta E_{n} t}{\hbar}} \\
+	c_{j}\left( t \right)  &= \frac{1}{i\hbar} \sum_{\vec{k}, \alpha} \int_{0}^{t} dt' \mathbf{H}_{jn} e^{ i \omega t'} e^{\frac{-i \Delta E_{n}t'}{\hbar}} e^{-i \omega_{nj} t '} \, dx 
+.\end{align*}
 
 \end{document}
