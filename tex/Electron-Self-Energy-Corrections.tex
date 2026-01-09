@@ -86,6 +86,10 @@ We have something of the form.
 \begin{equation}
     -i \int_{0}^{t} e^{ixt'} \, dt' = \frac{1 - e^{ixt}}{x}
 \end{equation}
+If we think of $\displaystyle x$ as a complex number, our integral goes along the real axis. In the upper hald plane, just above the real axis, $\displaystyle x \to x + i \epsilon$, the function goes to zero at infinity. In the lower half plane it blows up at infinity and on the axis, it's not well defined. We will calculate our result in the upper half plane and take the limit as we approach the real axis.
+\begin{equation}
+	\lim_{t \to \infty} \frac{1 - e^{ixt}}{x} = \lim_{\epsilon \to 0+} i \int_{0}^{\infty} e^{ixt'} \, dt' = \lim_{\epsilon \to 0+} \frac{1}{x + i \epsilon} = \lim_{\epsilon \to 0+} \left[ \frac{x}{x^2 + \epsilon^2} - \frac{i \epsilon}{x^2 + \epsilon^2} \right]
+\end{equation}
 
  
 
