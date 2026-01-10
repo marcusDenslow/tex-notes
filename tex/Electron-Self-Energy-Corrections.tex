@@ -18,6 +18,8 @@
 \pagebreak
 
 \chapter{Electron Self Energy Corrections}
+
+\section{Introduction and Physical Motivation}
 If one calculates the energy of a point charge using classical electromagnitism, the result is infinate, yet as far as we know, the electron is point charge. One can calculate the energy needed to assemble an electron due, essentially, to the interaction of the electron with its own field. A uniform charge distribution with the classical radius of an electron, we have an energy $\displaystyle m_{e}c^2$. Experiments have probed the electron's charge distribution and found that it is consistent with a point charge down to distances much smallen than the classical radius. Beyond classical calculations, the self energy of the electron calculated in the quantum theory of Dirac is still infinate but the divergences are less severe. 
 \\
 At this pint we must take the unpleasant position (constant) infinate energy should just be subtracted when we consider the overall zero of energy (as we did for the field energy in the vacuum). Electrons exist and don't carry infinate amount of energy baggage so we just subtract off the infinate constant. Nevertheless, we will find that the electron's self energy may change when it is a bound state and we should account for this change in out energy level calculations. This calculation will also give us the opportunity to understand resonant behaviour in scattering.
@@ -30,6 +32,8 @@ We can calculate the lowest order self energy corrections represented by the two
 \end{figure}
 
 In these, a photon is emitted then reabsorbed. As we now know, both of these amplitutesare in order $\displaystyle e^2$. The first one comes from the $\displaystyle A^2$ term in which the number of photons changes by zero or two and the second comes from the $\displaystyle \vec{A} \cdot \vec{p}$ term in second order time dependent pertubation theory. A calculation of the first diagram will give the same result for a free electron and a bound electron, while the second diagram will give different results because the intermediate states are different if an electron is bound than they are if it is free. We will therefore compute the amplitude from the second diagram.
+
+\section{Perturbation Theory Setup}
 \begin{align*}
 	H_{\text{int}} &= -\frac{e}{mc} \vec{A} \cdot \vec{p} \\
 	\vec{A} &= \frac{1}{\sqrt{V} } \sum_{\vec{k}, \alpha} \sqrt{\frac{\hbar c^2}{2\omega}}\hat{\epsilon}^{(\alpha)} \left( a_{\vec{k}, \alpha} e^{i\left( \vec{k} \cdot \vec{x} - \omega t \right) + a^{\dagger}_{\vec{k}, \alpha}} e^{-i \left( \vec{k} \cdot \vec{x} - \omega t \right) } \right) 
@@ -56,6 +60,7 @@ The differential equations for the amplitudes are then.
 In the equations for $\displaystyle c_{n}$, we explicitly account for the fact that an intermediate state can make a transition back to the initial state. Transitions through another intermediate state would be higher order and thus should be neglected. Note that the matrix elements for the transitions to and from the initial state are closely related. We also include the effect that the initial state can become depleted as intermediate states are populated by using $\displaystyle c_{n}$ (instead of 1) in the equation for $\displaystyle c_{j}$. Note also that all the photon states will make nonzero contributions to the sum.
 \\
 \\
+\section{Solving the Coupled Equations}
 Our task is to solve these coupled equations. Previously, we did this by integration, but needed the assumption that the amplitude to be in the initial state was 1. Since we are attempting to calculate an energy shift, let us make that assumption and plug it into the equations to verify the solution.
 \begin{equation}
 	c_{n} = e^{\frac{-i \Delta E_{n} t}{\hbar}}
@@ -82,6 +87,8 @@ Dince this is a calculation to order $\displaystyle e^{2}$ and the interaction H
     \Delta E_{n} = \sum_{\vec{k}, \alpha} \sum_{j} \left| \mathbf{H}_{nj} \right|^2 \frac{1 - e^{i \left( \omega_{nj} - \omega \right) t }}{\hbar \left( \omega_{nj} - \omega \right) }
 \end{equation}
 We have a solution to the coupled differential equations to order $\displaystyle e^2$. We should let $t \to \infty$ since the self energy is not a time dependent thing, however, the result oscillates as a function of time. This has been the case for many of out important delta functions, like the dot product of states with definite momentum. Let us analyze this self energy expression for large time.
+
+\section{Energy Shift and Width}
 \\
 We have something of the form.
 \begin{equation}
@@ -102,13 +109,15 @@ Recalling that $\displaystyle c_{n}e^{-i E_{n} r / \hbar} = e^{\frac{-i \Delta E
 .\end{align*}
 All photon energies contribute to the real part. Only photons that satisfy the delta function constraint to the imaginary part. Moreover, there will only be an imaginary part if there is a lower energy state into which the state in question can decay. We can relate this width o those we previously calculated.
 \begin{equation}
-    -\frac{2}{\hbar}\Im \left( \Delta E_{n} \right) = \sum_{\vec{k}, \alpha} \sum_{j} \frac{2\pi \left| \mathbf{H}_{nj} \right|^2 }{\hbar} \delta \left( E_{n} - E_{j} - \hbar \omega \right) 
+    -\frac{2}{\hbar}\Im \left( \Delta E_{n} \right) = \sum_{\vec{k}, \alpha} \sum_{j} \frac{2\pi \left| \mathbf{H}_{nj} \right|^2 }{\hbar} \delta \left( E_{n} - E_{j} - \hbar \omega \right)
 \end{equation}
 The time dependence of the wavefunction for the state $\displaystyle n$ is modified by the self energy correction.
 \begin{equation}
     \psi_{n} \left( \vec{x}, t \right) = \psi_{n} \left( \vec{x} \right) e^{-i \left( E_{n} + \Re \left( \Delta E_{n} \right)  \right)t / \hbar  } e^{\frac{- \Gamma_{n} t}{2}}
 \end{equation}
 This also gives us the exponential decay behaviour that we expect, keeping resonant scattering cross sections from going to infinity. So, the width just goes into the time dependence as expected and we don't have to worry about it anymore. We can now concentrate on the energy shift due to the real part of $\displaystyle \Delta E_{n}$.
+
+\section{Evaluation of the Energy Shift}
 \begin{align*}
 	\Delta E_{n} \equiv \Re \left( \Delta E_{n} \right) &= \sum_{\vec{k}, \alpha} \sum_{j} \frac{\left| \mathbf{H}_{nj} \right|^2 }{\hbar \left( \omega_{nj} - \omega \right) } \\
 	\mathbf{H}_{nj} &= \left<n \left| \mathbf{H}^{\text{abs}}_{\vec{k}, \alpha} \right|j  \right> \\
@@ -126,7 +135,8 @@ In our calculation of the total decay rate summed over polarization and integrat
 .\end{align*}
 
 Note that we wish to use the electric dipole approximation which is not valid for large $k = \frac{\omega}{c}$. It is valid up to about 2000 eV so we wish to cut off the calculation around there. While this calculation clearly diverges, things are less clear here because of the eventually rapid oscillation of the $\displaystyle e^{i\vec{k}\cdot \vec{x}}$ term in the integrand as the E1 approximation fails. Nevertheless, the largest differences in corrections between free electrons and bound electrons occur in the region in which the E1 approximation is valid. For now we will just use it and assume the cut-off is low enough.
-\\
+
+\section{Free Electron Self Energy}
 It is the difference between the bound electron's self energy and that for a free electron in which we are interested. Therefore, we will start with the free electron with a definite momentum $\displaystyle \vec{p}$. The normalized wave function for the free electron is $\displaystyle \frac{1}{\sqrt{V} } e^{i \vec{p} \cdot \vec{x}} / \hbar$.
 \begin{align*}
 	\Delta E_{\text{free}} &= \frac{2 \alpha \hbar}{3 \pi m^2 c^2 V^2} \sum_{\vec{p}'} \int \frac{\omega}{\left( \omega_{nj} - \omega \right) } \left| \int e^{-i \vec{p} \cdot \vec{x} / \hbar} \vec{p} e^{i \vec{p}' \cdot \vec{x} / \hbar} d^3  \right|^2 d\omega \\
@@ -145,8 +155,8 @@ It's easy to see that this will go to negative infinity if the limit on the inte
 	&= -C \left| \vec{p} \right|^2
 . \end{align*}
 If we were hoping for little dependence on the cut-off we should be disappointed. This self energy calculated is linear in the cut-off.
-\\
-\\
+
+\section{Mass Renormalization}
 For a non-relativisitc free electron the energy $\displaystyle \frac{p^2}{2m}$ decreases as the mass of the electron increases, so the negative Yours sincerely,
 
 Marcus Denslow corresponds to a positive shift in the electron's mass, and hence an increase in the real energy of the electron. Later, we will think of this as a renormalization of the electron's mass. The electron starts off with some bare mass. The self-energy due to the interaction of the electron's charge with its own radiation field increases the mass to what is observed.
@@ -177,12 +187,15 @@ Because we are correcting for the mass used to calculate the base enrgy of the s
 
 
 \chapter{The Lamb Shift}
+
+\section{Experimental Discovery}
 In 1947, Willis E. Lamb and R. C Retherford used microwave techniques to determine the splitting between the $\displaystyle 2S_{\frac{1}{2}}$ and $\displaystyle 2P_{\frac{1}{2}}$ states in Hydrogen to have a frequency of 1.06 GHz, (a wavelenght of about 30 cm). (The shift is now accurately measured to be 1057.864 MHz.) This is abour the same size as the hyperfine splitting of the ground state.
 \\
 \\
 The technique used was quite interesting. They made a beam of Hydrogen atoms in the $\displaystyle 2S_{\frac{1}{2}}$ state, which has a very long lifetime because of selection rules. Microwave radiation with a (fixed) frequency of 2395 MHz was used to cause transitions to the $\displaystyle 2P_{\frac{3}{2}}$ state and a magnetic field was adjusted to shift the enrgy of the states until the rate was largest. The decay of the $\displaystyle 2P_{\frac{3}{2}}$ state to the ground state was observed to determine the transition rate. From this, they were able to deduce the shift between the $\displaystyle 2S_{\frac{1}{2}}$ and $\displaystyle 2P_{\frac{1}{2}}$ states. Hans Bethe used non-relativistic quantum mechanics to calculate the self-energy correction to account for this observation.
 \\
-\\
+
+\section{Bethe's Calculation}
 We now can compute the correction the same way he did.
 \begin{align*}
 	\Delta E^{(obs)}_{n} &= \Delta E_{n} + C \left<n \left| p^2 \right|n  \right> = \Delta E_{n} + \frac{2 \alpha}{3\pi m^2 c^2}E_{cut-off} \left<n \left| p^2 \right|n  \right> \\
@@ -206,6 +219,8 @@ The long term varies more slowly than the rest of the terms in the sum. We can a
 \begin{equation}
     \Delta E^{(obs)}_{n} = \frac{2 \alpha \hbar}{3\pi m^2 c^2} \log \left( \frac{\left| \overline{\omega} \right| }{\omega_{cut-off}} \right) \sum_{j} \omega_{nj} \left| \left<n \left| \vec{p} \right|j  \right> \right|^2
 \end{equation}
+
+\section{Commutator Simplification}
 This sum can now be reduced further to a simple expression proportional to the $\displaystyle \left| \psi_{n} \left( 0 \right)  \right|^2 $ using a typical clever quantum mechanics calculation. The basic Hamitonian for the Hydrogen atom is $\displaystyle \mathbf{H}_{0} = \frac{p^2}{2m} + V \left( r \right) $.
 \begin{align*}
 	\left[ \vec{p}, \mathbf{H}_{0} \right] &= \left[ \vec{p}, V \right] = \frac{\hbar}{i} \vec{\nabla}V \\
@@ -223,6 +238,8 @@ This must be a real number so we may use its complex conjugate.
 	&= - \frac{\hbar^2}{2} \left<n \left| e^2 \delta^3 \left( \vec{x} \right)  \right|n  \right> \\
 	&= - \frac{e^2 \hbar^2}{2} \left| \psi_{n} \left( 0 \right)  \right|^2
 .\end{align*}
+
+\section{Result for S-States}
 Only the s states will have a non-vanishing probability to be at the origin with $\displaystyle \left| \psi_{n00} \left( 0 \right)  \right|^2 = \frac{1}{\pi n^3 a^3_{0}} $ and $\displaystyle a_0 = \frac{\hbar}{\alpha m c}$. Therefore, only the s states will shift in energy appreciably. The shift will be.
 \begin{align*}
 	\Delta E^{(obs)}_{n} &= - \frac{2 \alpha \hbar}{3\pi m^2 c^2} \log \left( \frac{\left| \overline{\omega}_{nj} \right| }{\omega_{cut-off}} \right) \frac{e^2 \hbar}{2} \frac{1}{\pi n^3} \left( \frac{\alpha m c}{\hbar} \right)^3 \\
@@ -231,6 +248,7 @@ Only the s states will have a non-vanishing probability to be at the origin with
 	\Delta E^{(obs)}_{2s} &= \frac{\alpha^{5}mc^2}{6\pi} \log \left( \frac{mc^2}{8.9 \alpha^2 mc^2} \right) \\
 	\nu &= \frac{\Delta E^{(obs)}_{2s}}{2\pi \hbar} = \frac{\alpha^{5} mc^2 c}{12\pi^2 \hbar c} \log \left( \frac{1}{8.9 \alpha^2} \right)  = 1.041 GHz
 .\end{align*}
+\section{Relativistic Correction and Combined Result}
 This agrees far too well with the measurement, considering the approximations made and the dependence on the cut-off. There is, however, justification in the relativistic calculation. Typically, the full calculation was made by using this non-relativistic approach up to some energy of the order of $\displaystyle \alpha m c^2$, and using the relativistic calculation above that. The relativistic free electron self-energy correction diverges only logarithmically and a very high cutoff can be used without a problem. The mass of the electron is renormalized as above. The Lamb shift does not depend on the cutoff and hence it is well calculated. We only need the non-relativistic part of the calculation up to photon energies for which the E1 approximations is OK. The relativistic part of the calculation down to $\displaystyle \omega_{min}$ yields.
 \begin{equation}
     \Delta E_{n} = \frac{4 \alpha^{5}}{3\pi n^3} \left( \log \left( \frac{mc^2}{2 \hbar \omega_{min}} \right) + \frac{11}{24} - \frac{1}{5}  \right) mc^2
@@ -245,7 +263,8 @@ So the sum of the two gives.
     \Delta E^{(obs)}_{n} = \frac{4 \alpha^{5}}{3\pi n^3} \left( \log \left( \frac{mc^2}{2 \hbar \overline{\omega}_{nj}} \right) + \frac{11}{24} - \frac{1}{5}  \right) mc^2
 \end{equation}
 The dependence on $\displaystyle \omega_{min}$ cancels. In this calculation, the $\displaystyle mc^2$ in the log is the outcome of the relativistic calculation, not the cutoff. The electric dipole approximation is even pretty good since we did not need to go up to large photon energies non-relativistically and no E1 approximation is needed for the relativistic part. That's how we (and Bethe) got about the right answer.
-\\
+
+\section{Physical Interpretation}
 The Lamb shift splits the $\displaystyle 2S_{\frac{1}{2}}$ and $\displaystyle 2P_{\frac{1}{2}}$ states which are otherwise degenerate. Its origin is purely from field theory. The experimental measurement of the Lamb shift stimulated theorists to develop Quantum ElectroDynamics. The correction increases the energy of s states. One may think of the physical origin as the electron becoming less point-like as virtual photons are emitted and reabsorbed. Spreading the electron out a bit decreases the effect of being in the deepest part of the potential, right at the origin. Based on the energy shift, I estimate that the electron in the 2s state is spread out about 0.005 Angtrøms, much more than the size of the nucleus.
 \\
 \\
