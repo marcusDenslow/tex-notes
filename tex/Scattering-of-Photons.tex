@@ -108,6 +108,14 @@ We have calculated all the amplitudes. The first order and second order amplitud
 	\frac{d \Gamma}{d \Omega} &= \frac{e^{4} \omega'}{\left( 4\pi \right)^2 V m^2 c^{3} \omega } \left| \delta_{ni} \hat{\epsilon} \cdot \hat{\epsilon'} - \frac{1}{m \hbar} \sum_{j}  \left[ \frac{\left<n \left| \hat{\epsilon'} \cdot \vec{p} \right|j  \right> \left<j \left| \hat{\epsilon} \cdot \vec{p} \right|i  \right>}{\omega_{ji} - \omega} + \frac{\left<n \left| \hat{\epsilon} \cdot \vec{p} \right|j  \right> \left<j \left| \hat{\epsilon'} \cdot \vec{p} \right|i  \right>}{\omega' + \omega_{ji}} \right]  \right|^2
 .\end{align*}
 
+Note that the delta function has enforced energy conservation requiring that $\displaystyle \omega' = \omega - \omega_{ni}$, but we have left $\displaystyle \omega'$ in the formula for convenince.
+\\
+\\
+The final step to a differential cross section is to divide the transition rate by the incident flux of particled. This is a suprisingly easy step because we are using plane waves of photons. The initial state is one particle in the volume $\displaystyle V$ moving with velocity of $\displaystyle c$, so the flux is simply $\displaystyle \frac{c}{V}$.
+\begin{equation}
+    \frac{d \sigma}{d \Omega} \frac{e^{4} \omega'}{\left( 4\pi \right)^2 m^2 c^{4}\omega } \left| \delta_{ni} \hat{\epsilon} \cdot \hat{\epsilon'} - \frac{1}{m \hbar} \sum_{j}  \left[ \frac{\left<n \left| \hat{\epsilon'} \cdot \vec{p} \right|j  \right> \left<j \left| \hat{\epsilon} \cdot \vec{p} \right|i  \right>}{\omega_{ji} - \omega} + \frac{\left<n \left| \hat{\epsilon} \cdot \vec{p} \right|j  \right> \left<j \left| \hat{\epsilon'} \cdot \vec{p} \right|i  \right>}{\omega' + \omega_{ji}} \right]  \right|^2
+\end{equation}
+
 
 
 
