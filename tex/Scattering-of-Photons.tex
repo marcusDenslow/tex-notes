@@ -156,5 +156,12 @@ The commutator $\displaystyle \left[ \vec{x}, \vec{p} \right] $ (with no dot pro
 \begin{equation}
     x_{i}p_{j} - p_{j}x_{i} = i \hbar \delta_{ij}
 \end{equation}
+The commutator of the vectors is $\displaystyle i \hbar$ times the identity. This can be used to cast the first term above into something like the other two.
+\begin{align*}
+	x_{i}p_{j} - p_{j}x_{i} &= i \hbar \delta_{ij} \\
+	\hat{\epsilon} \cdot \hat{\epsilon'} &= \hat{\epsilon}_{i} \hat{\epsilon'}_{j} \delta_{ij} \\
+	i \hbar \hat{\epsilon} \cdot \hat{\epsilon'} &= \hat{\epsilon}_{i} \hat{\epsilon'}_{j} \left( x_{i}p_{j} - p_{j} x_{i} \right) \\
+	&= \left( \hat{\epsilon} \cdot \vec{x} \right) \left( \hat{\epsilon'} \cdot p \right)  \left( \hat{\epsilon'} \cdot \vec{p} \right) \left( \hat{\epsilon} \cdot \vec{x} \right) 
+.\end{align*}
 
 \end{document}
