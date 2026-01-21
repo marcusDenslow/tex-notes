@@ -215,6 +215,14 @@ Now lets compute the basic element of the above formula for our decomposed radia
 	\frac{ \partial A_{\mu} }{ \partial x_{\nu} } &= i \frac{1}{\sqrt{V} } \sum_{k} \sum_{\alpha=1}^{2} \epsilon^{\left( \alpha \right) }_{\mu} \frac{\omega}{c} \left( c_{k, \alpha} \left( 0 \right) e^{ik_{p} x_{p}} - c^{*}_{k, \alpha} \left( 0 \right) e^{ik_{p}x_{p}} \right) \\
 	\frac{ \partial A_{\mu} }{ \partial x_4 } &= - \frac{1}{\sqrt{V} } \sum_{k} \sum_{\alpha=1}^{2} \epsilon^{\left( \alpha \right) }_{\mu}  \frac{\omega}{c} \left( c_{k, \alpha} \left( 0 \right) e^{ik_{p} x_{p}} - c^{*}_{k, \alpha} \left( 0 \right) e^{ik_{p}x_{p}} \right) 
 .\end{align*}
+\\
+\\
+We have all the elements to finish the calculation of the Hamiltonian. Before pulling this all together in a brute force way, it's good to realize that almost all the terms will give zero. We see that the derivative of $\displaystyle A_{\mu}$ is proportional to a 4-vector, say $\displaystyle k_{\nu}$ and to a polarization vector, say $\displaystyle \epsilon^{\left( \alpha \right) }_{\mu}$. The dot products of the 4-vectors, either $\displaystyle k$ with itself, or $\displaystyle k$ with $\epsilon$ are zero. Going back to out expression for the Hamiltonian density, we can eliminate some terms. 
+\\
+\\
+\begin{align*}
+	\mathcal{H} &= - \frac{ \partial A_{\mu} }{ \partial x_4  } \frac{ \partial  A_{\mu} }{ \partial x_4 }  + \frac{1}{2} \left( \frac{ \partial A_{\nu} }{ \partial x_{\mu} } - \frac{ \partial A_{\nu} }{ \partial x_{\mu} }   \right) 
+.\end{align*}
 
 
 
