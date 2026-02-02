@@ -1,0 +1,32 @@
+\documentclass{report}
+
+\usepackage{docmute}
+\input{../templates/preamble}
+\input{../templates/macros}
+\input{../templates/letterfonts}
+
+\title{\Huge{Quantum Physics}\\Building From scratch}
+\author{\Huge{Marcus Allen Denslow}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+% Suppress sub-file title pages and tables of contents
+\def\maketitle{}
+\def\tableofcontents{}
+
+% === Part 1: Quantum Theory of Radiation ===
+\input{Quantum-Theory-of-Radiation}
+
+\newpage
+
+% === Part 2: Relativistic Quantum Waves ===
+\input{relativistic-quantum-waves}
+
+\end{document}

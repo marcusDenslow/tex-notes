@@ -1,10 +1,10 @@
 \documentclass{report}
 
-\input{../templates/preamble}
-\input{../templates/macros}
-\input{../templates/letterfonts}
+\input{templates/preamble}
+\input{templates/macros}
+\input{templates/letterfonts}
 
-\title{\Huge{Relativistic Quantum Waves (Klein-Gordon Equation}\\ And expanding to the Dirac equation }
+\title{\Huge{Relativistic Quantum Waves (Klein-Gordon Equation)}\\ And expanding to the Dirac equation }
 \author{\Huge{Marcus Allen Denslow}}
 \date{2025-11-14}
 
@@ -16,6 +16,7 @@
 \pdfbookmark[section]{\contentsname}{toc}
 \tableofcontents
 \pagebreak
+
 
 \chapter{Deriving the KG Equation}
 \section{The Strategy: Combining Relativity and Quantum Mechanics}
@@ -44,16 +45,22 @@ In quantum mechanics, we promote classical observables to operators that act on 
 To use these in Einstein's energy-momentum relation, we need to square them. When we square an operator, we apply it twice:\\
 \\
 \textbf{Energy term:}
-\[
-\left(\frac{E}{c}\right)^2 \to \left(\frac{\hat{E}}{c}\right)^2 = \left(\frac{i\hbar}{c}\frac{\partial}{\partial t}\right)^2 = -\frac{\hbar^2}{c^2}\frac{\partial^2}{\partial t^2}
-.\]
+
+\begin{equation}
+    \left( \frac{E}{c} \right)^2 \to \left( \frac{\hat{E}}{c} \right)^2 = \left( \frac{i\hbar}{c} \frac{ \partial }{ \partial t }  \right)^2 = - \frac{\hbar^2}{c^2}\frac{ \partial^2 }{ \partial t^2 } 
+\end{equation}
+
+
 \textbf{Momentum terms:}
-\[
-\hat{p}_x = -i\hbar\frac{\partial}{\partial x} \to -p^2_x \to \hbar^2\frac{\partial^2}{\partial x^2}
-.\]
-\[
-\text{Likewise: } -p^2_y \to \hbar^2\frac{\partial^2}{\partial y^2} \text{ and } -p^2_z \to \hbar^2\frac{\partial^2}{\partial z^2}
-.\]
+
+\begin{equation}
+	\hat{p}_{x} = -i\hbar\frac{ \partial }{ \partial  x} \to -p^2_{x} \to \hbar^2\frac{ \partial^2 }{ \partial x^2 } 
+\end{equation}
+
+
+\begin{equation}
+    \text{Likewise: } -p^2_{y} \to \hbar^2\frac{ \partial^2 }{ \partial y^2 } \quad \text{ and } \quad -p^2_{z} \to \hbar^2\frac{ \partial^2 }{ \partial z^2 } 
+\end{equation}
 }
 
 
@@ -85,9 +92,12 @@ Operating on a wavefunction $\psi$:
 
 \section{Compact Notation: Laplacian}
 We can write the spatial derivatives more compactly using the Laplacian operator:
-\[
-\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}
-\]
+
+\begin{equation}
+    \nabla^2 = \frac{ \partial^2 }{ \partial x^2 } + \frac{ \partial^2 }{ \partial y^2 } + \frac{ \partial^2 }{ \partial z^2 } 
+\end{equation}
+
+
 Note the sign: in our equation we have $-\nabla^2$ because of the minus signs in the original expression.\\
 \\
 Substituting this into our equation:
@@ -100,15 +110,20 @@ This is cleaner and makes the equation look more symmetric.
 We can make this even more compact by defining two convenient symbols:\\
 \\
 \textbf{The d'Alembertian operator} (wave operator):
-\[
-\Box \equiv \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2
-\]
+
+\begin{equation}
+	\Box = \frac{1}{c^2}\frac{ \partial^2 }{ \partial t^2 } - \nabla^2
+\end{equation}
+
+
 This is the relativistic generalization of the Laplacian. It's the natural wave operator in spacetime.\\
 \\
 \textbf{The mass parameter:}
-\[
-\mu \equiv \frac{mc}{\hbar}
-\]
+
+\begin{equation}
+   \mu = \frac{mc}{\hbar} 
+\end{equation}
+
 This has units of inverse length (like a wavenumber). It represents the "Compton wavenumber" of the particle.
 \nt{In natural units where $c = \hbar = 1$, we'd just write $\mu = m$. But we keep factors explicit for clarity.}
 
@@ -126,9 +141,12 @@ Just like in non-relativistic quantum mechanics, we look for plane wave solution
 
 \dfn{Klein-Gordon Plane Wave function}{
 	The general form using four-vector notation:
-	\[
-	\psi = A \exp\left(-\frac{i}{\hbar}p \cdot x\right)
-	\]
+
+	\begin{equation}
+		\psi = A \exp \left( -\frac{i}{\hbar}p \cdot x \right) 
+	\end{equation}
+
+
 	where:
 	\begin{alignat*}{2}
 		p = \left[E/c, \vec{p}\right] &\quad \text{(four-momentum)} \\
@@ -143,15 +161,18 @@ Just like in non-relativistic quantum mechanics, we look for plane wave solution
 	\end{align*}
 	This looks like $e^{i(\vec{k} \cdot \vec{x} - \omega t)}$ — a traveling wave!
 }
-\vspace{2em}
+\vspace{6em}
 
 \section{Proof that plane waves satisfy Klein-Gordon}
 Let's verify that $\psi = A \exp[-ip \cdot x/\hbar]$ is indeed a solution.\\
 \\
 Rewrite Klein-Gordon as:
-\[
-\left[\Box + \mu^2\right]\psi = 0 \quad \Rightarrow \quad \Box\psi = -\mu^2\psi
-\]
+
+\begin{equation}
+	\left[ \Box + \mu^2 \right] \psi = 0 \qquad \implies \qquad \Box \psi = - \mu^2 \psi
+\end{equation}
+
+
 The question is: does the d'Alembertian acting on our plane wave give us $-\mu^2\psi$?\\
 \\
 Apply the d'Alembertian to the plane wave:
@@ -189,9 +210,12 @@ Let's say that you have two functions that satisfy the Klein-Gordon Equation, ca
 \begin{equation}
     \left[ \Box + \mu^2 \right]\psi_2 = 0
 \end{equation}
-Let's call their sum $\displaystyle \psi_3$ so \[
-\psi_3 = \psi_1 + \psi_2
-.\] 
+Let's call their sum $\displaystyle \psi_3$ so 
+
+\begin{equation}
+    \psi_{3} = \psi_1 + \psi_2
+\end{equation}
+
 The question then arises: does $\displaystyle \psi_3$ satisfy the Klein-Gordon Equation?\\
 Well, yes it does. We can show this with:
 \begin{align*}
@@ -252,9 +276,11 @@ This is the dispersion relation! Notice:
 
 \section{Step 2: Calculating the Group Velocity}
 Now we differentiate the dispersion relation to get the group velocity:
-\[
-v_g = \frac{d\omega}{dk}
-\]
+
+\begin{equation}
+    v_{g} = \frac{d \omega}{dk}
+\end{equation}
+
 \begin{equation}
     v_{g} = \frac{d}{dk}\left[\sqrt{(kc)^2 + (mc^2/\hbar)^2}\right]
 \end{equation}
@@ -433,9 +459,13 @@ Now rewriting in terms of $\displaystyle \psi A = \phi^{(R)} + \phi^{(L)}$ and $
   0 & -i \vec{\sigma} \cdot \vec{\nabla} \\
   i \vec{\sigma} & 0
 \end{pmatrix} + \begin{pmatrix} \frac{ \partial }{ \partial x_4 } & 0 \\ 0 & - \frac{ \partial }{ \partial x_4 }   \end{pmatrix}  \right] \\
-																  &= \hbar \left[ \begin{pmatrix} 0 & -i \sigma_{i} \\ i \sigma_{i} & 0 \end{pmatrix} \frac{ \partial }{ \partial x_{i} } + \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \frac{ \partial  }{ \partial x_4 }     \right] \\
-																  &= \hbar \left[ \gamma_{\mu} \frac{ \partial }{ \partial x_4 }  \right]
-.\end{align*}\\ \\
+&= \hbar \left[ \begin{pmatrix} 0 & -i \sigma_{i} \\ i \sigma_{i} & 0 \end{pmatrix} \frac{ \partial }{ \partial x_{i} } + \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \frac{ \partial  }{ \partial x_4 }     \right] \\
+&= \hbar \left[ \gamma_{\mu} \frac{ \partial }{ \partial x_4 }  \right]
+\\
+\\
+.\end{align*}
+\\
+\\
 \section{Gamma Matrices and Their Properties}
 Define the 4 by 4 matrices $\displaystyle \gamma \mu$ are by.
 \begin{align*}
@@ -501,8 +531,8 @@ The next step is to find the solutions with definite momentum. The four plane wa
 \begin{equation}
     \psi^{(r)}_{\vec{p}} = \sqrt{\frac{mc^2}{\left| E \right|V }}u^{(r)} _{\vec{p}}e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar }
 \end{equation}\\ \\
-where he four spinors are given by:
-\[
+where the four spinors are given by:
+\begin{equation}
   \begin{array}{c@{\qquad}c}
   u_{\vec{p}}^{(1)} = \sqrt{\frac{E + mc^2}{2mc^2}} \begin{pmatrix}
   1 \\
@@ -532,7 +562,7 @@ where he four spinors are given by:
   1
   \end{pmatrix}
   \end{array}
-  \]
+\end{equation}
   $E$ is positive for solutions 1 and 2 and negative for solutions 3 and 4. The spinors are orthogonal
    \begin{equation}
       u^{(r)^{\dagger}}_{\vec{p}} u^{(r')}_{\vec{p}} = \frac{\left| E \right| }{mc^2} \partial_{rr'}
@@ -617,7 +647,7 @@ The Dirac equation should be the invariant under Lorentz boosts and under rotati
 	For rotations and boosts, $\gamma_{5}$ commutes with $S$ since it commutes with the pair of gamma matrices. For a parity inversion, it anticommutes with  $\displaystyle S_{P} = \gamma_4$. The simplest set of covariants we can make from Dirac spinors and $\gamma$ matrices are tabulated below.
 \\
 \\
-	\[
+\begin{equation}
 	\begin{tabular}{|c|c|c|}
 		\hline
 		Classification & Covariant Form & no. of Components\\
@@ -630,7 +660,7 @@ The Dirac equation should be the invariant under Lorentz boosts and under rotati
 		$\mathbf{Total}$ & & 16\\
 		\hline
 	\end{tabular}
-	.\] 
+\end{equation}
 	Products of more $\gamma$ matrices turn out to repeat the same quantities because the square of any $\gamma$ matrix is 1.
 	\\
 	\\
@@ -650,11 +680,11 @@ The Dirac equation should be the invariant under Lorentz boosts and under rotati
 \subsection{Conservation Laws}
 	It's easy to see the $p_{k}$ commutes with the Hamiltonian for a free particle so that momentum will be conserved. The components of orbital angular momentum do not commute with $H$
 	 \begin{equation}
-		 \left[ H, L_{z} \right] = ic \gamma_4 \left[ \gamma_{j} p_{j}, xp_{y} - yp_{x} \right] = \hbar c \gamma_4 \left( \gamma_1 p_{y} - \gamma_2 p_{x} \right) 
+		 \left[ H, L_{z} \right] = ic \gamma_4 \left[ \gamma_{j} p_{j}, xp_{y} - yp_{x} \right] = \hbar c \gamma_4 \left( \gamma_1 p_{y} - \gamma_2 p_{x} \right)
 	 \end{equation}
 	 The components of spin also do not commute with $H$.
 	 \begin{equation}
-		 \left[ H, S_{z} \right] = \hbar c \gamma_4 \left[ \gamma_2 p_{x} - \gamma_1 p_{y} \right] 
+		 \left[ H, S_{z} \right] = \hbar c \gamma_4 \left[ \gamma_2 p_{x} - \gamma_1 p_{y} \right]
 	 \end{equation}
 	 But, from the above, the components of total angular momentum do commute with $H$.
 	 \begin{equation}
@@ -674,7 +704,6 @@ The Dirac equation should be the invariant under Lorentz boosts and under rotati
 	     H_{int} = i e \gamma_4 \gamma_{k}A_{k}
 	 \end{equation}
 	 This is simpler than the non-relativistic case, with no $\displaystyle A^2$ term and only one power of $e$.
-
 \section{Zitterbewegung}
 The Dirac equation has some unexpected phenomena we can derive. Velocity eigenvalues for electrons are always  $\pm c$ along any direction. Thus the only values of velocity that we could measure are $\pm c$
 	 \\
@@ -692,6 +721,7 @@ The Dirac equation has some unexpected phenomena we can derive. Velocity eigenva
 	\begin{equation}
 	    E = \frac{mc^2}{\sqrt{1 + \frac{Z^2 \alpha^2}{\left( n_{r} + \sqrt{\left( j + \frac{1}{2} \right)^2 - Z^2 \alpha^2 }  \right) }} }
 	\end{equation}
+
 	We can identify the standard principle quantum number in this case as $\displaystyle n = n_{r} + j + \frac{1}{2}$. This result gives the same answer as out non-relativistic calculation to order $\displaystyle \alpha^{4}$ but is also correct to higher order. It is an exact solution to the quantum mechanics problem posed but does not include the effects of field theory, such as the Lamb shift and the anomalous magnetic moment of the electron.
 	\\
 	\\
@@ -713,7 +743,302 @@ The Dirac equation has some unexpected phenomena we can derive. Velocity eigenva
 		\psi^{(3)}_{\vec{p}} &= \sqrt{\frac{mc^2}{\left| E \right| V}} u^{(3)}_{\vec{p}} e^{i \left( \vec{p} \cdot \vec{x} + \left| E \right| t \right) / \hbar} \to \sqrt{\frac{mc^2}{\left| E \right| V}} u^{(2)}_{-\vec{p}} e^{i \left( -\vec{p} \cdot \vec{x} - \left| E \right| t \right) / \hbar } \\
 		\psi^{(4)}_{\vec{p}} &= \sqrt{\frac{mc^2}{\left| E \right| V}}  u^{(4)}_{\vec{p}} e^{i \left( \vec{p} \cdot \vec{x} + \left| E \right| t \right) / \hbar } \to -\sqrt{\frac{mc^2}{\left| E \right| V}} u^{(1)}_{-\vec{p}} e^{i \left( -\vec{p} \cdot \vec{x} - \left| E \right| t \right) / \hbar}
 	.\end{align*}
-	which defines new positron spinors $\displaystyle v^{(1)}_{\vec{p}}$ and $\displaystyle v^{(2)}_{\vec{p}}$ that are charge conjugates of $\displaystyle u^{(1)}_{\vec{p}}$ and $\displaystyle u^{(2)}_{\vec{p}}$
-  
+\\
+\\
+The charge conjugate of an electron state is the ''negative energe'' electron tate, the absence of which would produce a positron of the same energy, momentum, spin and velocity as the electron. That is, the conjugate is the hole needed to make a positron with the same properties as the electron except that it has the opposite charge.
+\\
+\\
+Let us take one more look at a plane wave solution to the Dirac equation, for example $\displaystyle \psi^{\left( 1 \right)}_{\vec{p}}$ and its charge conjugate, from the point of view that a positron is an electron moving backwards in time. Discard the idea of the ''negative energy'' sea. Assume that we have found a new solution to the field equations that moves backwards in time rather than forward.
+
+\begin{equation}
+    \psi^{\left( 1 \right) }_{\vec{p}} = \sqrt{\frac{mc^2}{\left| E \right| V}} u^{\left( 1 \right) }_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} \to -\sqrt{\frac{mc^2}{\left| E \right| V}} u^{\left( 4 \right) }_{-\vec{p}} e^{i \left( -\vec{p} \cdot \vec{x} + Et \right) / \hbar} \equiv \sqrt{\frac{mc^2}{\left| E \right| V}} v^{(1)}_{\vec{p}} e^{i\left( -\vec{p} \cdot \vec{x} + Et \right) / \hbar}
+\end{equation}
+\\
+\\
+The charge conjugate of the electron solution is an electron with the same charge $\displaystyle \mathbf{-e}$, opposite momentum $\displaystyle \mathbf{-\vec{p}}$, and spin opposite to the original state. It satisfies the equation with the signs of the EM fields reversed and, because the sign of the $\displaystyle \mathbf{Et}$ term in the exponential is reversed, it behaves as a positive energy solution moving backward in time, with the right momentum and spin.
+\\
+\\
+Our opinion of the ''negative energy'' solutions has been biased by living in a world of matter. We know about matter waves oscillating as $\displaystyle e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar}$. There is a symmetric set of solutions for the same particles moving ''backwards in time'' oscillating as $\displaystyle e^{i\left( -\vec{p} \cdot \vec{x} + Et \right) / \hbar}$. These solutions behave like antiparticles moving forward in time. Consider the following diagram (which contributes to Thomson scattering) from two points of view. Fron one point of view, an electron starts out at $\displaystyle t_1$, lets say in the state $\displaystyle \psi^{\left( 1 \right) }_{\vec{p}}$. At time $t_3$, the electron interacts with the field and make s a transition to the state $\displaystyle \psi^{\left( 4 \right) }_{\vec{p''}}$ which travels backwards in time to $\displaystyle t_2$ where it again interacts and makes a transition to $\displaystyle \psi^{\left( 1 \right) }_{\vec{p'}}$. From the other point of view, the electron starts out at $\displaystyle t_1$, then, at time $\displaystyle t_2$, the field causes the creation of an electron positron pair both of which propagate forwards n time. At time $\displaystyle t_3$, the positron and initial annihilate interacting with the field. The electron produced at $t_2$ propagates on into the future.
+\\
+\\
+\section{Quantization of the Dirac Field}
+The classical free field Lagrangian density for the Dirac electron field is
+\begin{equation}
+	\mathcal{L} = - c \hbar \overline{\psi} \gamma_{\mu} \frac{ \partial }{ \partial x_{\mu} } \psi - mc^2 \overline{\psi}\psi
+\end{equation}
+\\
+\\
+The independent fields are considered to be the 4 components of $\displaystyle \psi$ and the four components of $\displaystyle \overline{\psi}$. This Lagrange density is a Lorents scalar that depends only on the fields. The Euler-Lagrange equation using the $\displaystyle \overline{\psi}$ independent fields is simple since there is no derivative of $\displaystyle \overline{\psi}$ in the Lagrangian.
+\begin{align*}
+	\frac{ \partial  }{ \partial x_{\mu} } \left( \frac{ \partial \mathcal{L} }{ \partial (\partial \overline{\psi} / \partial x_{\mu}) }  \right)  - \frac{ \partial \mathcal{L} }{ \partial \overline{\psi} }  &= 0 \\ 
+	\frac{ \partial \mathcal{L} }{ \partial \overline{\psi} } &= 0 \\
+	-c\hbar \gamma_{\mu} \frac{ \partial  }{ \partial x_{\mu} } \psi - mc^2 \psi &= 0 \\
+	\left( \gamma_{\mu} \frac{ \partial  }{ \partial x_{\mu} } + \frac{mc}{\hbar}  \right)  &= 0
+\end{align*}
+\\
+\\
+This gives us the Dirac equation indicating that this Lagrangian is the right one. The Euler-Lagrange equation derived using the fields $\displaystyle \psi$ is the Dirac adjoint equation,
+\begin{align*}
+	\frac{ \partial  }{ \partial x_{\mu} }  \left( \frac{ \partial \mathcal{L} }{ \partial  \left( \partial \psi / \partial x_{\mu} \right)  }  \right) - \frac{ \partial \mathcal{L} }{ \partial \psi } & = 0 \\
+	\frac{ \partial  }{ \partial x_{\mu} } \left( - c \hbar \overline{\psi} \gamma_{\mu} \right) + mc^2 \overline{\psi}  &= 0 \\
+	- \frac{ \partial  }{ \partial x_{\mu} } \overline{\psi} \gamma_{\mu} + \frac{mc}{\hbar}\overline{\psi} &= 0
+.\end{align*}
+\\
+\\
+again indicating that this is the correct Lagrangian if the Dirac equation is assumed to be correct.
+\\
+\\
+To compute the Hamiltonian density, we start by finding the momenta conjugate to the fields $\psi$.
+\begin{equation}
+	\Pi = \frac{ \partial \mathcal{L} }{ \partial \left( \frac{ \partial \psi }{ \partial t }  \right)  }  = - c\hbar\overline{\psi}\gamma_4 \frac{1}{ic} = i\hbar \psi^{\dagger} \gamma_4 \gamma_4 = i\hbar \psi^{\dagger}
+\end{equation}
+\\
+\\
+There is no time derivation of $\displaystyle \overline{\psi}$ so those momenta are zero. The Hamiltonian can then be computed.
+\begin{align*}
+	\mathcal{H} &= \frac{ \partial \psi }{ \partial t } \Pi - \mathcal{L} \\
+				&= i \hbar \psi^{\dagger} \frac{ \partial \psi }{ \partial t }  + c \hbar \overline{\psi} \gamma_{\mu} \frac{ \partial  }{ \partial x_{\mu} } + mc^2 \overline{\psi} \psi \\
+	&= - c \hbar \psi^{\dagger} \frac{ \partial \psi }{ \partial x_4 } + c \hbar \psi^{\dagger} \gamma_4 \gamma_4 \frac{ \partial \psi }{ \partial x_4 } + c \hbar \overline{\psi}\gamma_{k} \frac{ \partial  }{ \partial x_{k} } + mc^2\overline{\psi} \psi \\
+	&= \hbar c \psi^{\dagger} \gamma_4 \gamma_{k} \frac{ \partial  }{ \partial x_{k} } \psi + mc^2 \psi^{\dagger} \gamma_4 \psi \\
+	&= \psi^{\dagger} \left( \hbar c \gamma_4 \gamma_{k} \frac{ \partial  }{ \partial x_{k} } \psi + mc^2 \gamma_4 \right) \psi \\
+	\mathbf{H} &= \int \psi^{\dagger} \left( \hbar c \gamma_4 \gamma_{k} \frac{ \partial  }{ \partial x_{k} } + mc^2 \gamma_4 \right) \psi \, \mathbf{d^3x}
+.\end{align*}
+\\
+\\
+We may expand the field $\displaystyle \psi$ in the complete set of plane waves either using the four spinors $\displaystyle u^{\left( r \right) }_{\vec{p}}$ for $\displaystyle \mathbf{r = 1, 2, 3, 4}$ or using the electron and positron spinors $\displaystyle u^{\left( 4 \right) }_{\vec{p}}$ and $\displaystyle u^{\left( r \right) }_{\vec{p}}$ for $\displaystyle \mathbf{r = 1, 2}$. For economy of notation, we chose the former with a plan to change to the later once the quantization is completed.
+\begin{equation}
+    \psi \left( \vec{x},t \right)  = \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^2}{\left| E \right| V}} c_{\vec{p}, r} u ^{\left( r \right) }_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar}
+\end{equation}
+\\
+\\
+The conjugate can also be written out.
+\begin{equation}
+    \psi^{\dagger}\left( \vec{x},t \right) = \sum_{\vec{p}} \sum_{r=1}^{4} \sqrt{\frac{mc^2}{\left| E \right| V}} c_{\vec{p},r} u^{\left( r \right) }_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar}
+\end{equation}
+\\
+\\
+Writing the Hamiltonian in terms of these fields, the formula can be simplified ad follows
+\begin{align*}
+	\mathbf{H} &= \int \psi^{\dagger} \left( \hbar c \gamma_4 \gamma_{k} \frac{ \partial  }{ \partial x_{k} } + mc^2 \gamma_4 \right) \,\psi \mathbf{d^3 x} \\
+	\mathbf{H} &= \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}} \sum_{r'=1}^{4} \sqrt{\frac{mc^2}{\left| E' \right| V}} c^{*}_{\vec{p'}, r'} u^{\left( r' \right) \dagger}_{\vec{p'}} e^{-i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar} \left( \hbar c \gamma_4 \gamma_{k} \frac{ \partial  }{ \partial x_{\mu} } + mc^2 \gamma_4  \right) \sqrt{\frac{mc^2}{\left| E \right| V}} c_{\vec{p}, r} u^{(r)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar}   \, \mathbf{d^3x} \\ 
+	\mathbf{H} &= \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}} \sum_{r'=1}^{4} \sqrt{\frac{mc^2}{\left| E' \right| V}} c^{*}_{\vec{p'}, r'} u^{\left( r' \right) \dagger}_{\vec{p'}} e^{-i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar} \left( \hbar c \gamma_4 \gamma_{k} \frac{ ip_{k} }{ \hbar }  + mc^2 \gamma_4  \right) \sqrt{\frac{mc^2}{\left| E \right| V}} c_{\vec{p}, r} u^{(r)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar}   \, \mathbf{d^3x} \\ 
+	\mathbf{H} &= \int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p}} \sum_{r'=1}^{4} \sqrt{\frac{mc^2}{\left| E' \right| V}} c^{*}_{\vec{p'}, r'} u^{\left( r' \right) \dagger}_{\vec{p'}} e^{-i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar} \left( i c \gamma_4 \gamma_{k} p_{k} + mc^2 \gamma_4  \right) \sqrt{\frac{mc^2}{\left| E \right| V}} c_{\vec{p}, r} u^{(r)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar}   \, \mathbf{d^3x} \\ 
+	\left( i c \gamma_4 \gamma_{k} p_{k} + mc^2 \gamma_4 \right) \psi = E \psi \\
+	\mathbf{H} &=	\int \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p'}} \sum_{r' = 1}^{4} \sqrt{\frac{mc^2}{\left| E' \right| V}} c^{*}_{\vec{p'}, r'} u^{\left( r' \right) ^{\dagger}}_{\vec{p'}} e^{-i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} \left( E \right) \sqrt{\frac{mc^2}{\left| E \right| V}} c_{\vec{p}, r} u^{(r)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} \, \mathbf{d^3x} \\
+	\mathbf{H} &= \sum_{\vec{p}} \sum_{r = 1}^{4} \sum_{\vec{p'}} \sum_{r' = 1}^{4} \sqrt{\frac{mc^2}{\left| E' \right| }} c^{*}_{\vec{p}, r'}  u^{\left( r' \right) ^{\dagger}}_{\vec{p}} \left( E \right) \sqrt{\frac{mc^2}{\left| E \right| }} c_{\vec{p}, r} u^{\left( r \right) }_{\vec{p}} \delta_{\vec{p} \vec{p'}} \\
+	\mathbf{H} &= \sum_{\vec{p}} \sum_{r = 1}^{4}  \sum_{r' = 1}^{4} \frac{mc^2}{\left| E \right| } c^{*}_{\vec{p}, r'} c_{\vec{p}, r} u^{\left( r' \right) ^{\dagger}}_{\vec{p}} \left( E \right)  u ^{\left( r \right) }_{\vec{p}} \\
+	u^{(r)^{\dagger}}_{\vec{p}} u^{\left( r' \right) }_{\vec{p}} = \frac{\left| E \right| }{mc^2} \delta_{rr'} \\
+	\mathbf{H} &= \sum_{\vec{p}} \sum_{r = 1}^{4}  \sum_{r' = 1}^{4} \frac{mc^2 E}{\left| E \right| } c^{*}_{\vec{p}, r'} c_{\vec{p} r} \frac{\left| E \right| }{mc^2} \delta_{rr'} \\
+	\mathbf{H} &= \sum_{\vec{p}} \sum_{r = 1}^{4} E c^{*}_{\vec{p}, r} c_{\vec{p},r}
+.\end{align*}
+\\
+\\
+where the previous results from the Hamiltonian form of the Dirac equation and the normalization of the Dirac spinors have been used to simplify the formula greatly. Compare this Hamiltonian to the one used to quantize the Electromagnetic field
+\begin{equation}
+	\mathbf{H} = \sum_{k, \alpha} \left( \frac{\omega}{c} \right)^2 \left[ c_{k, \alpha} c^{*}_{k, \alpha} + c^{*}_{k, \alpha} c_{k, \alpha} \right]
+\end{equation}
+\\
+\\
+for which the Fourier coefficients were replaced by operators as follows.
+\begin{align*}
+	c_{k, \alpha} &= \sqrt{\frac{\hbar c^2}{2\omega}} a_{k, \alpha} \\
+	c^{*}_{k, \alpha} &= \sqrt{\frac{\hbar c^2}{2\omega}} a^{\dagger}_{k, \alpha}
+.\end{align*}
+\\
+\\
+The Hamiltonian written in the terms of the creation and annihilation operators is.
+\begin{equation}
+	\mathbf{H} = \frac{1}{2} \sum_{k, \alpha} \hbar \omega \left[ a_{k, \alpha} a^{\dagger}_{k, \alpha} + a^{\dagger}_{k, \alpha} a_{k, \alpha} \right]
+\end{equation}
+\\
+\\
+By analogy, we can skip the steps of making coordinates and momenta for the individual oscillators, and just replace the Fourier coefficients for the Dirac plane waves by operators. 
+\begin{align*}
+	\mathbf{H} &= \sum_{\vec{p}} \sum_{r = 1}^{4} E b^{(r)^{\dagger}}_{\vec{p}} b^{(r)}_{\vec{p}} \\
+	\psi \left( \vec{x}, t \right)  &= \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^2}{\left| E \right| V}} b^{(r)}_{\vec{p}} u^{(r)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} \\
+	\psi^{\dagger} \left( \vec{x}, t \right) &= \sum_{\vec{p}} \sum_{r = 1}^{4} \sqrt{\frac{mc^2}{\left| E \right| V}} b^{(r)^{\dagger}}_{\vec{p}} u^{(r) \dagger}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar}
+.\end{align*}
+\\
+\\
+(Since the Fermi-Dirac operators will anti-commute, the analogy is imperfect.)
+\\
+\\
+The creation an annihilation operators $\displaystyle b^{(r)^{\dagger}}_{\vec{p}}$ and $\displaystyle b^{(r)}_{\vec{p}}$ satisfy anti-commutation relations.
+\begin{align*}
+	\left\{ b^{(r)}_{\vec{p}}, b^{\left( r' \right)^{\dagger}} \right\} &= \delta_{\vec{p} \vec{p'}} \\
+	\left\{ b^{(r)}_{\vec{p}}, b^{(r)}_{\vec{p}} \right\} &= 0 \\
+	\left\{ b^{(r)\dagger}_{\vec{p}}, b^{(r)^{\dagger}}_{\vec{p}} \right\} &= 0 \\
+	N^{(r)}_{\vec{p}} &= b^{(r)^{\dagger}}_{\vec{p}} b^{(r)}_{\vec{p}}
+.\end{align*}
+\\
+\\
+$\displaystyle N^{(r)}_{\vec{p}}$ is the occupation number operator. The anti-commutation relations constrain the occupation number to be 1 or 0.
+\\ 
+\\
+A state of the electrons in a system can be described by the occupation numbers (0 or 1 for each plane wave). The state can be generated by operation on the vacuum state with the appropriate set of creation operators.
+
+
+\section{The Quantized Dirac Field with Positron Spinors}
+The basis states in out quantized Dirac field can be changed eliminate the ''negative energy'' states and replace them with positron states. Recall that we can replace $\displaystyle -u^{(4)}_{-\vec{p}}$
+\\
+\\
+positron spinor $\displaystyle v^{(1)}_{\vec{p}}$ and $\displaystyle u^{(3)}_{-\vec{p}}$ with $\displaystyle v^{(2)}_{\vec{p}}$ such that the new spinors are charge conjugates of th electron spinors
+\begin{equation}
+    S_{C}u^{(s)*}_{\vec{p}} = v^{(s)}_{\vec{p}} \qquad s = 1, 2
+\end{equation}
+\\
+\\
+The positron spinor is actually just the same as the negative energy spinor when the momentum is reversed.
+\\
+\\
+We name the creation and annihilation operators for the positron states to be $\displaystyle d^{(s)^{\dagger}}_{\vec{p}}$ and $\displaystyle d^{(s)}_{\vec{p}}$ and identify the to be.
+\begin{align*}
+	d^{(1)}_{\vec{p}} \quad &= \quad -b^{(4)^{\dagger}}_{\vec{p}} \\
+	d^{(2)}_{\vec{p}} \quad &= \quad b^{(3)^{\dagger}}_{\vec{p}}
+.\end{align*}
+\\
+\\
+These anti-commute with everything else with the exception that
+\begin{equation}
+	\left\{ d^{(s)}_{\vec{p}}, d^{\left( s' \right) ^{\dagger}}_{\vec{p'}} \right\} = \delta_{ss'}, \delta_{\vec{p} \vec{p'}}
+\end{equation}
+\\
+\\
+The Dirac field and Hamiltonian can now be rewritten.
+\begin{align*}
+	\psi\left( \vec{x}, t \right) &= \sum_{\vec{p}} \sum_{x = 1}^{2} \sqrt{\frac{mc^2}{EV}} \left( b^{(s)}_{\vec{p}} u^{(s)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar } + d^{(s)\dagger}_{\vec{p}} v^{(s)}_{\vec{p}} e^{-i\left( \vec{p} \cdot \vec{x} -Et \right) / \hbar} \right) \\
+	\psi^{\dagger}\left( \vec{x}, \vec{t} \right) &= \sum_{\vec{p}} \sum_{s = 1}^{2} \sqrt{\frac{mc^2}{EV}} \left( b^{(s)\dagger}_{\vec{p}} u^{(s) \dagger}_{\vec{p}} e^{-i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} + d^{(s)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right)  / \hbar} \right) \\
+	\mathbf{H} &= \sum_{\vec{p}} \sum_{s=1}^{2} E \left( b^{(s)^{\dagger}}_{\vec{p}} b^{(s)}_{\vec{p}} - d^{(s)}_{\vec{p}} d^{(s)^{\dagger}}_{\vec{p}} \right)  \\
+			   &= \sum_{\vec{p}} \sum_{s = 1}^{2} \left( b^{(s)^{\dagger}}_{\vec{p}} b^{(s)}_{\vec{p}} + d^{(s)^{\dagger}}_{\vec{p}} d^{(s)}_{\vec{p}} - 1 \right) 
+.\end{align*}
+\\
+\\
+All the energies of these states are positive.
+\\
+There is an (infinite) constant energy, similar but opposite sign to the one for the quantized EM field, which we must add to make the bacuum state have zero energy. Note that, had we used commuting operators (Bose-Einstein) instead of anti-commuting, there would have been no lowest energy ground state so this Energy subtraction would not have been possible. Fermi-Dirac statistics are required for particled satisfying the Dirac equation.
+\\
+\\
+Since the operators creating fermion states anti-commute, fermion states must be antisymmetric under interchange. Assume $\displaystyle \mathbf{b^{\dagger}}_{r}$ and $\displaystyle \mathbf{b_{r}}$ re the creation and annihilation operators for fermions and that they anti-commute.
+\begin{equation}
+	\left\{ b^{\dagger}_{r}, b^{\dagger}_{r'} \right\} = 0
+\end{equation}
+The states are then antisymmetric under interchange of pairs of fermions.
+\begin{equation}
+	b^{\dagger}_{r}b^{\dagger}_{r'} \left|0\right> = -b^{\dagger}_{r'}b^{\dagger}_{r} \left|0\right>
+\end{equation}
+It's not hard to show that the occupation number for fermion states is either zero or one.
+\\
+Note that the spinors satisfy the following equations.
+\begin{align*}
+	\left( i \gamma_{\mu}p_{\mu} \right) u^{(s)}_{\vec{p}} &= 0 \\
+	\left( -i \gamma_{\mu}p_{\mu} + mc \right) v^{(s)}_{\vec{p}}  &= 0
+.\end{align*}
+\\
+\\
+Since we changed the sign of the momentum in out definition of $\displaystyle v^{(s)}_{\vec{p}}$, the momentum term in the diract equation had to change sign
+
+
+\section{Vacuum Polarization}
+Vacuum polarization is an important effect in effectively reducing the charge on a particle. The reduction is depentent on distance and hence on the energy scale.
+\\
+\\
+The term Vacuum Polarization is descriptive of the effect. A charged particle will polarize the vacuum in a way analagous to the way a dielectric is polarized. A virtual electron positron pair in the vacuum will be affected by the charge. If the original charged source is nucleus for example, the virtual electron will be attracted and the virtual positron repelled, causing a net polarization of the vacuum which screens the nuclear charge. At very short distances from the nucleus, the bare charge is seen, while at long distances the screening is important. This causes the basic coupling $\displaystyle \mathbf{\alpha}$ to vary a bit with distance and therefore with energy. This polarization of the vacuum is similar to the polarization of a dielectric material. In this case, what is being polarized are the virtual electrons and positrons in the vacuum. Of course other particles than the electron can be polarized in the vacuum so the energy variation of the coupling "constant" is an interesting subject for research.
+\\
+\\
+The effect of vacuum polarization on Hydrogen would be to lower the energy of $\displaystyle \mathbf{S}$ states relative to others since they are close to the nucleus and therefore see an unscreened charge. This effect is actually rather small even compared to the Lamb shift and of opposite sign. Vacuum Polarization has larger effects at higher energies at which shorter distances are probed. In fact we can say that the electromagnetic coupling varies slowly with the energy scale, increasing (logarithmically) at higher energies.  This is reffered to as the running of the coupling constant.
+\\
+\\
+We can get some qualitative understanding of the origin of Zitterbewegung from the idea of virtual pair production in the field of the nucleus. The diagram below shows a photon from the Coulomb field of the nucleus producing an electron positron pair. The original real electron from the atom then anihillates with the positron, coupling to another field photon. The electron from the pair is left over and becomes the new atomic electron, however, it need not be in the same place as the original electron.
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+
+	%% line 1
+	\draw (-1, 0) --(0,2);
+	%% arrow on line 1
+	\draw (-0.5, 1) -- (-0.8, 0.8);
+	\draw (-0.5, 1) -- (-0.45, 0.65);
+
+	%% line 2
+	\draw (0, 2) -- (1, 1.5);
+	%% arrow on line 2
+	\draw (0.5,1.75) -- (0.4, 2);
+	\draw (0.5,1.75) -- (0.24, 1.6);
+
+	%% line 3
+	\draw (1, 1.5) -- (1.8, 3);
+	%% arrow on line 3
+	\draw (1.4, 2.25) -- (1, 2);
+	\draw (1.4, 2.25) -- (1.4, 1.8);
+
+	%% pluss sign
+    \node[font=\Large] at (0.4,0) {$+$};
+
+	\draw[decorate, decoration={snake, amplitude=1.5mm, segment length=3mm}]
+       (0.3,0.2) -- (0,2);
+    \draw[decorate, decoration={snake, amplitude=1.5mm, segment length=3mm}]
+		(0.5,0.2) --(1, 1.5);
+
+\end{tikzpicture}
+\end{center}
+We can estimate the distance an electron might jump as it undergoes the process. First the time for which the virtual pair exists can be estimated from the uncertainty principle. Energy conservation is violated by $\displaystyle 2mc^2$ at least so $\displaystyle \Delta t = \frac{\hbar}{2mc^2}$ (which is approximately the reciprocal of the Zitterbewegung frequency). The distance the electron appears to jump then is of the order of $c \Delta t = \frac{\hbar c}{2mc^2} = 0.002$ Ångstrøms. This is the approximate size of the fast back and forth motion of Zitterbewegung.
+
+
+\section{The QED LaGrangian and Gauge Invariance}
+The LaGrangian for electrons, photons, and the interaction between the two is the LaGrangian of Quantum ElectroDynamics.
+\begin{equation}
+	\mathcal{L} = -\hbar c \overline{\psi} \left( \gamma_{\mu} \frac{ \partial  }{ \partial x_{\mu} } + \frac{mc}{\hbar}  \right) \psi - \frac{1}{4}F_{\mu v} F_{\mu v} - ie \overline{\psi}\gamma_{\mu}A_{\mu}\psi
+\end{equation}
+QED is out first complete example on an interacting Quantum Field Theory. It taught us a great deal about the laws of physics.
+\\
+\\
+The primary difference between Quantum Mechanics and Quantum Field Theory is that particled can be created and destroyed. The probability to find an electron or a photon integrated over space does not have to be done. It can change with time. We have written the field of the photon and the electron in terms of creation and annihilation operators.
+\begin{align*}
+	A_{\mu} &= \frac{1}{\sqrt{V} } \sum_{k \alpha} \sqrt{\frac{\hbar c^2}{2 \omega}} \epsilon^{(\alpha)}_{\mu} \left( a_{k, \alpha} \left( t \right) e^{i\vec{k}\cdot \vec{x}} + a^{\dagger}_{k, \alpha} \left( t \right) e^{-i \vec{k} \cdot \vec{x}} \right) \\
+	\psi \left( \vec{x}, t \right) &= \sum_{\vec{p}} \sum_{s=1}^{2} \sqrt{\frac{mc^2}{EV}}  \left( b^{(s)}_{\vec{p}} u^{(s)}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} + d^{\left( s \right) \dagger}_{\vec{p}} v^{(s)}_{\vec{p}} e^{-i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} \right) \\
+	\psi^{\dagger}\left( \vec{x}, t \right)  &= \sum_{\vec{p}} \sum_{s=1}^{2} \sqrt{\frac{mc^2}{EV}} \left( b^{\left( s \right) \dagger}_{\vec{p}} u^{\left( s \right) \dagger}_{\vec{p}} e^{-i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} +d^{(s)}_{\vec{p}} v^{(s)\dagger}_{\vec{p}} e^{i\left( \vec{p} \cdot \vec{x} - Et \right) / \hbar} \right) 
+.\end{align*}
+\\
+\\
+Note that in the interaction term $\displaystyle -ie \overline{\psi}\gamma_{\mu}A_{\mu}\psi$ photons can be created or destroyed singly but that electrons must be created and destroyed along with a positron.
+\\
+Phase (or Gauge) symmetry can be studied very simply from this LaGrangian. We have shown that the phase transformation
+\begin{align*}
+	\psi &\to e^{i \lambda \left( x \right)}\psi \\
+	A_{\mu} \to A_{\mu} &- \frac{\hbar c}{e}\frac{ \partial \lambda \left( x \right)  }{ \partial x_{\mu} } 
+.\end{align*}
+leaves the Schrodinger equation invariant. This can be most directly studied using the LaGrangian. We can deduve from the above transformation that
+\begin{equation}
+    F_{\mu v} = \frac{ \partial A_{v} }{ \partial x_{\mu} } - \frac{ \partial A_{\mu} }{ \partial x_{v} } \to F_{\mu v} - \frac{\hbar c}{e} \left( \frac{ \partial  }{ \partial x_{\mu} } \frac{ \partial \lambda \left( x \right)  }{ \partial x_{v} } - \frac{ \partial  }{ \partial x_{v} } \frac{ \partial \lambda \left( x \right)  }{ \partial x_{\mu} }     \right)  = F_{\mu v}
+\end{equation}
+\\
+\\
+The transformed LaGrangian then can be computed easily.
+\begin{equation}
+	\mathcal{L} = -\hbar c \overline{\psi} \left( \gamma_{\mu} \frac{ \partial  }{ \partial x_{\mu} } + \frac{mc}{\hbar}  \right) \psi  - \frac{1}{4} F_{\mu v} F_{\mu v} - i e \overline{ \psi } \gamma_{\mu } A_{\mu} \psi
+\end{equation}
+The exponentials from $\displaystyle \overline{\psi}$ and $\displaystyle \psi$ cancel except for the term in which $\displaystyle \psi$ is differentiated.
+\begin{equation}
+	\mathcal{L} \to \mathcal{L} - i \hbar c \overline{\psi}\gamma_{\mu} \frac{ \partial \lambda }{ \partial x_{\mu} } \psi - i e \overline{\psi} \gamma_{\mu} \frac{-\hbar c}{e} \frac{ \partial \lambda }{ \partial x_{\mu} } \psi = \mathcal{L}
+\end{equation}
+This all may seem fairly simple but imagine that we add a mass term for the EM field, $\displaystyle -m^2 A_{\mu} a_{\mu}$. The LaGrangian is no longer guage invariant. Guage invariance implies zero mass photons and even maintains the massless photon after radiative corrections. Guage invariance also implies the existance of a conserved current. Remember that the electric current in 4D also includes the charge density. Guage invariance implies conservation of charge, another important result.
+\\
+\\
+This simple transformation $\displaystyle \psi \to e^{i \lambda \left( x \right) }$ is called a local U(1) symmetry where the U stands for unitary.
+\\
+\\
+The Weak interactions are based on an SU(2) symmetry. This is just a local phase symmetry times arbitrary local rotation in SU(2) space. The SU(2) group is familiar to us since angular momentum is based on SU(2). In the weak interactions, there are two particles that are symmetric (much like a spin up and a spin down electron but NOT a spin up and spin down electron). We can rotate our states into different linear combinations of the symmetric particles and the LaGrangian remains invariant. Given this local SU(2) symmetry of the fermion wave functions, we can easily deduce what boson fields are required to make the LaGrangian guage invariant. It turns out we need a triplet of bosons. (The weak interactions then get messy because of the Higgs mechanism but the underlying guage theory is still correct.)
+\\
+\\
+The strong interactions are based on the SU(3) group. Instead of having 3 sigma matrices to do rotations in the lowest dimention representation of the group, SU(3) has eight (8) lambda matrices. The SU(3) symmetry for the quark wavefunctions require an octet of massless vector boson called gluons to make the LaGrangian guage invariant. 
+\\
+\\
+So the standard Model is as simple as 1 2 3 in Quantum Field Theories.
+
+
+\section{Interaction with a Scalar Field}
+Yukawa couplings to a scalar field would be of the form $\displaystyle G \overline{\psi} \psi$ while couplings to a pseudoscalar field would be of the form $\displaystyle iG \overline{\psi} \gamma_5 \psi$.
+
+
 
 \end{document}
