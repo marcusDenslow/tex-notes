@@ -33,11 +33,11 @@ This "double derivative" approach (squaring the energy) will give us a second-or
 	$\displaystyle E^2 = (pc)^2 + (mc^2)^2$\\
 	Rearranging in four-vector notation:
 	$\displaystyle p \cdot p = (mc)^2 \to (mc)^2 = \left( \frac{E}{c} \right)^2 - p^2_{x} - p^2_{y} - p^2_{z}$\\
-	This is called the \textbf{mass shell} — it's a constraint that relates energy and momentum for a particle with mass $m$.
+	This is called the \textbf{mass shell} --- it's a constraint that relates energy and momentum for a particle with mass $m$.
 }
 
 \dfn{Quantum: energy and momentum operators}{
-In quantum mechanics, we promote classical observables to operators that act on wavefunctions. From the Schrödinger equation and de Broglie relations:
+In quantum mechanics, we promote classical observables to operators that act on wavefunctions. From the Schr\"{o}dinger equation and de Broglie relations:
 \begin{itemize}
     \item Energy operator: $\hat{E} = i\hbar \frac{\partial}{\partial t}$
     \item Momentum operator: $\hat{p} = -i\hbar \nabla$
@@ -76,7 +76,7 @@ Dividing through by $\hbar^2$ and rearranging:
 \end{equation}
 
 \section{The Klein-Gordon Equation!}
-We've done it! This is the \textbf{Klein-Gordon equation} — the first successful attempt at a relativistic quantum wave equation.\\
+We've done it! This is the \textbf{Klein-Gordon equation} --- the first successful attempt at a relativistic quantum wave equation.\\
 \\
 Operating on a wavefunction $\psi$:
 \begin{equation}
@@ -84,8 +84,8 @@ Operating on a wavefunction $\psi$:
 \end{equation}
 \textbf{Key features:}
 \begin{itemize}
-    \item Second-order in both time and space (treats them equally — relativistic!)
-    \item Reduces to Schrödinger equation in the non-relativistic limit
+    \item Second-order in both time and space (treats them equally --- relativistic!)
+    \item Reduces to Schr\"{o}dinger equation in the non-relativistic limit
     \item Contains the mass $m$ explicitly
 \end{itemize}
 
@@ -134,7 +134,7 @@ With these definitions, the Klein-Gordon equation becomes beautifully simple:
 This compact form makes it easy to see: it's a wave equation (the $\Box$) with a mass term ($\mu^2$).
 \\
 \chapter{Four-momentum Eigenstates}
-Now that we have the Klein-Gordon equation, what are its solutions? The simplest solutions are plane waves — states with definite energy and momentum.
+Now that we have the Klein-Gordon equation, what are its solutions? The simplest solutions are plane waves --- states with definite energy and momentum.
 
 \section{Klein-Gordon Plane Wave Solutions}
 Just like in non-relativistic quantum mechanics, we look for plane wave solutions. These represent particles with definite four-momentum.
@@ -159,7 +159,7 @@ Just like in non-relativistic quantum mechanics, we look for plane wave solution
 		\psi &= A \exp\left[\frac{i}{\hbar}\left(\vec{p} \cdot \vec{x} - Et\right)\right] \\
 		\psi &= A \exp\left[\frac{i}{\hbar}\left(\vec{p} \cdot \vec{x} \pm c\sqrt{|\vec{p}|^2 + m^2c^2}t\right)\right]
 	\end{align*}
-	This looks like $e^{i(\vec{k} \cdot \vec{x} - \omega t)}$ — a traveling wave!
+	This looks like $e^{i(\vec{k} \cdot \vec{x} - \omega t)}$ --- a traveling wave!
 }
 \vspace{6em}
 
@@ -199,7 +199,7 @@ The plane wave satisfies Klein-Gordon! \textbf{And notice}: the mass shell relat
 \chapter{Superposition}
 \section{Linearity: Building Complex Solutions from Simple Ones}
 \vspace{1em}
-The Klein-Gordon equation is \textbf{linear} — this is a crucial property! It means if $\psi_1$ and $\psi_2$ are solutions, then any linear combination $c_1\psi_1 + c_2\psi_2$ is also a solution.\\
+The Klein-Gordon equation is \textbf{linear} --- this is a crucial property! It means if $\psi_1$ and $\psi_2$ are solutions, then any linear combination $c_1\psi_1 + c_2\psi_2$ is also a solution.\\
 \\
 \textbf{Why is this important?} It lets us build arbitrarily complex wavefunctions from simple plane wave building blocks. This is how we describe localized particles, wave packets, and realistic physical situations.\\
 \\ 
@@ -239,14 +239,14 @@ And that's how we actually use energy and momentum in Eigen-states most of the t
 
 \chapter{Group Velocity and the Speed of Light Limit}
 \section{What is Group Velocity?}
-A single plane wave $e^{i(kx - \omega t)}$ extends infinitely in space — not very physical! Real particles are localized wave packets made by superposing many plane waves with different $k$ values.\\
+A single plane wave $e^{i(kx - \omega t)}$ extends infinitely in space --- not very physical! Real particles are localized wave packets made by superposing many plane waves with different $k$ values.\\
 \\
 For a wave packet:
 \begin{itemize}
-	\item \textbf{Phase velocity:} $v_p = \omega/k$ — speed of individual wave crests
-	\item \textbf{Group velocity:} $v_g = d\omega/dk$ — speed of the packet envelope (the actual particle!)
+	\item \textbf{Phase velocity:} $v_p = \omega/k$ --- speed of individual wave crests
+	\item \textbf{Group velocity:} $v_g = d\omega/dk$ --- speed of the packet envelope (the actual particle!)
 \end{itemize}
-The group velocity is what we actually measure — it's the speed of information/energy transport. Let's calculate it for Klein-Gordon.
+The group velocity is what we actually measure --- it's the speed of information/energy transport. Let's calculate it for Klein-Gordon.
 
 \section{Step 1: Finding the Dispersion Relation}
 The \textbf{dispersion relation} $\omega(k)$ tells us how frequency depends on wavenumber. It encodes the physics of the wave.\\
@@ -270,8 +270,8 @@ Using $E = c\sqrt{|\vec{p}|^2 + m^2c^2}$ and $|\vec{p}| = \hbar k$:
 \end{equation}
 This is the dispersion relation! Notice:
 \begin{itemize}
-	\item Massless $(m=0)$: $\omega = kc$ (linear — no dispersion)
-	\item Massive $(m \neq 0)$: $\omega \neq kc$ (nonlinear — dispersive!)
+	\item Massless $(m=0)$: $\omega = kc$ (linear --- no dispersion)
+	\item Massive $(m \neq 0)$: $\omega \neq kc$ (nonlinear --- dispersive!)
 \end{itemize}
 
 \section{Step 2: Calculating the Group Velocity}
@@ -308,10 +308,10 @@ Look at what we just derived! The group velocity depends on momentum in a very s
 \end{equation}
 Massless particles always travel at exactly the speed of light, regardless of momentum!\\
 \\
-\textbf{The Klein-Gordon equation naturally enforces special relativity's speed limit.} This is a beautiful consistency check — we started with relativistic energy-momentum, and we get relativistic velocities.
+\textbf{The Klein-Gordon equation naturally enforces special relativity's speed limit.} This is a beautiful consistency check --- we started with relativistic energy-momentum, and we get relativistic velocities.
 \chapter{Fourier Transforms and Antimatter}
 \section{From Momentum Space to Position Space}
-We've been working with plane waves — states with definite momentum $p$. But real particles are localized in space! How do we describe them?\\
+We've been working with plane waves --- states with definite momentum $p$. But real particles are localized in space! How do we describe them?\\
 \\
 \textbf{Answer:} Fourier transform! We build a position-space wavefunction $\psi(x)$ by superposing plane waves with different momenta, weighted by a momentum-space wavefunction $\phi(p)$.
 
@@ -381,7 +381,7 @@ The Klein-Gordon equation is \textbf{second-order in time}.\\
 \\
 Compare the time derivatives:
 \begin{align*}
-    \text{Schrödinger:} &\quad i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi \quad \text{(first-order in time)} \\
+    \text{Schr\"{o}dinger:} &\quad i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi \quad \text{(first-order in time)} \\
     \text{Klein-Gordon:} &\quad \frac{1}{c^2}\frac{\partial^2 \psi}{\partial t^2} - \nabla^2\psi + \left(\frac{mc}{\hbar}\right)^2\psi = 0 \quad \text{(second-order in time)}
 \end{align*}
 Being second-order in time allows both positive and negative energy solutions and treats space and time on equal footing (manifestly relativistic). However, it creates a serious problem.\\
@@ -396,7 +396,7 @@ In quantum mechanics, the state should be completely determined by $\psi(x,0)$ a
 \subsection{Problem 2: Negative Probability Density}
 This "too much freedom" problem directly causes the negative probability issue.\\
 \\
-For Schrödinger, the probability density is simple:
+For Schr\"{o}dinger, the probability density is simple:
 \begin{equation}
     \rho = |\psi|^2 = \psi^* \psi \geq 0 \quad \text{(always positive!)}
 \end{equation}
@@ -406,18 +406,18 @@ For Klein-Gordon, deriving the probability density from the continuity equation 
 \end{equation}
 \textbf{This depends on both} $\psi$ \textbf{and} $\partial\psi/\partial t$! Since $\partial\psi/\partial t$ is an independent degree of freedom (Problem 1), we can choose it to make $\rho$ negative. Negative probabilities are physically nonsensical.\\
 \\
-\textbf{The connection:} The negative probability problem exists \textit{because} the equation is second-order in time. These aren't separate issues — they're two sides of the same coin.
+\textbf{The connection:} The negative probability problem exists \textit{because} the equation is second-order in time. These aren't separate issues --- they're two sides of the same coin.
 
 \subsection{Dirac's Solution}
 Dirac wanted the impossible:
 \begin{enumerate}
-    \item \textbf{First-order in time} (like Schrödinger) — needs only $\psi(x,0)$, no extra freedom
-    \item \textbf{Relativistically correct} — treats energy and momentum on equal footing
-    \item \textbf{Positive definite probability} — $\rho \geq 0$ always
+    \item \textbf{First-order in time} (like Schr\"{o}dinger) --- needs only $\psi(x,0)$, no extra freedom
+    \item \textbf{Relativistically correct} --- treats energy and momentum on equal footing
+    \item \textbf{Positive definite probability} --- $\rho \geq 0$ always
 \end{enumerate}
 This seemingly impossible requirement led Dirac to discover the \textbf{Dirac equation}, which is first-order in \textit{both} time and space. The price? The wavefunction becomes a multi-component spinor, and quantum mechanical spin emerges naturally!\\
 \\
-However, even Dirac's equation still has negative energy solutions. The Feynman-Stueckelberg interpretation (discussed earlier) applies here too — those solutions represent antimatter. Klein-Gordon and Dirac equations aren't single-particle theories — they're fundamentally quantum field theory equations.
+However, even Dirac's equation still has negative energy solutions. The Feynman-Stueckelberg interpretation (discussed earlier) applies here too --- those solutions represent antimatter. Klein-Gordon and Dirac equations aren't single-particle theories --- they're fundamentally quantum field theory equations.
 \\
 \\
 \\
@@ -981,7 +981,7 @@ We can get some qualitative understanding of the origin of Zitterbewegung from t
 
 \end{tikzpicture}
 \end{center}
-We can estimate the distance an electron might jump as it undergoes the process. First the time for which the virtual pair exists can be estimated from the uncertainty principle. Energy conservation is violated by $\displaystyle 2mc^2$ at least so $\displaystyle \Delta t = \frac{\hbar}{2mc^2}$ (which is approximately the reciprocal of the Zitterbewegung frequency). The distance the electron appears to jump then is of the order of $c \Delta t = \frac{\hbar c}{2mc^2} = 0.002$ Ångstrøms. This is the approximate size of the fast back and forth motion of Zitterbewegung.
+We can estimate the distance an electron might jump as it undergoes the process. First the time for which the virtual pair exists can be estimated from the uncertainty principle. Energy conservation is violated by $\displaystyle 2mc^2$ at least so $\displaystyle \Delta t = \frac{\hbar}{2mc^2}$ (which is approximately the reciprocal of the Zitterbewegung frequency). The distance the electron appears to jump then is of the order of $c \Delta t = \frac{\hbar c}{2mc^2} = 0.002$ angstroms. This is the approximate size of the fast back and forth motion of Zitterbewegung.
 
 
 \section{The QED LaGrangian and Gauge Invariance}
