@@ -4,22 +4,800 @@
 \input{../templates/macros}
 \input{../templates/letterfonts}
 
-\title{\Huge{Pong}\ Python Spill}
+\usepackage{listings}
+\usepackage{url}
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{myb}\bfseries,
+    stringstyle=\color{myg},
+    commentstyle=\color{gray}\itshape,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b
+}
+
+\title{\Huge{Pong}\\Python Spill -- Prosjektrapport}
 \author{\Huge{Marcus Allen Denslow}}
-\date{}
+\date{\today}
 
 \begin{document}
 
 \maketitle
-\newpage% or \cleardoublepage
-% \pdfbookmark[<level>]{<title>}{<dest>}
+\newpage
 \pdfbookmark[section]{\contentsname}{toc}
 \tableofcontents
 \pagebreak
 
-\chapter{Chapter Title}
-\section{Section Title}
+%===========================================
+% INTRODUKSJON
+%===========================================
+\chapter{Introduksjon}
+
+Denne rapporten dokumenterer utviklingen av et Pong-spill skrevet i Python med
+PyGame-biblioteket. Pong er et klassisk arkadespill fra 1972 der to spillere
+styrer hver sin paddle for å slå en ball frem og tilbake. Spillet egner seg godt
+som programmeringsprosjekt fordi det krever håndtering av brukerinput,
+kollisjonsdeteksjon, poengberegning og sanntids grafikkrendering.
+
+Prosjektet er bygget med objektorientert programmering (OOP), der spillobjektene
+er modellert som egne klasser med tydelig ansvarsfordeling. Koden er fordelt på
+flere filer for å oppnå god modulstruktur, og alle klasser og metoder er
+dokumentert med docstrings etter PEP~257-standarden. I tillegg er det skrevet
+enhetstester med pytest for å verifisere at spillogikken fungerer korrekt.
+
+Rapporten er strukturert som følger: kapittel~2 beskriver kravspesifikasjonen,
+klassediagrammet og flytskjemaet. Kapittel~3 diskuterer implementasjonen,
+testingen og mulige forbedringer. Kapittel~4 oppsummerer prosjektet.
+
+\chapter{Beskrivelse}
+
+\section{Kravspesifikasjon}
+
+Følgende funksjonelle krav ble satt for spillet:
+
+\begin{itemize}
+    \item \textbf{To spillere:} Spiller~1 styrer venstre paddle med tastene W og S.
+          Spiller~2 styrer høyre paddle med piltastene opp og ned.
+    \item \textbf{Ball:} En ball beveger seg over skjermen og spretter av topp-
+          og bunnveggene.
+    \item \textbf{Kollisjon:} Når ballen treffer en paddle, snur den horisontal
+          retning.
+    \item \textbf{Poeng:} Dersom ballen passerer en spillers side, får motstanderen
+          ett poeng.
+    \item \textbf{Vinner:} Den første spilleren som når 10 poeng vinner runden.
+    \item \textbf{Restart:} Etter at en spiller har vunnet, kan man trykke SPACE
+          for å starte en ny runde.
+    \item \textbf{Avslutt:} Spillet kan avsluttes med ESC eller ved å lukke vinduet.
+\end{itemize}
+
+I tillegg ble det stilt følgende ikke-funksjonelle krav:
+\begin{itemize}
+    \item Spillet skal kjøre i 60 bilder per sekund (FPS).
+    \item Skjermoppløsningen er $800 \times 600$ piksler.
+    \item Alle spillkonstanter (hastigheter, størrelser, farger) skal være
+          konfigurerbare fra én sentral fil.
+\end{itemize}
+
+\section{Klassediagram (UML)}
+
+Figur~\ref{fig:uml} viser UML-klassediagrammet for programmet. Programmet
+består av tre hovedklasser: \texttt{Game}, \texttt{Paddle} og \texttt{Ball}.
+\texttt{Game}-klassen har en komposisjonsrelasjon til de to andre klassene --
+den oppretter og eier to \texttt{Paddle}-objekter og ett \texttt{Ball}-objekt.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    class/.style={
+        rectangle, draw=black, thick,
+        minimum width=5cm, minimum height=1cm,
+        text centered, font=\small\ttfamily
+    },
+    section/.style={
+        rectangle, draw=black, thick,
+        minimum width=5cm, text width=4.8cm,
+        font=\small\ttfamily, align=left, inner sep=4pt
+    }
+]
+
+% Game class
+\node[class, fill=doc!15] (game-name) at (0, 0) {\textbf{Game}};
+\node[section, below=0pt of game-name, anchor=north] (game-attr) {
+    screen: Surface\\
+    clock: Clock\\
+    font: Font\\
+    small\_font: Font\\
+    player1: Paddle\\
+    player2: Paddle\\
+    ball: Ball\\
+    running: bool\\
+    game\_over: bool\\
+    winner: str
+};
+\node[section, below=0pt of game-attr, anchor=north] (game-meth) {
+    \_\_init\_\_()\\
+    handle\_events()\\
+    update()\\
+    draw()\\
+    run()\\
+    \_restart()\\
+    \_check\_paddle\_collision()\\
+    \_check\_scoring()\\
+    \_check\_winner()
+};
+
+% Paddle class
+\node[class, fill=myg!15] (paddle-name) at (-5.5, -9) {\textbf{Paddle}};
+\node[section, below=0pt of paddle-name, anchor=north] (paddle-attr) {
+    rect: Rect\\
+    score: int
+};
+\node[section, below=0pt of paddle-attr, anchor=north] (paddle-meth) {
+    \_\_init\_\_(x, y)\\
+    move(dy)\\
+    draw(screen)\\
+    reset\_score()
+};
+
+% Ball class
+\node[class, fill=myr!15] (ball-name) at (5.5, -9) {\textbf{Ball}};
+\node[section, below=0pt of ball-name, anchor=north] (ball-attr) {
+    rect: Rect\\
+    speed\_x: int\\
+    speed\_y: int
+};
+\node[section, below=0pt of ball-attr, anchor=north] (ball-meth) {
+    \_\_init\_\_()\\
+    reset()\\
+    move()\\
+    draw(screen)
+};
+
+% Composition arrows
+\draw[-{diamond}, thick] (game-meth.south) +(-1.5, 0) -- +(-1.5, -0.5) -| (paddle-name.north)
+    node[pos=0.25, left, font=\small] {2};
+\draw[-{diamond}, thick] (game-meth.south) +(1.5, 0) -- +(1.5, -0.5) -| (ball-name.north)
+    node[pos=0.25, right, font=\small] {1};
+
+\end{tikzpicture}
+\caption{UML-klassediagram for Pong. Diamantpilene indikerer komposisjon.}
+\label{fig:uml}
+\end{figure}
 
 
+\section{Flytskjema}
+
+Figur~\ref{fig:flow} viser flyten i programmet fra oppstart til avslutning.
+Hovedspilløkken kjører kontinuerlig og håndterer hendelser, oppdaterer
+spilltilstand og tegner alle elementer til skjermen for hvert bilde.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    node distance=1.2cm,
+    startstop/.style={rectangle, rounded corners, draw=black, thick, fill=doc!20, minimum width=3.5cm, minimum height=0.8cm, text centered},
+    process/.style={rectangle, draw=black, thick, fill=myg!15, minimum width=3.5cm, minimum height=0.8cm, text centered},
+    decision/.style={diamond, draw=black, thick, fill=myyellow!30, minimum width=2cm, minimum height=1cm, text centered, aspect=2.5},
+    arrow/.style={->, thick}
+]
+
+\node[startstop] (start) {Start};
+\node[process, below=of start] (init) {Initialiser Pygame og objekter};
+\node[process, below=of init] (events) {Håndter hendelser (input)};
+\node[decision, below=of events] (quit) {Avslutt?};
+\node[process, right=2.5cm of quit] (stop) {Avslutt spillet};
+\node[decision, below=of quit] (gameover) {Game over?};
+\node[process, below=of gameover] (update) {Oppdater (bevegelse, kollisjon, poeng)};
+\node[decision, below=of update] (winner) {Vinner?};
+\node[process, left=2.5cm of winner] (setwin) {Vis vinnertekst};
+\node[process, below=of winner] (draw) {Tegn alt til skjerm};
+
+\draw[arrow] (start) -- (init);
+\draw[arrow] (init) -- (events);
+\draw[arrow] (events) -- (quit);
+\draw[arrow] (quit) -- node[above] {Ja} (stop);
+\draw[arrow] (quit) -- node[right] {Nei} (gameover);
+\draw[arrow] (gameover) -- node[right] {Nei} (update);
+\draw[arrow] (gameover.west) -- ++(-2.5,0) node[above, midway] {Ja} |- (draw.west);
+\draw[arrow] (update) -- (winner);
+\draw[arrow] (winner) -- node[above] {Ja} (setwin);
+\draw[arrow] (setwin) |- (draw);
+\draw[arrow] (winner) -- node[right] {Nei} (draw);
+\draw[arrow] (draw.east) -- ++(2.5,0) |- (events.east);
+
+\end{tikzpicture}
+\caption{Flytskjema for hovedspilløkken i Pong.}
+\label{fig:flow}
+\end{figure}
+
+
+\chapter{Diskusjon og Resultater}
+
+\section{Programstruktur}
+
+Prosjektet er organisert i seks filer, der hver fil har et tydelig ansvarsområde:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{11cm}|}
+    \hline
+    \textbf{Fil} & \textbf{Beskrivelse} \\
+    \hline
+    \texttt{main.py} & Inngangspunkt. Oppretter et \texttt{Game}-objekt og kaller \texttt{run()}. \\
+    \hline
+    \texttt{settings.py} & Sentral konfigurasjonsfil med alle konstanter: skjermstørrelse, farger, hastigheter, paddle- og ballstørrelser, vinnerpoeng og FPS. \\
+    \hline
+    \texttt{paddle.py} & Inneholder \texttt{Paddle}-klassen som håndterer posisjon, bevegelse, tegning og poeng. \\
+    \hline
+    \texttt{ball.py} & Inneholder \texttt{Ball}-klassen som håndterer posisjon, bevegelse, spretting og tilbakestilling. \\
+    \hline
+    \texttt{game.py} & Inneholder \texttt{Game}-klassen med spilløkke, hendelseshåndtering, kollisjonslogikk, poengberegning og rendering. \\
+    \hline
+    \texttt{test\_game.py} & Enhetstester for \texttt{Paddle} og \texttt{Ball} med pytest. \\
+    \hline
+\end{tabular}
+\caption{Oversikt over filstrukturen.}
+\end{table}
+
+Denne strukturen gjør at hver klasse kan utvikles og testes uavhengig. Dersom man
+ønsker å endre spillkonstanter, trenger man bare å redigere \texttt{settings.py} --
+resten av koden henter verdiene derfra.
+
+\section{Objektorientert design}
+
+Programmet er bygget rundt tre klasser som samarbeider gjennom komposisjon:
+
+\textbf{Paddle-klassen} representerer en spillerpaddle. Den har et
+\texttt{pygame.Rect}-objekt for posisjon og størrelse, samt en \texttt{score}-variabel.
+Metoden \texttt{move(dy)} flytter padlen vertikalt og sørger for at den ikke beveger
+seg utenfor skjermen. Metoden \texttt{draw(screen)} tegner padlen, og
+\texttt{reset\_score()} nullstiller poengsummen.
+
+\textbf{Ball-klassen} representerer ballen. Den har et \texttt{rect}-objekt samt
+\texttt{speed\_x} og \texttt{speed\_y} for hastighet i begge retninger. Metoden
+\texttt{move()} flytter ballen og inverterer \texttt{speed\_y} dersom ballen treffer
+topp- eller bunnkanten. Metoden \texttt{reset()} plasserer ballen tilbake i
+midten av skjermen.
+
+\textbf{Game-klassen} er hovedklassen som binder alt sammen. Den oppretter to
+\texttt{Paddle}-objekter og ett \texttt{Ball}-objekt i konstruktøren.
+Spilløkken i \texttt{run()} kaller tre metoder i sekvens for hvert bilde:
+\begin{enumerate}
+    \item \texttt{handle\_events()} -- leser tastaturinput og vindushendelser.
+    \item \texttt{update()} -- oppdaterer padleposisjon basert på tastene som
+          holdes inne, flytter ballen, sjekker kollisjoner og poeng.
+    \item \texttt{draw()} -- tegner bakgrunn, midtlinje, poengsum, padler, ball
+          og eventuelt vinnertekst.
+\end{enumerate}
+
+Kollisjonsdeteksjon gjøres med Pygames innebygde \texttt{colliderect()}-metode,
+som sjekker om ballens rektangel overlapper med en paddles rektangel. Det sjekkes
+også at ballen beveger seg mot den aktuelle padlen (via \texttt{speed\_x}), slik
+at ballen ikke fester seg i padlen.
+
+\section{Enhetstesting}
+
+Prosjektet inneholder 11 enhetstester skrevet med pytest, fordelt på to
+testklasser: \texttt{TestPaddle} (6 tester) og \texttt{TestBall} (5 tester).
+
+For \texttt{Paddle} testes:
+\begin{itemize}
+    \item At padlen opprettes med riktig posisjon og poengsum lik 0.
+    \item At \texttt{move()} flytter padlen korrekt opp og ned.
+    \item At padlen stoppes ved toppen og bunnen av skjermen (grenseverdier).
+    \item At \texttt{reset\_score()} nullstiller poengsummen.
+\end{itemize}
+
+For \texttt{Ball} testes:
+\begin{itemize}
+    \item At ballen starter i midten av skjermen.
+    \item At \texttt{reset()} plasserer ballen tilbake i sentrum.
+    \item At \texttt{move()} endrer posisjon korrekt basert på hastighet.
+    \item At ballen spretter av toppen (inverterer \texttt{speed\_y}).
+    \item At ballen spretter av bunnen (inverterer \texttt{speed\_y}).
+\end{itemize}
+
+Et eksempel på en test:
+
+\begin{lstlisting}[caption={Test for at padlen stoppes ved toppen av skjermen.}]
+def test_stopp_ved_toppen(self):
+    paddle = Paddle(30, 5)
+    paddle.move(-20)
+    assert paddle.rect.top == 0
+\end{lstlisting}
+
+Alle 11 tester bestod uten feil.
+
+\subsection*{Hvorfor er testing viktig?}
+
+Testing er viktig fordi det gjør det mulig å oppdage feil tidlig i
+utviklingsprosessen, før de påvirker resten av programmet. Enhetstester
+verifiserer at hver enkelt komponent fungerer isolert, noe som gjør det
+tryggere å gjøre endringer uten å introdusere nye feil. I dette prosjektet
+sikrer testene for eksempel at padlene aldri beveger seg utenfor skjermen
+og at ballen alltid tilbakestilles til riktig posisjon. Uten tester måtte
+man manuelt teste all funksjonalitet ved å spille gjennom spillet hver gang
+man endrer koden, noe som er tidkrevende og upålitelig.
+
+
+\section{Alternative løsninger og forbedringer}
+
+Under utviklingen ble det vurdert noen alternative løsninger:
+
+\begin{itemize}
+    \item \textbf{AI-motstander:} Spillet kunne hatt en enspillermodus der
+          datamaskinen styrer den ene padlen. Dette kunne implementeres ved å
+          la padlen følge ballens y-posisjon med en viss forsinkelse for å
+          gjøre det utfordrende.
+    \item \textbf{Vinkelbasert spretting:} I nåværende implementasjon spretter
+          ballen alltid med samme vinkel. En forbedring ville vært å endre
+          utgangsvinkel basert på hvor på padlen ballen treffer -- nær kanten
+          gir skarpere vinkel, nær midten gir rettere bane.
+    \item \textbf{Lydeffekter:} Pygame støtter avspilling av lyd. Man kunne lagt
+          til lyder for kollisjoner og poeng for en mer engasjerende spillopplevelse.
+    \item \textbf{Menysystem:} En startmeny med valg for å starte spill, endre
+          innstillinger eller avslutte ville forbedret brukervennligheten.
+\end{itemize}
+
+Disse forbedringene ble ikke implementert da hovedfokuset var å lage et
+fungerende spill med god objektorientert struktur og kodeorganisering.
+
+
+%===========================================
+% KONKLUSJON
+%===========================================
+\chapter{Konklusjon}
+
+Prosjektet resulterte i et fungerende Pong-spill for to spillere, skrevet i
+Python med PyGame. Spillet oppfyller alle kravene i kravspesifikasjonen:
+spillerne kan styre padlene, ballen spretter korrekt, poeng telles og en
+vinner kåres ved 10 poeng.
+
+Koden er organisert med objektorientert design fordelt på seks filer, der
+hver klasse har tydelig ansvar. Alle klasser og metoder er dokumentert med
+docstrings etter PEP~257. Enhetstestene med pytest bekrefter at
+kjernelogikken i \texttt{Paddle} og \texttt{Ball} fungerer som forventet.
+
+Gjennom prosjektet er det oppnådd praktisk erfaring med objektorientert
+programmering, modulær filstruktur, GUI-utvikling med PyGame, UML-modellering
+og automatisert testing.
+
+
+%===========================================
+% REFERANSER
+%===========================================
+\chapter*{Referanser}
+\addcontentsline{toc}{chapter}{Referanser}
+
+\begin{itemize}
+    \item Pygame dokumentasjon: \url{https://www.pygame.org/docs/}
+    \item Python dokumentasjon: \url{https://docs.python.org/3/}
+    \item PEP 257 -- Docstring Conventions: \url{https://peps.python.org/pep-0257/}
+    \item pytest dokumentasjon: \url{https://docs.pytest.org/}
+\end{itemize}
+
+
+%===========================================
+% VEDLEGG
+%===========================================
+\appendix
+\chapter{Vedlegg -- Kildekode}
+
+\section{settings.py}
+\begin{lstlisting}[caption={settings.py -- Spillkonstanter.}]
+"""Spillinnstillinger og konstanter for Pong."""
+
+# Skjermstorrelse
+WIDTH = 800
+HEIGHT = 600
+
+# Farger
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+# Paddle-innstillinger
+PADDLE_WIDTH = 10
+PADDLE_HEIGHT = 100
+PADDLE_SPEED = 6
+
+# Ball-innstillinger
+BALL_SIZE = 15
+BALL_SPEED_X = 5
+BALL_SPEED_Y = 5
+
+# Spillregler
+WINNING_SCORE = 10
+
+# FPS
+FPS = 60
+\end{lstlisting}
+
+\section{paddle.py}
+\begin{lstlisting}[caption={paddle.py -- Paddle-klassen.}]
+"""Modul for Paddle-klassen."""
+
+import pygame
+from settings import PADDLE_WIDTH, PADDLE_HEIGHT, HEIGHT, WHITE
+
+
+class Paddle:
+    """Representerer en spiller-paddle i Pong.
+
+    paddle kan bevege seg oppover innenfor grensene
+    av skjermen og teller spillerens poeng
+
+    Attributes:
+        rect: Pygame-rektangel som definerer padlens
+              posisjon og storrelse.
+        score: Spillerens naavaerende poengsum.
+    """
+
+    def __init__(self, x, y):
+        """Opprett en ny paddle.
+
+        Args:
+            x: Horisontal startposisjon (piksler fra venstre).
+            y: Vertikal startposisjon (piksler fra toppen).
+        """
+        self.rect = pygame.Rect(x, y, PADDLE_WIDTH,
+                                PADDLE_HEIGHT)
+        self.score = 0
+
+    def move(self, dy):
+        """Flytt padlen vertikalt.
+
+        Padlen holdes innenfor skjermens grenser.
+
+        Args:
+            dy: Antall piksler aa flytte
+                (negativt = opp, positivt = ned).
+        """
+        self.rect.y += dy
+        if self.rect.top < 0:
+            self.rect.top = 0
+        if self.rect.bottom > HEIGHT:
+            self.rect.bottom = HEIGHT
+
+    def draw(self, screen):
+        """Tegn padlen paa skjermen.
+
+        Args:
+            screen: Pygame-overflaten aa tegne paa.
+        """
+        pygame.draw.rect(screen, WHITE, self.rect)
+
+    def reset_score(self):
+        """Nullstill spillerens poengsum."""
+        self.score = 0
+\end{lstlisting}
+
+\section{ball.py}
+\begin{lstlisting}[caption={ball.py -- Ball-klassen.}]
+"""Modul for Ball-klassen."""
+
+import pygame
+from settings import (WIDTH, HEIGHT, BALL_SIZE,
+                      BALL_SPEED_X, BALL_SPEED_Y, WHITE)
+
+
+class Ball:
+    """Representerer ballen i Pong.
+
+    Ballen beveger seg over skjermen og spretter av
+    vegger og padler.
+
+    Attributes:
+        rect: Pygame-rektangel som definerer ballens
+              posisjon og storrelse.
+        speed_x: Horisontal hastighet (piksler per frame).
+        speed_y: Vertikal hastighet (piksler per frame).
+    """
+
+    def __init__(self):
+        """Opprett en ny ball i midten av skjermen."""
+        self.rect = None
+        self.speed_x = 0
+        self.speed_y = 0
+        self.reset()
+
+    def reset(self):
+        """Tilbakestill ballen til midten av skjermen."""
+        self.rect = pygame.Rect(
+            WIDTH // 2 - BALL_SIZE // 2,
+            HEIGHT // 2 - BALL_SIZE // 2,
+            BALL_SIZE,
+            BALL_SIZE,
+        )
+        self.speed_x = BALL_SPEED_X
+        self.speed_y = BALL_SPEED_Y
+
+    def move(self):
+        """Flytt ballen basert paa naavarende hastighet.
+
+        Ballen spretter av toppen og bunnen av skjermen
+        ved aa invertere den vertikale hastigheten.
+        """
+        self.rect.x += self.speed_x
+        self.rect.y += self.speed_y
+
+        if self.rect.top <= 0 or self.rect.bottom >= HEIGHT:
+            self.speed_y *= -1
+
+    def draw(self, screen):
+        """Tegn ballen paa skjermen.
+
+        Args:
+            screen: Pygame-overflaten aa tegne paa.
+        """
+        pygame.draw.rect(screen, WHITE, self.rect)
+\end{lstlisting}
+
+\section{game.py}
+\begin{lstlisting}[caption={game.py -- Game-klassen (hovedspillokke).}]
+"""Modul for Game-klassen som styrer hovedspillokken."""
+
+import pygame
+import sys
+from settings import (
+    WIDTH, HEIGHT, WHITE, BLACK,
+    PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_SPEED,
+    BALL_SPEED_X, WINNING_SCORE, FPS,
+)
+from paddle import Paddle
+from ball import Ball
+
+
+class Game:
+    """Hovedklassen som styrer Pong-spillet.
+
+    Haandterer spillokke, input, kollisjon, poengberegning
+    og rendering av alle spillelementer.
+
+    Attributes:
+        screen: Pygame-overflaten som spillet tegnes paa.
+        clock: Pygame-klokke for aa styre fps.
+        player1: Venstre spillers paddle.
+        player2: Hoyre spillers paddle.
+        game_over: Om spillet er ferdig.
+        winner: Navnet paa vinneren, eller None.
+    """
+
+    def __init__(self):
+        """Initialiser Pygame og opprett alle spillobjekter."""
+        pygame.init()
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption("Pong - 2 Spillere")
+        self.clock = pygame.time.Clock()
+        self.font = pygame.font.Font(None, 74)
+        self.small_font = pygame.font.Font(None, 36)
+
+        self.player1 = Paddle(
+            30, HEIGHT // 2 - PADDLE_HEIGHT // 2)
+        self.player2 = Paddle(
+            WIDTH - 30 - PADDLE_WIDTH,
+            HEIGHT // 2 - PADDLE_HEIGHT // 2)
+        self.ball = Ball()
+
+        self.running = True
+        self.game_over = False
+        self.winner = None
+
+    def handle_events(self):
+        """Haandter brukerinput fra tastatur."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.running = False
+                if self.game_over \
+                        and event.key == pygame.K_SPACE:
+                    self._restart()
+
+    def _restart(self):
+        """Tilbakestill spillet for en ny runde."""
+        self.player1.reset_score()
+        self.player2.reset_score()
+        self.ball.reset()
+        self.game_over = False
+        self.winner = None
+
+    def update(self):
+        """Oppdater spilltilstand."""
+        if self.game_over:
+            return
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
+            self.player1.move(-PADDLE_SPEED)
+        if keys[pygame.K_s]:
+            self.player1.move(PADDLE_SPEED)
+        if keys[pygame.K_UP]:
+            self.player2.move(-PADDLE_SPEED)
+        if keys[pygame.K_DOWN]:
+            self.player2.move(PADDLE_SPEED)
+
+        self.ball.move()
+        self._check_paddle_collision()
+        self._check_scoring()
+        self._check_winner()
+
+    def _check_paddle_collision(self):
+        """Sjekk kollisjon mellom ball og padler."""
+        if self.ball.rect.colliderect(self.player1.rect) \
+                and self.ball.speed_x < 0:
+            self.ball.speed_x *= -1
+            self.ball.rect.left = self.player1.rect.right
+        if self.ball.rect.colliderect(self.player2.rect) \
+                and self.ball.speed_x > 0:
+            self.ball.speed_x *= -1
+            self.ball.rect.right = self.player2.rect.left
+
+    def _check_scoring(self):
+        """Sjekk om ballen har passert en paddle."""
+        if self.ball.rect.left <= 0:
+            self.player2.score += 1
+            self.ball.reset()
+            self.ball.speed_x = -BALL_SPEED_X
+        if self.ball.rect.right >= WIDTH:
+            self.player1.score += 1
+            self.ball.reset()
+
+    def _check_winner(self):
+        """Sjekk om en spiller har vunnet."""
+        if self.player1.score >= WINNING_SCORE:
+            self.game_over = True
+            self.winner = "Spiller 1"
+        elif self.player2.score >= WINNING_SCORE:
+            self.game_over = True
+            self.winner = "Spiller 2"
+
+    def draw(self):
+        """Tegn alle spillelementer paa skjermen."""
+        self.screen.fill(BLACK)
+        self.player1.draw(self.screen)
+        self.player2.draw(self.screen)
+        self.ball.draw(self.screen)
+        if self.game_over:
+            self._draw_game_over()
+        pygame.display.flip()
+
+    def run(self):
+        """Kjoer hovedspillokken."""
+        while self.running:
+            self.handle_events()
+            self.update()
+            self.draw()
+            self.clock.tick(FPS)
+        pygame.quit()
+        sys.exit()
+\end{lstlisting}
+
+\section{main.py}
+\begin{lstlisting}[caption={main.py -- Inngangspunkt.}]
+"""Inngangspunkt for Pong-spillet.
+
+Kjoer dette skriptet for aa starte spillet:
+    python main.py
+"""
+
+from game import Game
+
+
+def main():
+    """Opprett og start Pong-spillet."""
+    game = Game()
+    game.run()
+
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\section{test\_game.py}
+\begin{lstlisting}[caption={test\_game.py -- Enhetstester.}]
+"""Enhetstester for Pong-spillet.
+
+Kjoer testene med:
+    python -m pytest test_game.py
+"""
+
+import pygame
+import pytest
+from settings import (HEIGHT, PADDLE_HEIGHT,
+                      WIDTH, BALL_SIZE, BALL_SPEED_Y)
+from paddle import Paddle
+from ball import Ball
+
+
+@pytest.fixture(autouse=True)
+def init_pygame():
+    """Initialiser Pygame foer hver test."""
+    pygame.init()
+    yield
+    pygame.quit()
+
+
+class TestPaddle:
+    """Tester for Paddle-klassen."""
+
+    def test_opprett_paddle(self):
+        paddle = Paddle(30, 200)
+        assert paddle.rect.x == 30
+        assert paddle.rect.y == 200
+        assert paddle.score == 0
+
+    def test_flytt_opp(self):
+        paddle = Paddle(30, 200)
+        paddle.move(-10)
+        assert paddle.rect.y == 190
+
+    def test_flytt_ned(self):
+        paddle = Paddle(30, 200)
+        paddle.move(10)
+        assert paddle.rect.y == 210
+
+    def test_stopp_ved_toppen(self):
+        paddle = Paddle(30, 5)
+        paddle.move(-20)
+        assert paddle.rect.top == 0
+
+    def test_stopp_ved_bunnen(self):
+        paddle = Paddle(30, HEIGHT - PADDLE_HEIGHT - 5)
+        paddle.move(20)
+        assert paddle.rect.bottom == HEIGHT
+
+    def test_reset_score(self):
+        paddle = Paddle(30, 200)
+        paddle.score = 5
+        paddle.reset_score()
+        assert paddle.score == 0
+
+
+class TestBall:
+    """Tester for Ball-klassen."""
+
+    def test_opprett_ball(self):
+        ball = Ball()
+        assert ball.rect.centerx == WIDTH // 2
+        assert ball.rect.centery == HEIGHT // 2
+
+    def test_reset(self):
+        ball = Ball()
+        ball.rect.x = 100
+        ball.rect.y = 100
+        ball.reset()
+        assert ball.rect.centerx == WIDTH // 2
+        assert ball.rect.centery == HEIGHT // 2
+
+    def test_move(self):
+        ball = Ball()
+        start_x = ball.rect.x
+        start_y = ball.rect.y
+        ball.move()
+        assert ball.rect.x == start_x + ball.speed_x
+        assert ball.rect.y == start_y + ball.speed_y
+
+    def test_sprett_av_topp(self):
+        ball = Ball()
+        ball.rect.top = 1
+        ball.speed_y = -BALL_SPEED_Y
+        ball.move()
+        assert ball.speed_y == BALL_SPEED_Y
+
+    def test_sprett_av_bunn(self):
+        ball = Ball()
+        ball.rect.bottom = HEIGHT - 1
+        ball.speed_y = BALL_SPEED_Y
+        ball.move()
+        assert ball.speed_y == -BALL_SPEED_Y
+\end{lstlisting}
 
 \end{document}

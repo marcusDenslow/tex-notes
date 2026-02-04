@@ -1,0 +1,40 @@
+\documentclass{report}
+
+\input{../templates/preamble}
+\input{../templates/macros}
+\input{../templates/letterfonts}
+
+\title{\Huge{Title}\ undertext}
+\author{\Huge{Marcus Allen Denslow}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Chapter Title}
+\section{oppgave 5}
+
+
+\begin{align*}
+	\vec{u} \cdot \vec{v} &= \left| \vec{u} \right| \left| \vec{v} \right| \cdot \cos \theta \\
+	\vec{u} \cdot \vec{v} < 0 &\le \theta > 90  \\
+	\vec{AB} &= \left[ 2,3,0 \right] \\
+	\vec{AC} &= \left[ 1,4,,1 \right] \\
+	\vec{AB} \cdot \vec{AC} &= 2 + 12 = 14 \\
+	\vec{CB} &= \left[ -1,1,0 \right] \\
+	\vec{CA} &= \left[ -1,4,-1 \right] \\
+	\vec{CA} \cdot \vec{CB} &= 1 - 4 - 1 = 4 \\
+	< C &> 90
+.\end{align*}
+
+
+
+
+
+\end{document}
