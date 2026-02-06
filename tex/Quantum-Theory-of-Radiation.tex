@@ -841,6 +841,32 @@ We are in a position to fairly easily calculate the spectrum of Black Body radia
 \begin{equation}
     \frac{N_{B}}{N_{A}} = \frac{e^{ -E_{b} / kT }}{e^{ -E_{A} / kT }} = e^{ \hbar \omega / kT }
 \end{equation}
+\\
+\\
+and for equilibrium we must have
+\\
+\\
+\begin{align*}
+	N_{B}\Gamma_{absorb} &= N_{A}\Gamma_{emit} \\
+	\frac{N_{B}}{N_{A}} &= \frac{\Gamma_{emit}}{\bamma_{absorb}}
+.\end{align*}
+\\
+\\
+We have previously calculated the emission and absorption rates. We can calculate the ration between th3e emission and absorption rates per atom:
+\\
+\\
+\begin{equation}
+	\frac{N_{B}}{N_{A}} = \frac{\Gamma_{emit}}{\Gamma_absorb} = \frac{\left( n_{\vec{k}, \alpha} + 1  \right) \left| \sum_{i} \left<B \left| e^{ -i\vec{k} \cdot \vec{r}_{i} } \hat{\epsilon}^{\left( \alpha \right) } \cdot \vec{p}_{i} \right|A  \right>  \right|^2  }{n_{\vec{k}, \alpha} \left| \sum_{i} \left<A \left| e^{ i\vec{k} \cdot \vec{r}_{i} } \hat{\epsilon}^{\left( \alpha \right) } \cdot \vec{p}_{i} \right|B  \right>  \right|^2 }
+\end{equation}
+\\
+\\
+wherer the sum is over atomic electrons. The matrix elements are closely related.
+\\
+\\
+\begin{equation}
+    \left<B \left| e^{ -i\vec{k} \cdot \vec{r}_{i} } \hat{\epsilon}^{\left( \alpha \right) } \cdot \vec{p}_{i} \right|A  \right> = \left<A \left| \vec{p}_{i} \cdot \hat{\epsilon}^{\left( \alpha \right) }e^{ i\vec{k} \cdot \vec{r}_{i} } \right| B  \right>^{*} = \left<A \left| e^{ i\vec{k} \cdot \vec{r}_{i} } \hat{\epsilon}^{\left( \alpha \right) } \cdot \vec{p}_{i} \right| B \right>^{*}
+\end{equation}
+
 
 
 \end{document}
