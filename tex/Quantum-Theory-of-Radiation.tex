@@ -866,6 +866,29 @@ wherer the sum is over atomic electrons. The matrix elements are closely related
 \begin{equation}
     \left<B \left| e^{ -i\vec{k} \cdot \vec{r}_{i} } \hat{\epsilon}^{\left( \alpha \right) } \cdot \vec{p}_{i} \right|A  \right> = \left<A \left| \vec{p}_{i} \cdot \hat{\epsilon}^{\left( \alpha \right) }e^{ i\vec{k} \cdot \vec{r}_{i} } \right| B  \right>^{*} = \left<A \left| e^{ i\vec{k} \cdot \vec{r}_{i} } \hat{\epsilon}^{\left( \alpha \right) } \cdot \vec{p}_{i} \right| B \right>^{*}
 \end{equation}
+\\
+\\
+We have used the fact that $\vec{k} \cdot \epsilon = 0$. The two matrix elements are simple complec conjugates of each other so that when we take the absolute square, they are the same. Therefore, we may cancel them.
+\\
+\\
+\begin{align*}
+	\frac{N_{B}}{N_{A}} &= \frac{\left( n_{\vec{k}, \alpha} +1 \right) }{n_{\vec{k}, \alpha}} = e^{ \hbar \omega / kT } \\
+	1 &= n_{\vec{k}, \alpha} \left( e^{ \hbar \omega / kT } - 1 \right) \\
+	n_{\vec{k}, \alpha} &= \frac{1}{e^{ \hbar \omega / kT -1 }}
+.\end{align*}
+\\
+\\
+Now suppose the walls of the cavity are black so that they emit and absorb photons at any energy. Then the result for the number of photons above is true for all the radiation modes of the cavity. The energy in the frequency interval $\left( \omega, \omega + d \omega \right) $ per unit volume can be calculated by multiplying the number of photons by the energy per photon times the number of modes in that frequency interval and dividing by the volume of the cavity.
+\\
+\\
+\begin{align*}
+	U \left( \omega \right) d \omega &= \frac{\hbar \omega}{e^{ \hbar \omega / kT } -1}2 \left( \frac{L}{2 \pi} \right)^3 4 \pi k^2 dk \frac{1}{L^3} \\
+	U \left( \omega \right) &= 8\pi \frac{\hbar \omega}{e^{ \hbar \omega / kT } - 1} \left( \frac{1}{2\pi} \right)^3 k^2 \frac{dk}{d\omega} \\  U \left( \omega \right) &= \frac{8\pi \hbar}{c^{3}} \left( \frac{\omega}{2\pi} \right)^3 \frac{1}{e^{ \hbar \omega / kT }- 1} \\
+	U \left( \nu \right) &= U \left( \omega \right) \frac{d\omega}{d \nu} = \frac{8\pi}{c^{3}} \frac{h \nu^3}{e^{ \hbar \omega / kT } - 1}
+.\end{align*}
+\\
+\\
+This was the formula Plank used to start the revolution.
 
 
 
