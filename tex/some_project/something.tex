@@ -1,0 +1,26 @@
+\documentclass{report}
+
+\input{template/preamble}
+\input{template/macros}
+\input{template/letterfonts}
+\title{\Huge{something}\ something}
+\author{\Huge{Marcus Allen Denslow}}
+\date{2026-02-08}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Chapter Title}
+\section{Section Title}
+
+\qs{something}{something}
+
+
+
+\end{document}
