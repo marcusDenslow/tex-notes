@@ -42,6 +42,171 @@ In Raionalized Heaviside-Lorentz units we decrease the field strength by a facto
 	\alpha = \frac{e^2}{\hbar c} &\to \frac{e^2}{4 \pi \hbar c} \approx \frac{1}{137}
 .\end{align*}
 
+\\
+\\
+It's not a very big change but it would have been nice if Maxwell had started with this set of units. Of course the value of $\alpha$ cannot change, but, the formula for it does because we have redefined the charge $e$. Maxwell's Equations in CGS units are.
+\\
+\\
+\begin{align*}
+	\vec{\nabla} \cdot \vec{B} &= 0 \\
+	\vec{\nabla} \times \vec{E} + \frac{1}{c} \frac{ \partial B }{ \partial t } &= 0 \\
+	\vec{\nabla} \cdot \vec{E} &= 4 \pi \rho \\
+	\vec{\nabla} \times \vec{B} - \frac{1}{c} \frac{ \partial E }{ \partial t } &= \frac{4\pi}{c} \vec{j}
+.\end{align*}
+\\
+\\
+The Lorentz Force is
+\\
+\\
+\begin{equation}
+    \vec{F} = -e \left( \vec{E} + \frac{1}{c} \vec{v} \times \vec{B} \right) 
+\end{equation}
+\\
+\\
+When we change to Rationalized Heaviside-Lorentz units, the equations become
+\\
+\\
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|}
+        \hline
+        $\displaystyle \vec{\nabla} \cdot \vec{B} = 0$ \\
+        \hline
+        $\displaystyle \vec{\nabla} \times \vec{E} + \frac{1}{c} \frac{ \partial B }{ \partial t } = 0$ \\
+        \hline
+        $\displaystyle \vec{\nabla} \cdot \vec{E} = \rho$ \\
+        \hline
+        $\displaystyle \vec{\nabla} \times \vec{B} - \frac{1}{c} \frac{ \partial B }{ \partial t } = \frac{1}{c} \vec{j} $ \\
+        \hline
+        $\displaystyle \vec{F} = -e \left( \vec{E} + \frac{1}{c} \vec{v} \times \vec{B} \right) $ \\
+        \hline
+    \end{tabular}
+\end{table}
+\\
+\\
+That is, the equations remain the same except the factors of $4\pi$ in front of the source terms disappear. Of course, it would still be convenient to set $c = 1$ since this has been confusing us about 4D geometry and  $c$ is the last unnecessary constant in Maxwell's equations. For our calculations, we can set  $c = 1$ any time we want unless we need answer in centimeters.
+\\
+\\
+\section{The Electromagnetic Field Tensor}
+The transformation of electric and magnetic fields under a Lorentz boost we established even before Einstein developed the theory of relativity. We know that E-fields can transform into B-fields and vice versa. Foe example, a point charge at rest gives an Electric field. If we boost to a frame in which the charge is moving, there is an Electric and Magnetic field. This means that the E-field cannot be a Lorentz vector. We need to put the Electric and Magnetic fields together into one (tensor) object to properly handle Lorentz transformations and to write our equations in a covariant way.
+\\
+\\
+The simplest way and the correct way to do this is to make the Electric and Magnetic fields components of a rank 2 (antisymmetric) tensor.
+\\
+\\
+\begin{equation}
+    F_{\mu \nu} = \begin{pmatrix} 0, B_{z}, -B_{y}, -iE_{x} \\ 
+                -B_{z}, 0, B_{x}, -iE_{y} \\
+                B_{y}, -B_{x}, 0, -iE_{z} \\
+                iE_{x}, iE_{y}, iE_{z}, 0
+            \end{pmatrix} 
+\end{equation}
+\\
+\\
+The fields can simply be written in terms of the vector potential, (which is a Lorentsz vector) $A_{\mu} = \left( \vec{A}, i \phi \right) $.
+\\
+\\
+\begin{equation}
+    F_{\mu \nu} = \frac{ \partial A_{\nu} }{ \partial x_{\mu} }  - \frac{ \partial A_{\mu} }{ \partial x_{\nu} } 
+\end{equation}
+\\
+\\
+Note that this is automatically antisymmetric under the interchange of the indices. As before, the first two (sourceless) Maxwell equations are automatically satisfied for fields derived from a vector potential. We may write the other two Maxwell equations in terms of the 4-vector $j_{\mu} = \left( \vec{j}, i c \rho \right) $.
+\\
+\\
+\begin{equation}
+    \frac{ \partial F_{\mu \nu} }{ \partial x_{\nu} } = \frac{j_{\mu}}{c}
+\end{equation}
+\\
+\\
+Which is why the T-shirt given to every MIT freshman when they take Electricity and Magnetism should say 
+\\
+\\
+"\ldots and God said $\frac{ \partial }{ \partial x_{\nu} } \left( \frac{ \partial A_{\nu} }{ \partial x_{\mu} } - \frac{ \partial A_{\mu} }{ \partial x_{\nu} }   \right) = \frac{j_{\mu}}{c}  $ and there was light":
+\\
+\\
+Of course he or she had not yet quantized the theory in that statement.
+\\
+\\
+For some peace of mind, lets verify a few terms in the equations. Clearly all the diagonal terms in the field tensor are zero by antisymmetry. Lets take some example off-diagonal terms in the field tensor, checking the (old) definition of the fields in terms of the potential.
+\\
+\\
+\begin{align*}
+    \vec{B} &= \vec{\nabla} \times \vec{A} \\
+    \vec{E} &= - \vec{\nabla} \phi - \frac{1}{c} \frac{ \partial \vec{A} }{ \partial t } \\
+    F_{12} &= \frac{ \partial A_2 }{ \partial x_1 } - \frac{ \partial A_1 }{ \partial x_2 } = \left( \vec{\nabla} \times \vec{A} \right)_{z} = B_{z} \\
+    F_{13} &= \frac{ \partial A_3 }{ \partial x_1 } - \frac{ \partial A_1 }{ \partial x_3 } = - \left( \vec{\nabla} \times \vec{A} \right)_{y} = - B_{y} \\
+    F_{4i} &= \frac{ \partial A_{i} }{ \partial x_4 } - \frac{ \partial A_4 }{ \partial x_{i} }  = \frac{1}{ic} \frac{ \partial A_{i} }{ \partial t } - \frac{ \partial \left( i \phi  \right)  }{ \partial x_{i} } = -i \left( \frac{1}{c} \frac{ \partial A_{i} }{ \partial t } + \frac{ \partial \phi  }{ \partial x_{i} }  \right) = -i \left( \frac{ \partial \phi  }{ \partial x_{i} } + \frac{1}{c} \frac{ \partial A_{i} }{ \partial t }  \right) = iE_{i}
+.\end{align*}
+\\
+\\
+Lets also check what the Maxwell equations says for the last row in the tensor.
+\\
+\\
+\begin{align*}
+    \frac{ \partial F_{4 \nu } }{ \partial x_{\nu} } &= \frac{j_4}{c} \\
+    \frac{ \partial F_{4i} }{ \partial x_{i} } &= \frac{i c \rho}{c} \\
+    \frac{ \partial \left( i E_{i} \right)  }{ \partial x_{i} }  &= i \rho \\
+    \frac{ \partial E_{i} }{ \partial x_{i} } &= \rho \\
+    \vec{\nabla} \cdot \vec{E} &= \rho
+.\end{align*}
+\\
+\\
+We will not bother to check the Lorentz transformation of the fields here. It is right.
+
+
+\section{The Lagrangian for Electromagnetic Fields} 
+There are not many ways to make a scalar Lagrangian from the field tensor. We already know that
+\\
+\\
+\begin{equation}
+    \frac{ \partial F_{\mu \nu } }{ \partial x_{\nu} } = \frac{j_{\mu}}{c}
+\end{equation}
+\\
+\\
+and we need to make our Lagrangian out of the fields, not just the current. Again $x_{\mu}$ cannot appear explicitly because that violates symmetries of nature. Also we want a linear equation and so higher powers of the field should not occur. A term of the form $mA_{\mu}A_{\mu}$ is a mass term and would cause fields to fall of faster than $\frac{1}{r}$. So, the only reasonable choice is
+\\
+\\
+\begin{equation}
+    F_{\mu \nu}F_{\mu \nu} = 2 \left( B^2 - E^2 \right) 
+\end{equation}
+\\
+\\
+One might consider
+\\
+\\
+\begin{equation}
+    e_{\mu \nu \lambda \sigma} F_{\mu \nu} F_{\lambda \sigma} = \vec{B} \cdot \vec{E}
+\end{equation}
+\\
+\\
+but that is a pseudo-scalar, not a scalar. That is, it changes sign under a parity transformation. The EM interaction is known to conserve parity so this is not a real option. As with the scalar field, we need to add an interaction with a source term. Of course, we know elctromagnetism well, so finding the right Lagrangian is not really guess work. The source of the field is the vector $j_{\mu}$, so the simple scalar we can write is $j_{\mu} A_{\mu}$.
+\\
+\\
+The Lgrangian for Classical Electricity and Magnetism we will try is.
+\\
+\\
+\begin{equation}
+    \mathcal{L}_{\mathcal{\varepsilon \mathcal{M}}} = -\frac{1}{4} F_{\mu \nu} F_{\mu \nu} + \frac{1}{c} j_{\mu} A_{\mu}
+\end{equation}
+\\
+\\
+In working with this Lagrangian, we will treat each componment of $A$ as an independent field.
+\\
+THe next step is to check what the Euler-Lagrange equation gives us.
+\\
+\\
+ \begin{align*}
+     \frac{ \partial  }{ \partial x_{\nu} } \left( \frac{ \partial \mathcal{L}  }{ \partial \left( \partial A_{\mu} / \partial x_{\nu} \right)  }  \right) - \frac{ \partial \mathcal{L}  }{ \partial A_{\mu} }  &= 0 \\
+     \mathcal{L} &= -\frac{1}{4} F_{\mu \nu} F_{\mu \nu} + \frac{1}{c} j_{\mu} A_{\mu} = -\frac{1}{4} \left( \frac{ \partial A_{\nu}  }{ \partial x_{\mu} } - \frac{ \partial A_{\mu } }{ \partial c_{\nu} }  \right)  \left( \frac{ \partial A_{\nu } }{ \partial x_{\mu } }  - \frac{ \partial A_{\mu } }{ \partial x_{\nu} }  \right) + \frac{1}{c} j_{\mu} A_{\mu} \\
+     \frac{ \partial \mathcal{L} }{ \partial \left( \partial A_{\mu} / x_{\nu} \right) }  &= -\frac{1}{4} \frac{ \partial  }{ \partial \left( \partial A_{\mu} / \partial x_{\nu} \right)  } \left( \frac{ \partial A_{\sigma } }{ \partial x_{\lambda} } \frac{ \partial A_{\lambda } }{ \partial x_{\sigma} }  \right) \left( \frac{ \partial A_{\sigma } }{ \partial x_{\lambda} } - \frac{ \partial A_{\lambda } }{ \partial x_{\sigma} }   \right) \\
+     &= -\frac{1}{4} \frac{ \partial  }{ \partial \left( \partial A_{\mu} / \partial x_{\nu} \right) } \left( 2 \frac{ \partial A_{\sigma } }{ \partial x_{\lambda} } \frac{ \partial A_{\sigma } }{ \partial x_{\lambda} } - 2 \frac{ \partial A_{\sigma } }{ \partial x_{\lambda} } \frac{ \partial A_{\lambda} }{ \partial x_{\sigma} }  \right)  \\
+     &= -\frac{1}{4}4 \left( \frac{ \partial A_{\mu} }{ \partial x_{\nu} } - \frac{ \partial A_{\nu} }{ \partial x_{\mu} }   \right)  \\
+     &= -F_{\nu \mu} = F_{\mu \nu} \\
+     \frac{ \partial  }{ \partial x_{\nu} } F_{\mu \nu} - \frac{ \partial \mathcal{L} }{ \partial A_{\mu} } &= 0 \\
+     \frac{ \partial  }{ \partial x_{\nu} } F_{\mu \nu} - \frac{j_{\mu}}{c} &= 0 \\
+     \frac{ \partial  }{ \partial x_{\nu} }  F_{\mu \nu} &= \frac{j_{\mu}}{c}
+.\end{align*}
 
 
 
