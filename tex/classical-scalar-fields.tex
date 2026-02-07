@@ -1,0 +1,136 @@
+\documentclass{report}
+
+\input{../templates/preamble}
+\input{../templates/macros}
+\input{../templates/letterfonts}
+
+\title{\Huge{Classical Scalar Fields}}
+\author{\Huge{Marcus Allen Denslow}}
+\date{2026-02-07}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Classical Scalar Fields}
+\section{Classical Scalar Fields}
+The non-relativistic quantum mechanics that we have studied so far developed largely between 1923 and 1925, based on the hypothesis of Plank from the late 19th century. It assumes that a particle has a probability that integrates to one over all space and that the particles are not created or destroyed. The theory neither dels with the quantized electromagnetic field nor with the relativistic energy equation.
+\\
+\\
+It was not long after the non-relativistic theory was completed that Dirac introduced a relativistic theory for electrons. By about 1928, relativistic theories, in which the electromagnetic field was quantized and the creation and absorption of particles was possible, had been developed by Dirac.
+\\
+\\
+Quantum Mechanics became a quantum theory of fields, with the fields for bosons and fermions treated in a symmetric way, yet behaving quite differently. In 1940, Pauli proved the spin-statistics theorem whyich showed why spin one-half particles should behave like fermions and spin zero or spin one particles should have the properties of bosons.
+\\
+\\
+Quantum Field Theory (QFT) was quite successful in describing all detailed experiments in electromagnetic interactions and many aspects of the weak interactions. Nevertheless, by the 1960s, when our textbook was written, most particle theorists were doubtful that QFT was suitable for describing the strong interactions and some aspects of the weak interactions. This all changed dramatically around 1970 when very successful Guage Theories of the strong and weak interactions were introduced. By now, the physics of the electromagnetic, weak, and strong interactions are well described by Quantum Field (Guage) Theories that together form the standard model.
+\\
+\\
+Dirac's relativistic theory of electrons introduced many new ideas such as antiparticles and four component spinors. As we quantize the EM field, we must treat the propagation of photons relativistically. Hence we will work toward understanding relativistic QFT.
+\\
+\\
+In this chapter, we will review classical theory, learn to write our equations in a covariant way in four dimensions, and recall aspects of Lagrangian and Hamiltonian formalisms for use in field theory. The emphasis will be on learning how all these things work and on getting practice with calculations, not on mathematical rigor. While we already have a good deal of knowledge about classical electromagnetism, we will start with simple field theories to get some practice.
+\\
+\\
+\section{Simple Machanical Systems and Fields} 
+This section is a review of mechanical systems largely from the point of veiw of Lagrangian dynamics. In particular, we review the equations of a string as an example of a field theory in one dimension.
+\\
+\\
+We start with the Lagrangian of a discrete system like a single particle
+\\
+\\
+\begin{equation}
+    L \left( q, \dot{q} \right) = T- V
+\end{equation}
+\\
+\\
+Lagrange's equations are
+\\
+\\
+\begin{equation}
+    \frac{d}{dt} \left( \frac{ \partial L }{ \partial \dot{q}_{i} }  \right) - \frac{ \partial L }{ \partial q_{i} } = 0
+\end{equation}
+\\
+\\
+where $q_{i}$are the coordinates of the particle. This equatino is derivable from the principle of least action.
+\\
+\\
+\begin{equation}
+    \delta \int_{t_1}^{t_2} L \left( q_{i}, \dot{q}_{i} \right)  \, dx = 0
+\end{equation}
+\\
+\\
+Similarly, we can define the Hamiltonian
+\\
+\\
+\begin{equation}
+    \mathbf{H} \left( q_{i}, p_{i} \right) = \sum_{i} p_{i} \dot{p}_{i} - L
+\end{equation}
+\\
+\\
+Where $p_{i}$ are momenta conjugate to the coordinates $q_{i}$.
+\\
+\\
+\begin{equation}
+    p_{i} = \frac{ \partial L }{ \partial \dot{q}_{i} } 
+\end{equation}
+\\
+\\
+Foe a continius system, like a string, the Lagrangian is an integral of a Lagrangian density function.
+\\
+\\
+\begin{equation}
+    L = \int \mathcal{L} \, dx
+\end{equation}
+\\
+\\
+For example, for a string.
+\\
+\\
+\begin{equation}
+    \mathcal{L} = \frac{1}{2} \left[ \mu \dot{\upeta}^2 - Y \left( \frac{ \partial \upeta  }{ \partial x }  \right)^2  \right] 
+\end{equation}
+\\
+\\
+Where $Y$ is Young's modulus for the material of the string and  $\mu$ is the mass density. The Euler-Lagrange Equation for a continius system is also derivable from the principle of least action states above. For the string, this would be.
+\\
+\\
+\begin{equation}
+    \frac{ \partial  }{ \partial x } \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \upeta / \partial x \right)  }  \right) + \frac{ \partial  }{ \partial t } \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \upeta / \partial x \right)  }  \right) - \frac{ \partial \mathcal{L } }{ \partial \upeta } = 0
+\end{equation}
+\\
+\\
+Recall that the Lagrangian is a function of $\upeta$ and its space and time derivatives.
+\\
+\\
+In this example of a string,  $\upeta \left( x,t \right) $is a simple scalar field. The string has a displacement at each point along it which varies as a function of time.
+\\
+\\
+If we apply the Euler-Lagrange equation, we get a differential equation taht the string's displacement will satisfy.
+\\
+\\
+\begin{align*}
+    \mathcal{L} &= \frac{1}{2} \left[ \mu \dot{\upeta}^2 - Y \left( \frac{ \partial \upeta  }{ \partial x }  \right)^2  \right] \\
+    \frac{ \partial  }{ \partial x } \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \upeta / \partial x \right)  }  \right) + \frac{ \partial  }{ \partial t } \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \upeta / \partial t \right)  }  \right) - \frac{ \partial \mathcal{L } }{ \partial \upeta } &= 0 \\
+    \frac{ \partial \mathcal{L } }{ \partial \left( \partial \upeta / \partial x \right)  } &= - Y \frac{ \partial \upeta  }{ \partial x } \\
+    \frac{ \partial \mathcal{L } }{ \partial \left( \partial \upeta / \partial t \right)  } &= \mu \dot{\upeta} \\
+    -Y \frac{ \partial^2 \upeta }{ \partial x^2 } + \mu \ddot{\upeta} + 0 &= 0 \\
+    \ddot{\upeta} &= \frac{Y}{\mu} \frac{ \partial^2 \upeta }{ \partial x^2 } 
+\end{align*}
+\\
+\\
+This is the wave equation for the string. There are easier ways to get to this wave equation, but, as we move away from simple mechanical systems, a formal way of proceeding will be very helpful.
+
+
+
+
+
+
+
+
+\end{document}
