@@ -228,7 +228,83 @@ The Lorentz transformation matrix to a coordinate system boosted along the x dir
                 i \beta \gamma & 0 & 0 & \gamma
             \end{pmatrix} 
 \end{equation}
+\\
+\\
+The $i$ shows up on space-time elements. To deal with the $i$ we have put on the time components of 4-vectors. It is interesting to note the similarity between Lorentz boosts and rotations. A rotation in the  $xy$ plane through an angle  $\theta$ is implemented with the transformation. 
+\\
+\\
+\begin{equation}
+    a_{\mu \nu} = \begin{pmatrix} \cos \theta & \sin \theta & 0 & 0 \\
+                -\sin \theta & \cos \theta & 0 & 0 \\ 
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1 
+            \end{pmatrix} 
+\end{equation}
+\\
+\\
+A boost along the $x$ direction is like a rotation in the  $xt$ through and angle of $\theta$ where $tanh \theta = \beta$. Dinxe we are in Minkowski space where we need a minus sign on the time component of dot products, we need to add an $i$ in this rotation too. \\
+\\
+ \begin{equation}
+     a_{\mu \nu} = \begin{pmatrix} \cos i \theta & 0 & 0 & \sin i \theta \\ 
+                 0 & 1 & 0 & 0 \\ 
+                 0 & 0 & 1 & 0 \\ 
+             -\sin i \theta & 0 & 0 & \cos i \theta 
+         \end{pmatrix} 
+         = 
+         \begin{pmatrix} \cosh \theta & 0 & 0 & i \sinh \theta \\
+                 0 & 1 & 0 & 0 \\ 
+                 0 & 0 & 1 & 0 \\ 
+                 -i \sinh \theta & 0 & 0 & \cosh \theta 
+         \end{pmatrix} 
+         = 
+         \begin{pmatrix} \gamma & 0 & 0 & i \beta \gamma \\ 
+           0 & 1 & 0 & 0 \\ 
+           0 & 0 & 1 & 0 \\ 
+       -i \beta \gamma & 0 & 0 & \gamma 
+   \end{pmatrix} 
+ \end{equation}
+
+\\
+\\
+Effectively, a Lorentz boost is a rotation in which $tan i \theta = \beta$. We will make essentially no use of Lorentz transformations because we will write our theories in terms of Lorentz scalars whenever possible. For example, our Lagrangian density should be invariant. 
+\\
+\\
+\begin{equation}
+    \mathcal{L}' \left( x' \right)  = \mathcal{L} \left( x \right) 
+\end{equation}
+\\
+\\
+The Lagrangians we have seen so far have derivatives with respect to the coordinates. THe 4-vector way of writing this will be $\frac{ \partial  }{ \partial x_{\mu} } $. We need to know what the transformation properties of this are. We can compute this form the transformatinos and the chain rule. 
+\\
+\\
+\begin{align*}
+    x_{\nu} &= a_{\mu \nu} x_{\mu}' \\
+    \frac{ \partial  }{ \partial x_{\mu}' }  &= \frac{ \partial x_{\nu } }{ \partial x_{\mu}' } \frac{ \partial  }{ \partial x_{\nu} } = a_{\mu \nu} \frac{ \partial  }{ \partial x_{\nu} } 
+.\end{align*}
+\\
+\\
+This means that it transforms like a vector. Compare it to our original transformation formula for $x_{\mu}$. 
+\\
+\\
+\begin{equation}
+    x_{\mu}' = a_{\mu \nu} x_{\nu}
+\end{equation}
+\\
+\\
+We may safely assume that all our derivatives with one index transform as a vector. 
+\\
+\\
+With this, lets work on the Euler-Lagrange equation to get it into covariant shape. Remember that the fiel $\phi$ is a Lorentz scalar. 
+\\
+\\
+\begin{align*}
+    \sum_{k} \frac{ \partial  }{ \partial x_{k} } \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \phi / \partial x_{k} \right)  }  \right)  + \frac{ \partial  }{ \partial t }  \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \phi / \partial t \right)  }  \right)  - \frac{ \partial \mathcal{L } }{ \partial \phi } &= 0 \\
+    \sum_{k} \frac{ \partial  }{ \partial x_{k} }  \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \phi / \phi x_{k} \right)  }  \right) + \frac{ \partial  }{ \partial \left( ict \right)  }  \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \phi / \partial \left( ict \right)  \right)  }  \right) - \frac{ \partial \mathcal{L } }{ \partial \phi }  &= 0 \\
+    \frac{ \partial  }{ \partial x_{\mu} } \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \phi / \partial x_{\mu} \right)  }  \right)  - \frac{ \partial \mathcal{L } }{ \partial \phi } &= 0
+.\end{align*}
+
 
 
 
 \end{document}
+
