@@ -127,5 +127,108 @@ If we apply the Euler-Lagrange equation, we get a differential equation taht the
 This is the wave equation for the string. There are easier ways to get to this wave equation, but, as we move away from simple mechanical systems, a formal way of proceeding will be very helpful.
 
 
+\section{Classical Scalar Field in Four Dimensions} 
+Assume we have a field defined everywhere in space and time. For simplicity we will start with a scalar field (instead of the vector\ldots fields of E&M). 
+\\
+\\
+\begin{equation}
+    \phi \left( \vec{r}, t \right) 
+\end{equation}
+\\
+\\
+The property that makes this a true scalar field is that it is invariant under rotations and Lorentz boosts. 
+\\
+\\
+\begin{equation}
+    \phi \left( \vec{r}, t \right)  = \phi' \left( \vec{r}', t' \right) 
+\end{equation}
+\\
+\\
+The Euler-Lagrange equation derived from the principle of least action is 
+\\
+\\
+\begin{equation}
+    \sum_{k}  \frac{ \partial  }{ \partial x_{k} } \left( \frac{ \partial \mathcal{L} }{ \partial \left( \partial \phi / \partial x_{k} \right)  }  \right) + \frac{ \partial  }{ \partial t }  \left( \frac{ \partial \mathcal{L } }{ \partial \left( \partial \phi / \partial t \right)  }  \right)  - \frac{ \partial \mathcal{L} }{ \partial \phi } = 0
+\end{equation}
+\\
+\\
+\noindent
+\begin{minipage}[t]{0.48 \textwidth}
+    Note that since there is only one field, there is only one equation. 
+    Since we are aiming for a description of relativistic quantum mechanics, it will benefit us to write our equations in a covariant way. I think this also simplifies the equations. We will follow the notation of Sakurai.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48 \textwidth}
+    (The convention does not really matter and one should not get hung up on it.) As usual the Latin indices like $i, j, k, \dots$ will run from 1 to 3 and represent the space coordinates. The Greek indices like $\mu, \nu, \sigma, \lambda, \dots$ will run from 1 to 4. Sakurai would give the spacetime coordinate vector either as
+\end{minipage}
+\\
+\\
+\begin{equation}
+    \left( x_1, x_2, x_3, x_4 \right)  = \left( x, y, z, ict \right)
+\end{equation}
+\\
+\\
+or as 
+\\
+\\
+\begin{equation}
+    \left( x_0, x_1, x_2, x_3 \right)  = \left( t, x, y, z \right) 
+\end{equation}
+\\
+\\
+And use the former to do real computations. 
+\\
+\\
+We will not use the so called covariant and contravariant indices. Instead we will pu an $i$ on the fourth component of a vector which give that component a  $-$ sign in a dot product. 
+\\
+\\
+ \begin{equation}
+    x_{\mu} x_{\mu} = x^2 + y^2 + z^2 - c^2 t^2
+\end{equation}
+\\
+\\
+Note we can have all lower indices. As Sakurai points out, there is no need for the complication of a metric tensor to raise and lower indices unless general relativity comes into play and the geometry of space-time is not flat. We can assume the $i$ in the fourth component is a calculational convecience, not an indication of the need for complex numbers in our coordinate systems. So while we may have said "farewell to ict" some time in the part, we will use it here because the notation is less complicated. The  $i$ here should never really be used to multiply an  $i$ in the complex wave function, but everything will work out so that doesn't happen unless we make an algebra mistake. 
+\\
+\\
+The spacetime coordinate  $x_{\mu}$ is a Lorentz vector transforming under rotations and boosts as follows. 
+\\
+\\
+\begin{equation}
+    x_{\mu} = a_{\mu \nu}x_{\nu}
+\end{equation}
+\\
+\\
+(Note that we will always sum over repeated indices, Latin or Greek). The Lorentz transformation is done with a 4 by 4 matrix with the property that the inverse is the transpose of the matrix. 
+\\
+\\
+\begin{equation}
+    a^{-1}_{\mu \nu} = a_{\nu \mu}
+\end{equation}
+\\
+\\
+The $a_{ij}$ and $a_{44}$ are real while the $a_{4j}$ and $a_{j_4}$are imaginary in our convention. THus we may compute the coordinate using the inverse transformation. 
+\\
+\\
+\begin{equation}
+    x_{\mu} = a_{\nu \mu}x_{\nu}'
+\end{equation}
+\\
+\\
+Vecotrs transform as we change our reference system by rotating or boosting. Higher rank tensors also transform with one Lrentz transformation matrix per index on the tensor. 
+\\
+\\
+The Lorentz transformation matrix to a coordinate system boosted along the x direction is. 
+\\
+\\
+\begin{equation}
+    a_{\mu \nu} = \begin{pmatrix}
+                \gamma & 0 & 0 & i \beta \gamma \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                i \beta \gamma & 0 & 0 & \gamma
+            \end{pmatrix} 
+\end{equation}
+
+
 
 \end{document}
